@@ -83,7 +83,16 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('fitbit')->stateless(true)->user();
-        dd($user);
+        session_start();
+        $_SESSION['fitbit'] = [];
+        $_SESSION['fitbit']['oauth2'] = [
+            'accessToken' => $user->token,
+            'user-id' => $user->id,
+        ];
+        //die;
+        dd($user, $_SESSION);
+        ////print_r($json);
+        //dd($user);
         //Log::info($user);
         // $user->token;
     }

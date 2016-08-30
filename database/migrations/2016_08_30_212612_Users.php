@@ -12,12 +12,12 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::create('users', function(Bueperint $table){
+        Schema::create('Users', function(Blueperint $table){
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 50);
-            $table->string('Fitbit Id')->unique();
+            $table->string('Fitbit_Id')->unique();
             $table->remememberToken();
             $table->timestamps();
         });

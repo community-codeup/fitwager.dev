@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChallengesTable extends Migration
+class Coins extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,11 @@ class CreateChallengesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('Coins', function(Blueprint $table){
+            $table->increments('id');
+            $table->foreign('User_Amount')->references('id')->on('users');
+            $table->string('coins');
+        });
     }
 
     /**
@@ -22,6 +26,6 @@ class CreateChallengesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('Coins');
     }
 }

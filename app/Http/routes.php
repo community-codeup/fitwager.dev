@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/auth/login', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+
+Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
+Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback');
+
+
+Route::get('/test', "UsersController@index");

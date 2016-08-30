@@ -36,9 +36,9 @@ return [
     ],
 
     'fitbit' => [
-        'client_id' => '227S2P',
-        'client_secret' => 'dca594263f25456f5582c8a2324a40da',
-        'redirect' => 'http://fitwager.dev/auth/fitbit/callback',
+        'client_id' => env('FITBIT_KEY'),
+        'client_secret' => env('FITBIT_SECRET'),
+        'redirect' => env('FITBIT_REDIRECT_URI'),
     ],
 
 ];

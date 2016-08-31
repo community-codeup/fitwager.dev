@@ -12,7 +12,16 @@ class Challenges extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('Challenges', function (Blueprint $table){
+            $table->increments('id');
+            $table->longText('description');
+            $table->foreign('Created_By')->references('id')->on('Users');
+            $table->foreign('Bet_Type')->refrences('id')->on('BetType');
+            $table->foreign('Challenge_Type')->refrences('id')->on('ChallengeType');
+            $table->string('Start_Date');
+            $table->string('End_Date');
+            $table->timestamps(); 
+        });
     }
 
     /**
@@ -22,6 +31,6 @@ class Challenges extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('Challenges');
     }
 }

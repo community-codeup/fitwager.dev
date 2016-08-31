@@ -17,7 +17,7 @@ class Users extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 50);
-            $table->string('Fitbit Id')->unique();
+            $table->string('Fitbit_Id')->unique();
             $table->remememberToken();
             $table->timestamps();
         });

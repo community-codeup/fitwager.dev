@@ -17,6 +17,7 @@ class CreateChallengeTypesTable extends Migration
             //$table->foreign('Challenge_Id')->references('id')->on('Challenges');
             $table->string('name');
             $table->mediumText('description');
+            $table->timestamps();
         });
     }
 

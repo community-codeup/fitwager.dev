@@ -24,3 +24,4 @@ Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback'
 
 
 Route::get('/test', "UsersController@index");
+Route::get('/account', "UsersController@store");

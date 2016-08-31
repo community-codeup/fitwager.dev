@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Coins extends Migration
+class CreateResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,13 @@ class Coins extends Migration
      */
     public function up()
     {
-        Schema::create('Coins', function(Blueprint $table){
+        Schema::create('results', function(Blueprint $table){
             $table->increments('id');
-            $table->foreign('User_Amount')->references('id')->on('users');
-            $table->string('coins');
+            $table->integer('challenge_id')->unsigned();
+            $table->string('winner');
+            $table->string('coins_awarded');
+
+            $table->foreign('challenge_id')->references('id')->on('challenges');
         });
     }
 
@@ -26,6 +29,6 @@ class Coins extends Migration
      */
     public function down()
     {
-        Schema::drop('Coins');
+        Schema::drop('Results');
     }
 }

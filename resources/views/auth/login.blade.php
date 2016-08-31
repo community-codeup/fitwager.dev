@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 
 @section('content')
+<<<<<<< HEAD
     <body background="/img/night2.jpg" style="background-color: black;
       webkit-background-size: cover; moz-background-size: cover; o-background-size: cover; background-size: cover">
         <div class="container" id="form" style="margin-top: 5%; padding-bottom: 2%;">
@@ -14,10 +15,12 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <button type="submit" class="btn btn-primary btn-lg">Log in to FitBit</button>
+                        <a href="/auth/fitbit">Signin</a>
                     </div>
                 </div>
 
         </div>
     </body>
+
 @endsection
 

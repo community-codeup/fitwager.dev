@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class ChallengeTypeTableSeeder extends Seeder
+class ChallengeTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

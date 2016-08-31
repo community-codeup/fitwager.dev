@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 use Jmitchell38488\OAuth2\Client\Provider\FitBitImplicit;
 
@@ -33,8 +35,9 @@ class UsersController extends Controller
             'redirectUri'   => env('FITBIT_REDIRECT_URI'),
         ]);
         $today = new DateTime();
-        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
-var_dump($endpoint);
+        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/"
+            . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
+        var_dump($endpoint);
 
         $request = $provider->getAuthenticatedRequest(
             FitBit::METHOD_GET,
@@ -65,7 +68,11 @@ var_dump($endpoint);
      */
     public function store(Request $request)
     {
-        //
+        if(!Auth::check()){
+            return view('auth/login');
+        } else {
+            Auth::store();
+        }
     }
 
     /**
@@ -74,9 +81,14 @@ var_dump($endpoint);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $user)
     {
         //
+        if(!Auth::check()){
+            return view(auth/login);
+        } else{
+            return redirect;
+        }
     }
 
     /**
@@ -111,5 +123,13 @@ var_dump($endpoint);
     public function destroy($id)
     {
         //
+    }
+
+    public function alreadyCreated($id) {
+        if (User::find($id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

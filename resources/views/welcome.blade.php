@@ -1,45 +1,144 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
+        <title>FitWager</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+                rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+                integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+                crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/fitwager.css">
     </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
+
+    @extends ('layouts.master')
+
+    @section('content')
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-responsive-collapse" id="bs-example-navbar-collapse-1">
+                    <form class="navbar-form">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a class="navbar-brand" id="navButtons" href="#">Home</a></li>
+                            <li><a class="navbar-brand" id="navButtons" href="#">Account</a></li>
+                            <li><a class="navbar-brand" id="navButtons" href="#">Create Challenge</a></li>
+                            <li><a class="navbar-brand" id="navButtons" href="#">Coins</a></li>
+                        </ul>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="navbar-brand" href="#">Logout</a></li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        {{-- BEGINNING OF PAGINATION --}}
+
+        <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+            <!-- Overlay -->
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#bs-carousel" data-slide-to="1"></li>
+                <li data-target="#bs-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item slides active">
+                    <div class="slide-1">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="hero">
+                        <hgroup>
+                            <h1>We are Fit<span style="color: limegreen">Wager</span></h1>
+                            <h3>Challenge Others In Your Area Today</h3>
+                        </hgroup>
+                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                    </div>
+                </div>
+                <div class="item slides">
+                    <div class="slide-2">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="hero">
+                        <hgroup>
+                            <h1>Start Earning Wager Coins Today</h1>
+                            <h3>Get start your next awesome project</h3>
+                        </hgroup>
+                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                    </div>
+                </div>
+                <div class="item slides">
+                    <div class="slide-3">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="hero">
+                        <hgroup>
+                            <h1>Log in to Your FitBit Account Here</h1>
+                            <h3>Get start your next awesome project</h3>
+                        </hgroup>
+                        <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                    </div>
+                </div>
             </div>
         </div>
+
+        {{-- END OF PAGINATION --}}
+
+        {{-- START LEADERBOARD COLUMNS --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">LEADERBOARD</h1></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <section id="content">
+                    <h2>1st Content Area</h2>
+                    <p>This page demonstrates a 3 column responsive layout, complete with responsive images and jquery slideshow.</p>
+                </section>
+            </div>
+            <div class="col-md-4">
+                <section id="middle">
+                    <h2>2nd Content Area</h2>
+                    <p>At full width all three columns will be displayed side by side. As the page is resized the third column will collapse under the first and second. At the smallest screen size all three columns will be stacked on top of one another.</p>
+                    <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                </section>
+            </div>
+            <div class="col-md-4">
+                <aside id="sidebar">
+                    <h2>3rd Content Area</h2>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                    <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+
+    @endsection
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     </body>
 </html>

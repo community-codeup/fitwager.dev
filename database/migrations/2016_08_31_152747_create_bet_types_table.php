@@ -16,6 +16,7 @@ class CreateBetTypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->mediumText('description');
+            $table->timestamps();
         });
     }
 

@@ -19,6 +19,8 @@ class CreateResultsTable extends Migration
             $table->string('coins_awarded');
 
             $table->foreign('challenge_id')->references('id')->on('challenges');
+
+            $table->timestamps();
         });
     }
 

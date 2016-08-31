@@ -19,6 +19,14 @@ Route::get('/', function () {
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');
 
+Route::get('/register', function () {
+    return view('auth/register');
+});
+
+Route::get('views/account', function () {
+    return view('account');
+});
+
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback');
 

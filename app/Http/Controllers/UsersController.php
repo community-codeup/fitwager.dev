@@ -33,8 +33,9 @@ class UsersController extends Controller
             'redirectUri'   => env('FITBIT_REDIRECT_URI'),
         ]);
         $today = new DateTime();
-        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
-var_dump($endpoint);
+        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/"
+            . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
+        var_dump($endpoint);
 
         $request = $provider->getAuthenticatedRequest(
             FitBit::METHOD_GET,

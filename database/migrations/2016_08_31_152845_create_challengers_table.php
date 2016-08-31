@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Challengers extends Migration
+class CreateChallengersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,13 @@ class Challengers extends Migration
      */
     public function up()
     {
-        Schema::create('Challengers', function(Blueprint $table){
+        Schema::create('challengers', function(Blueprint $table){
             $table->increments('id');
-            $table->foreign('User_Id')->refrences('id')->on('Users');
-            $table->foreign('Challenge_Id')->refrences('id')->on('Challenges');
+            $table->integer('user_id')->unsigned();
+            $table->integer('challenge_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('challenge_id')->references('id')->on('challenges');
         });
     }
 

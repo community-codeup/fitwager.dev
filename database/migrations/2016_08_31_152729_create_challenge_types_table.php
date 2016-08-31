@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChallengeType extends Migration
+class CreateChallengeTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class ChallengeType extends Migration
      */
     public function up()
     {
-        Schema::create('ChallengeType', function(Blueprint $table){
+        Schema::create('challenge_types', function(Blueprint $table){
             $table->increments('id');
             //$table->foreign('Challenge_Id')->references('id')->on('Challenges');
-            $table->string('Challenge_Name');
+            $table->string('name');
             $table->mediumText('description');
-        })
+        });
     }
 
     /**

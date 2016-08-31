@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Users extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,8 @@ class Users extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 50);
-            $table->string('Fitbit_Id')->unique();
-            $table->remememberToken();
+            $table->string('fitbit_id')->unique();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

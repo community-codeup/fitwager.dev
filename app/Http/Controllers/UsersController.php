@@ -34,7 +34,7 @@ class UsersController extends Controller
         ]);
         $today = new DateTime();
         $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
-var_dump($endpoint);
+        var_dump($endpoint);
 
         $request = $provider->getAuthenticatedRequest(
             FitBit::METHOD_GET,

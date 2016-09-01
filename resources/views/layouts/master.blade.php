@@ -17,11 +17,13 @@
 
 @include('partials.navbar')
 
+
+
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="/js/bootstrap/bootstrap.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 @yield('content')
-
+@include('partials.footer')
 </body>
 </html>

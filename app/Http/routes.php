@@ -14,6 +14,7 @@
 
 use App\BetType;
 use App\ChallengeType;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,8 +27,8 @@ Route::get('/register', function () {
     return view('auth/register');
 });
 
-Route::get('views/account', function () {
-    return view('account');
+Route::get('user/account', function () {
+    return view('user/account');
 });
 
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
@@ -40,13 +41,16 @@ Route::get('/account', "UsersController@store");
 
 Route::resource('challenges', 'ChallengesController');
 
-Route::get('challenges', function() {
-    $betTypes = BetType::all();
-    $challengeTypes = ChallengeType::all();
-    $data = [
-        'betTypes' => $betTypes,
-        'challengeTypes' => $challengeTypes,
-    ];
-    return view('tj_challenges', $data);
-});
+//Route::get('challenges', function() {
+//    $betTypes = BetType::all();
+//    $challengeTypes = ChallengeType::all();
+//    $users = User::all();
+//    $data = [
+//        'betTypes' => $betTypes,
+//        'challengeTypes' => $challengeTypes,
+//        'users' => $users,
+//    ];
+//    return view('tj_challenges', $data);
+//});
+
 

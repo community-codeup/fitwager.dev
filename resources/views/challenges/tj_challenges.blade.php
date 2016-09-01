@@ -16,6 +16,12 @@
         <input type="text" name="start_date" id="start_date"><br>
         <label for="end_date">End Date</label>
         <input type="text" name="end_date" id="end_date"><br>
+        <label for="wager">Wager</label>
+        <input type="text" name="wager" id="wager"><br>
+        @foreach($users as $user)
+            <input type="checkbox" name="challengers[]" value="{{$user->id}}">{{$user->name}}
+        @endforeach
+        <br>
         <button type="submit">Submit</button>
     </form>
 @endsection

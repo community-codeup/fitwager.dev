@@ -1,9 +1,5 @@
 @extends('layouts.master')
 @section('content')
-@extends ('layouts.master')
-
-@section('content')
-
     <body background="/img/night1.jpg" style="background-color: black;
       webkit-background-size: cover; moz-background-size: cover; o-background-size: cover; background-size: cover">
         <div class="container-fluid" style="margin-top: 5%; padding-bottom: 2%;">

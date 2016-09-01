@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,8 @@ class ResultsController extends Controller
      */
     public function index()
     {
-        //
+        Results::showResults();
+        return view('challenge_results');
     }
 
     /**
@@ -26,7 +27,7 @@ class ResultsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -48,7 +49,7 @@ class ResultsController extends Controller
      */
     public function show($id)
     {
-        //
+        $result = Result::findOrFail($id)
     }
 
     /**

@@ -10,7 +10,14 @@ class Challenge extends Model
     protected $table = 'challenges';
     public static $rules = [
 
+
+    public function challengers()
+    {
+    	return $this->hasMany(Challenger::class);
+    }
+
     ];
+
 
 }
 

@@ -27,6 +27,6 @@ class CreateBetTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('BetType');
+        Schema::drop('bet_types');
     }
 }

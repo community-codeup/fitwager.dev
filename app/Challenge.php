@@ -9,19 +9,15 @@ class Challenge extends Model
 {
     protected $table = 'challenges';
     public static $rules = [
-        'title' => 'required',
-        'content' => 'required',
-        'url' => 'required|url',
-    ];
 
-    public static function findPostBySearch($searchBy, $search) {
-        return Post::where($searchBy, 'LIKE', '%' . $search . '%');
-    }
 
     public function challengers()
     {
     	return $this->hasMany(Challenger::class);
     }
+
+    ];
+
 
 }
 

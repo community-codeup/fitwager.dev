@@ -32,8 +32,6 @@ class UsersController extends Controller
     public function index()
     {
         session_start();
-        var_dump($_SESSION);
-return;
 
         $provider = new FitBit([
             'clientId'      => env('FITBIT_KEY'),

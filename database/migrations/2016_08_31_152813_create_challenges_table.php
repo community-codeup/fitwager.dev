@@ -20,6 +20,7 @@ class CreateChallengesTable extends Migration
             $table->integer('challenge_type')->unsigned();
             $table->string('start_date');
             $table->string('end_date');
+            $table->integer('wager');
             $table->timestamps();
 
             $table->foreign('created_by')->references('id')->on('users');

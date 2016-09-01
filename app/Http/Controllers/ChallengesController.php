@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\BetType;
 use App\Challenge;
+use App\Challenger;
 use App\ChallengeType;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +23,15 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-        return view('/');
+        $betTypes = BetType::all();
+        $challengeTypes = ChallengeType::all();
+        $users = User::all();
+        $data = [
+            'betTypes' => $betTypes,
+            'challengeTypes' => $challengeTypes,
+            'users' => $users,
+        ];
+        return view('challenges/tj_challenges', $data);
     }
 
     /**
@@ -44,7 +55,6 @@ class ChallengesController extends Controller
 //        $request->session()->flash('message', 'Did not store successfully.');
 //        $this->validate($request, ChallengeType::$rules);
 //        $request->session()->forget('message');
-
         Log::info($request->all());
         $challenge = new Challenge;
         $challenge->description = $request['description'];
@@ -53,7 +63,17 @@ class ChallengesController extends Controller
         $challenge->start_date = $request['start_date'];
         $challenge->end_date = $request['end_date'];
         $challenge->created_by = 1;
+        $challenge->wager = $request['wager'];
         $challenge->save();
+
+        $challengers = $request['challengers'];
+        foreach($challengers as $challenger_info) {
+            $challenger = new Challenger;
+            $challenger->user_id = $challenger_info;
+            $challenger->challenge_id = $challenge->id;
+            $challenger->save();
+        }
+
         return redirect()->action('ChallengesController@index');
     }
 

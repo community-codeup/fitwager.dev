@@ -5,11 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Challenge extends Model
+class Challenger extends Model
 {
-    protected $table = 'challenges';
+    protected $table = 'challengers';
     public static $rules = [
-
     ];
 
 }

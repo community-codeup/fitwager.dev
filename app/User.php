@@ -47,16 +47,16 @@ class User extends Model implements AuthenticatableContract,
 
     public function challenges()
     {
-        return $this->hasMany(Challenges::class, '')
+        return $this->hasMany(Challenges::class, '');
     }
     
     public function results()
     {
-        return $this->hasMany(Results::class, '')
+        return $this->hasMany(Results::class, '');
     }
     
     public function coins()
     {
-        return $this->hasMany(Coins::class, '')
+        return $this->hasMany(Coins::class, '');
     }
 }

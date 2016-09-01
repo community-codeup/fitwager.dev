@@ -7,8 +7,8 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "socialiteproviders/manager": "^1.2",
-        "socialiteproviders/fitbit": "^1.2",
+        "socialiteproviders/manager": "^2.1",
+        "socialiteproviders/fitbit": "^2.0",
         "laravel/socialite": "^2.0",
         "jmitchell38488/oauth2-fitbit": "^0.1.3"
     },

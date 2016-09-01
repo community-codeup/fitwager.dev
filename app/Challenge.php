@@ -18,6 +18,10 @@ class Challenge extends Model
         return Post::where($searchBy, 'LIKE', '%' . $search . '%');
     }
 
+    public function challengers()
+    {
+    	return $this->hasMany(Challenger::class);
+    }
 
 }
 

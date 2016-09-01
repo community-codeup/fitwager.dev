@@ -28,6 +28,6 @@ class CreateChallengeTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ChallengeType');
+        Schema::drop('challenge_types');
     }
 }

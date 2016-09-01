@@ -253,6 +253,11 @@ MEDIA QUERIES
 #glbfooter {
     background: black;
     padding: 20px 10px 40px 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
 }
 
 ul {
@@ -279,4 +284,26 @@ footer {
     background-size: cover;
     text-align: center;
     height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
+.types {
+    background: #428BCA;
+    color: #fff;
+    font-family: Sans-serif;
+    text-align: center;
+    border: 0;
+    transition: all 0.1s ease 0s;
+}
+
+.types {
+    background: #CF4647;
 }

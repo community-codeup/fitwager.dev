@@ -24,5 +24,6 @@
                     </tbody>
                 </table>
             </div>
+        </div>
     </footer>
 </div>

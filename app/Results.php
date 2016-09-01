@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Challenges extends Model
+class Results extends Model
 {
     //
 }

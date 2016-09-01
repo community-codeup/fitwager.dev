@@ -7,6 +7,7 @@ use Log;
 use Validator;
 use Socialite;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -38,7 +39,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -53,7 +54,7 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -83,7 +84,30 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('fitbit')->stateless(true)->user();
-        dd($user);
+
+        //dd($user);
+        if (!User::alreadyCreated($user->id)) {
+            User::create([
+                'name' => $user->user['user']['fullName'],
+                'fitbit_id' => $user->id,
+                'email' => $user->email,
+                'picture' => $user->avatar,
+            ]);
+        }
+
+        //dd($user);
+        session_start();
+        $_SESSION['fitbit'] = [];
+        $_SESSION['fitbit']['oauth2'] = [
+            'accessToken' => $user->token,
+            'user-id' => $user->id,
+        ];
+        die;
+        return redirect()->action('UsersController@show');
+        //die;
+        //dd($user, $_SESSION);
+        ////print_r($json);
+        //dd($user);
         //Log::info($user);
         // $user->token;
     }

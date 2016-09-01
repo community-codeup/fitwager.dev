@@ -14,7 +14,21 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        DB::table('results')->delete();
+        DB::table('coins')->delete();
+        DB::table('challengers')->delete();
+        DB::table('challenges')->delete();
+        DB::table('challenge_types')->delete();
+        DB::table('bet_types')->delete();
+        DB::table('users')->delete();
+
+        $this->call(UsersTableSeeder::class);
+        $this->call(BetTypesTableSeeder::class);
+        $this->call(ChallengeTypesTableSeeder::class);
+        $this->call(ChallengesTableSeeder::class);
+        $this->call(ChallengersTableSeeder::class);
+        $this->call(CoinsTableSeeder::class);
+        $this->call(ResultsTableSeeder::class);
 
         Model::reguard();
     }

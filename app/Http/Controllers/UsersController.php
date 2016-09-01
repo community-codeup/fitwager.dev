@@ -2,21 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use Validator;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use DateTime;
+use Illuminate\Support\Facades\Auth;
+use Jmitchell38488\OAuth2\Client\Provider\FitBit;
+use Jmitchell38488\OAuth2\Client\Provider\FitBitImplicit;
 
 class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +31,28 @@ class UsersController extends Controller
      */
     public function index()
     {
+        session_start();
+        var_dump($_SESSION);
+return;
+
+        $provider = new FitBit([
+            'clientId'      => env('FITBIT_KEY'),
+            'clientSecret'  => env('FITBIT_SECRET'),
+            'redirectUri'   => env('FITBIT_REDIRECT_URI'),
+        ]);
+        $today = new DateTime();
+        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/"
+            . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
+        var_dump($endpoint);
+
+        $request = $provider->getAuthenticatedRequest(
+            FitBit::METHOD_GET,
+            $endpoint,
+            $_SESSION['fitbit']['oauth2']['accessToken']
+        );
+
+        $response = $provider->getResponse($request);
+        dd($response);
         return 'Yay!';
     }
 
@@ -46,7 +74,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+
         $this
+        if(!Auth::check()){
+            return view('auth/login');
+        } else {
+            Auth::store();
+        }
     }
 
     /**
@@ -55,9 +89,14 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $user)
     {
         //
+        if(!Auth::check()){
+            return view(auth/login);
+        } else{
+            return redirect;
+        }
     }
 
     /**
@@ -92,5 +131,13 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function alreadyCreated($id) {
+        if (User::find($id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

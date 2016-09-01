@@ -12,6 +12,9 @@
 */
 
 
+use App\BetType;
+use App\ChallengeType;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,3 +36,15 @@ Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback'
 
 Route::get('/test', "UsersController@index");
 Route::get('/account', "UsersController@store");
+
+Route::resource('challenges', 'ChallengesController');
+
+Route::get('challenges', function() {
+    $betTypes = BetType::all();
+    $challengeTypes = ChallengeType::all();
+    $data = [
+        'betTypes' => $betTypes,
+        'challengeTypes' => $challengeTypes,
+    ];
+    return view('tj_challenges', $data);
+});

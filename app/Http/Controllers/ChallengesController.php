@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Challenge;
+use App\ChallengeType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
-class Challenges extends Controller
+class ChallengesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +20,7 @@ class Challenges extends Controller
      */
     public function index()
     {
-        //
+        return view('/');
     }
 
     /**
@@ -37,7 +41,20 @@ class Challenges extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $request->session()->flash('message', 'Did not store successfully.');
+//        $this->validate($request, ChallengeType::$rules);
+//        $request->session()->forget('message');
+
+        Log::info($request->all());
+        $challenge = new Challenge;
+        $challenge->description = $request['description'];
+        $challenge->bet_type = $request['bet_type'];
+        $challenge->challenge_type = $request['challenge_type'];
+        $challenge->start_date = $request['start_date'];
+        $challenge->end_date = $request['end_date'];
+        $challenge->created_by = 1;
+        $challenge->save();
+        return redirect()->action('ChallengesController@index');
     }
 
     /**

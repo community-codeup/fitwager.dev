@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dab99dd7cd4bc1239eaed74597cb11c5",
-    "content-hash": "6379aa06ed38c65452c98e1a66943a91",
+    "hash": "4077a4a0df2c53e52ef7e4f8f3ac8e56",
+    "content-hash": "9b81740488247c68626ed8eef2d7a212",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1497,21 +1497,21 @@
         },
         {
             "name": "socialiteproviders/fitbit",
-            "version": "v1.2.1",
+            "version": "dev-fixversion",
             "source": {
                 "type": "git",
-                "url": "https://github.com/SocialiteProviders/Fitbit.git",
-                "reference": "c004054ce4b161b85886d8698f5d34b703d9ecb2"
+                "url": "https://github.com/community-codeup/Fitbit.git",
+                "reference": "114fcf6998a3dd34eba043c4732adc200dbf629c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Fitbit/zipball/c004054ce4b161b85886d8698f5d34b703d9ecb2",
-                "reference": "c004054ce4b161b85886d8698f5d34b703d9ecb2",
+                "url": "https://api.github.com/repos/community-codeup/Fitbit/zipball/114fcf6998a3dd34eba043c4732adc200dbf629c",
+                "reference": "114fcf6998a3dd34eba043c4732adc200dbf629c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "socialiteproviders/manager": "~1.0"
+                "php": "^5.5 || ^7.0",
+                "socialiteproviders/manager": "dev-versionfix"
             },
             "type": "library",
             "autoload": {
@@ -1519,7 +1519,6 @@
                     "SocialiteProviders\\Fitbit\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1530,39 +1529,40 @@
                 }
             ],
             "description": "Fitbit OAuth2 Provider for Laravel Socialite",
-            "time": "2016-03-30 05:59:41"
+            "support": {
+                "source": "https://github.com/community-codeup/Fitbit/tree/fixversion"
+            },
+            "time": "2016-09-01 21:12:53"
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "1.2.4",
+            "version": "dev-versionfix",
             "source": {
                 "type": "git",
-                "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "f91e366b29bedab6cb2491f32113f6a811ac4972"
+                "url": "https://github.com/community-codeup/Manager.git",
+                "reference": "7e5903b090885a65c7d643e1865bfc92d2f0c316"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/f91e366b29bedab6cb2491f32113f6a811ac4972",
-                "reference": "f91e366b29bedab6cb2491f32113f6a811ac4972",
+                "url": "https://api.github.com/repos/community-codeup/Manager/zipball/7e5903b090885a65c7d643e1865bfc92d2f0c316",
+                "reference": "7e5903b090885a65c7d643e1865bfc92d2f0c316",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "~6.0",
-                "laravel/framework": "~5.0|~5.1|~5.2",
                 "laravel/socialite": "~2.0",
-                "php": ">=5.5.0"
+                "php": "^5.5 || ^7.0"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.5.*"
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SocialiteProviders\\Manager\\": "src/"
+                    "SocialiteProviders\\Manager\\": "src/",
+                    "SocialiteProviders\\Manager\\Test\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1573,7 +1573,10 @@
                 }
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "time": "2016-02-20 22:18:54"
+            "support": {
+                "source": "https://github.com/community-codeup/Manager/tree/master"
+            },
+            "time": "2016-09-01 20:58:12"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3936,7 +3939,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "socialiteproviders/manager": 20,
+        "socialiteproviders/fitbit": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

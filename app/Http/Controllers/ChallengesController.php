@@ -23,15 +23,7 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-        $betTypes = BetType::all();
-        $challengeTypes = ChallengeType::all();
-        $users = User::all();
-        $data = [
-            'betTypes' => $betTypes,
-            'challengeTypes' => $challengeTypes,
-            'users' => $users,
-        ];
-        return view('challenges/tj_challenges', $data);
+
     }
 
     /**
@@ -41,7 +33,15 @@ class ChallengesController extends Controller
      */
     public function create()
     {
-        //
+        $betTypes = BetType::all();
+        $challengeTypes = ChallengeType::all();
+        $users = User::all();
+        $data = [
+            'betTypes' => $betTypes,
+            'challengeTypes' => $challengeTypes,
+            'users' => $users,
+        ];
+        return view('challenges/create', $data);
     }
 
     /**

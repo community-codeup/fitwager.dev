@@ -16,6 +16,7 @@ class CreateChallengersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('challenge_id')->unsigned();
+            $table->string('status');
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('challenge_id')->references('id')->on('challenges');

@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+use Validator;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
@@ -68,6 +74,8 @@ return;
      */
     public function store(Request $request)
     {
+
+        $this
         if(!Auth::check()){
             return view('auth/login');
         } else {

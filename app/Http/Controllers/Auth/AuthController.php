@@ -85,7 +85,7 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('fitbit')->stateless(true)->user();
 
-//dd($user);
+        //dd($user);
         if (!User::alreadyCreated($user->id)) {
             User::create([
                 'name' => $user->user['user']['fullName'],
@@ -95,15 +95,15 @@ class AuthController extends Controller
             ]);
         }
 
-        dd($user);
+        //dd($user);
         session_start();
         $_SESSION['fitbit'] = [];
         $_SESSION['fitbit']['oauth2'] = [
             'accessToken' => $user->token,
             'user-id' => $user->id,
         ];
-
-        return redirect()->action('UsersController@index');
+        die;
+        return redirect()->action('UsersController@show');
         //die;
         //dd($user, $_SESSION);
         ////print_r($json);

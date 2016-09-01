@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Http\Request;
 
 use Validator;
-use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +13,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use DateTime;
-use Illuminate\Support\Facades\Auth;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 use Jmitchell38488\OAuth2\Client\Provider\FitBitImplicit;
 
@@ -72,8 +70,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this
         if(!Auth::check()){
             return view('auth/login');
         } else {
@@ -87,13 +83,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $user)
+    public function show($id)
     {
         //
-        if(!Auth::check()){
-            return view(auth/login);
+        if(Auth::check()){
+            return view('user.account');
         } else{
-            return redirect;
+            return redirect()->action('Auth\AuthController@redirectToProvider');
         }
     }
 

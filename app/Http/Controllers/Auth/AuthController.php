@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Log;
 use Validator;
 use Socialite;
@@ -83,27 +84,29 @@ class AuthController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('fitbit')->stateless(true)->user();
+        $fitbit_user = Socialite::driver('fitbit')->stateless(true)->user();
 
         //dd($user);
-        if (!User::alreadyCreated($user->id)) {
-            User::create([
-                'name' => $user->user['user']['fullName'],
-                'fitbit_id' => $user->id,
-                'email' => $user->email,
-                'picture' => $user->avatar,
-            ]);
-        }
+        $user = User::firstOrCreate([
+            'fitbit_id' => $fitbit_user->id,
+        ]);
+        $user->name = $fitbit_user->user['user']['fullName'];
+        $user->email = $fitbit_user->email;
+        $user->picture = $fitbit_user->avatar;
+        $user->save();
+
+        Auth::login($user);
+//        if (!User::alreadyCreated($fitbit_user->id)) {
+//            User::create([
+//                'name' => $fitbit_user->user['user']['fullName'],
+//                'fitbit_id' => $fitbit_user->id,
+//                'email' => $fitbit_user->email,
+//                'picture' => $fitbit_user->avatar,
+//            ]);
+//        }
 
         //dd($user);
-        session_start();
-        $_SESSION['fitbit'] = [];
-        $_SESSION['fitbit']['oauth2'] = [
-            'accessToken' => $user->token,
-            'user-id' => $user->id,
-        ];
-        die;
-        return redirect()->action('UsersController@show');
+        return redirect()->action('UsersController@show', $user->id);
         //die;
         //dd($user, $_SESSION);
         ////print_r($json);

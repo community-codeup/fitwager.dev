@@ -55,6 +55,8 @@ class ChallengesController extends Controller
 //        $request->session()->flash('message', 'Did not store successfully.');
 //        $this->validate($request, ChallengeType::$rules);
 //        $request->session()->forget('message');
+
+        dd( $_SESSION['fitbit']['oauth2'] );
         Log::info($request->all());
         $challenge = new Challenge;
         $challenge->description = $request['description'];
@@ -66,11 +68,13 @@ class ChallengesController extends Controller
         $challenge->wager = $request['wager'];
         $challenge->save();
 
+
         $challengers = $request['challengers'];
         foreach($challengers as $challenger_info) {
             $challenger = new Challenger;
             $challenger->user_id = $challenger_info;
             $challenger->challenge_id = $challenge->id;
+            $challenger->status = 'pending';
             $challenger->save();
         }
 

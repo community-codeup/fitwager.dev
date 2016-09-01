@@ -29,6 +29,6 @@ class CreateCoinsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Coins');
+        Schema::drop('coins');
     }
 }

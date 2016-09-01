@@ -31,6 +31,6 @@ class CreateResultsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Results');
+        Schema::drop('results');
     }
 }

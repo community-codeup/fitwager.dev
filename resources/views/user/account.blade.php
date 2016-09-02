@@ -1,9 +1,4 @@
 @extends ('layouts.master')
-
-
-
-
-
 @section('content')
     <br>
     <hr>
@@ -14,6 +9,7 @@
 
                                 <br>
                                 <a href="#">Edit Profile</a>
+                                <h3>Coin Amount = {{ $user->coins }}</h3>
                         </div>
                         <div class="col-sm-2" style="border: 2px solid white"><h1>Users Name</h1>
                             <ul style="list-style-type: none; padding: 0; margin: 0">
@@ -25,8 +21,7 @@
                         <div class="col-sm-2" style="border: 2px solid white">
                             <h3>Upcoming Challenges</h3>
                             <ul style="list-style-type: none; padding: 0; margin: 0">
-                                <li>Challenge one</li>
-                                <li>Challenge two</li>
+                                <li>challenge</li>
                             </ul>
                         </div>
                     </div>

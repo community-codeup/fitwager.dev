@@ -29,9 +29,7 @@ Route::get('/register', function () {
     return view('auth/register');
 });
 
-Route::get('user/account', function () {
-    return view('user/account');
-});
+Route::get('user/account', 'UsersController@show');
 
 
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');

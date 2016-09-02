@@ -85,9 +85,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        //dd(Auth::user());
+        $user = User::findOrFail($id);
         if(Auth::check()){
-            return view('user.account');
+            return view('user.account')->with('user', $user);
         } else{
             return redirect()->action('Auth\AuthController@redirectToProvider');
         }

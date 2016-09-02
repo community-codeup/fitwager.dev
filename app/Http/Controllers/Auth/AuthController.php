@@ -91,6 +91,11 @@ class AuthController extends Controller
         $user->name = $fitbit_user->user['user']['fullName'];
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
+        if($user->coins == null ){
+            $user->coins = 20;
+        } else{
+            $user->coins = $user->coins;
+        }
         $user->save();
 
         $date = new \DateTime('now');
@@ -110,7 +115,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->action('UsersController@show', $user->id);
-    }
+
 
     public function getLogout()
     {

@@ -93,6 +93,11 @@ class AuthController extends Controller
         $user->name = $fitbit_user->user['user']['fullName'];
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
+        if($user->coins == null ){
+            $user->coins = 20;
+        } else{
+            $user->coins = $user->coins;
+        }
         $user->save();
 
         Auth::login($user);
@@ -107,6 +112,7 @@ class AuthController extends Controller
 
         //dd($user);
         return redirect()->action('UsersController@show', $user->id);
+
         //die;
         //dd($user, $_SESSION);
         ////print_r($json);

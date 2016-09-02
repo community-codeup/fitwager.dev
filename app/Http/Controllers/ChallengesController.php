@@ -26,6 +26,10 @@ class ChallengesController extends Controller
         return view('challenges.index');
     }
 
+    public function test() {
+        dd();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,6 +37,29 @@ class ChallengesController extends Controller
      */
     public function create()
     {
+
+//        $user = User::find(1);
+//        $user->token;
+        $query = [
+            'user_id' => '4TZJXN',
+            'date' => '2016-09-02',
+        ];
+
+        $url = 'https://api.fitbit.com/1/user/4TZJXN/activities/date/2016-09-02.json';
+
+        $ch = curl_init();
+        $customHeader = [
+            "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0VFpKWE4iLCJhdWQiOiIyMjdTMlAiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJhY3QgcnNldCByd2VpIHJudXQgcnBybyByc2xlIiwiZXhwIjoxNDcyODU3MjUxLCJpYXQiOjE0NzI4Mjg0NTF9.wzbHdw1gj3bZrk6G_TSuMIGcr_wTdd1bQWvhZg5eu0E",
+        ];
+        $options = [
+            CURLOPT_URL=> $url,
+            CURLOPT_HTTPHEADER => $customHeader,
+        ];
+
+        curl_setopt_array($ch, $options);
+        dd(curl_exec($ch));
+
+
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
         $users = User::all();

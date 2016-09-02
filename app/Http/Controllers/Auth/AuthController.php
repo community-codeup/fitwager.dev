@@ -85,7 +85,6 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $fitbit_user = Socialite::driver('fitbit')->stateless(true)->user();
-
         //dd($user);
         $user = User::firstOrCreate([
             'fitbit_id' => $fitbit_user->id,
@@ -94,6 +93,13 @@ class AuthController extends Controller
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
         $user->save();
+
+        session(['fitbit'=> [
+            'oauth2' => [
+                'accessToken' => $fitbit_user->token,
+                'user-id' => $fitbit_user->id,
+            ]
+        ]]);
 
         Auth::login($user);
 //        if (!User::alreadyCreated($fitbit_user->id)) {

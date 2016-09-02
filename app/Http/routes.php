@@ -33,6 +33,7 @@ Route::get('user/account', function () {
     return view('user/account');
 });
 
+
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback');
 

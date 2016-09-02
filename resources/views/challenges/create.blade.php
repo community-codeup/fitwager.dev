@@ -10,22 +10,26 @@
 
                         <div class="row">
                             <label for="bet" class="col-sm-2 control-label">Bet Type:</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-10">
+                                <div class="btn-group" data-toggle="buttons">
                                 @foreach($betTypes as $index => $betType)
-                                    <a href="#" @if($index == 0) checked @endif id="betType" class="btn btn-large btn-success active types" data-toggle="tab" name="bet_type" value="{{$betType->id}}">{{$betType->name}}</a>
-                                @endforeach</div>
-                            <div class="col-sm-4"></div>
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="bet"  data-toggle="tab" name="options" autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label>
+                                @endforeach
+                                </div>
+                            </div>
                         </div>
 
                         <br>
 
                         <div class="row">
                             <label for="bet" class="col-sm-2 control-label">Challenge Type:</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-10">
+                                <div class="btn-group" data-toggle="buttons">
                                 @foreach($challengeTypes as $index => $challengeType)
-                                    <a href="#" @if($index == 0) checked @endif id="challengeType" class="btn btn-large btn-warning active types" data-toggle="tab" name="bet_type"name="challenge_type" value="{{$challengeType->id}}">{{$challengeType->name}}</a>
-                                @endforeach</div>
-                            <div class="col-sm-6"></div>
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="challenge" data-toggle="tab" name="options1" autocomplete="off" value="{{$challengeType->id}}">{{$challengeType->name}}</label>
+                                @endforeach
+                                </div>
+                            </div>
                         </div>
 
                         <br>

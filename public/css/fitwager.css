@@ -6,7 +6,9 @@
     padding-right: 8px;
 }
 
-
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: limegreen;
+}
 /*------------- Beginning of Carousel CSS --------------*/
 /* Global */
 
@@ -295,15 +297,30 @@ body {
     margin: 0 0 100px; /* bottom = footer height */
 }
 
-.types {
-    background: #428BCA;
-    color: #fff;
-    font-family: Sans-serif;
-    text-align: center;
-    border: 0;
-    transition: all 0.1s ease 0s;
+.glyphicon {
+    position: relative;
+    top: 5px;
+    right: 14px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
 }
 
-.types {
-    background: #CF4647;
+.badge {
+    right: 14px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 4px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
 }

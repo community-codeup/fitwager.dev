@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB;
 class Challenge extends Model
 {
     protected $table = 'challenges';
-    
+
+    public static $rules = [];
+
 
 
     public function challengers()
@@ -29,6 +31,5 @@ class Challenge extends Model
     		$historicResults[] = $individualResult; 
     	}
     }
-
 }
 

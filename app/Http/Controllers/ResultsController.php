@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\FitibitToken;
+use App\FitInfo;
 use Illuminate\Http\Request;
 use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 
 class ResultsController extends Controller
 {
@@ -14,10 +17,9 @@ class ResultsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        Results::showResults();
-        return view('challenge_results');
+        dd(FitInfo::index($request, '-'));
     }
 
     /**
@@ -49,7 +51,7 @@ class ResultsController extends Controller
      */
     public function show($id)
     {
-        $result = Result::findOrFail($id)
+        $result = Result::findOrFail($id);
     }
 
     /**

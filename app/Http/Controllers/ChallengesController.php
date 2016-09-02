@@ -23,7 +23,7 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-
+        return view('challenges.index');
     }
 
     /**
@@ -33,6 +33,7 @@ class ChallengesController extends Controller
      */
     public function create()
     {
+
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
         $users = User::all();
@@ -52,11 +53,7 @@ class ChallengesController extends Controller
      */
     public function store(Request $request)
     {
-//        $request->session()->flash('message', 'Did not store successfully.');
-//        $this->validate($request, ChallengeType::$rules);
-//        $request->session()->forget('message');
 
-        dd( $_SESSION['fitbit']['oauth2'] );
         Log::info($request->all());
         $challenge = new Challenge;
         $challenge->description = $request['description'];
@@ -67,7 +64,6 @@ class ChallengesController extends Controller
         $challenge->created_by = 1;
         $challenge->wager = $request['wager'];
         $challenge->save();
-
 
         $challengers = $request['challengers'];
         foreach($challengers as $challenger_info) {

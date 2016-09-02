@@ -31,11 +31,12 @@ Route::get('/register', function () {
 
 Route::get('user/account', 'UsersController@show');
 
+
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::resource('users', 'UsersController');
-Route::get('/test', "UsersController@index");
+Route::get('/test', "ResultsController@index");
 Route::get('/account', "UsersController@store");
 
 

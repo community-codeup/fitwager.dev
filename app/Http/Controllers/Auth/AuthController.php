@@ -85,8 +85,6 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $fitbit_user = Socialite::driver('fitbit')->stateless(true)->user();
-
-        //dd($user);
         $user = User::firstOrCreate([
             'fitbit_id' => $fitbit_user->id,
         ]);
@@ -100,24 +98,32 @@ class AuthController extends Controller
         }
         $user->save();
 
-        Auth::login($user);
-//        if (!User::alreadyCreated($fitbit_user->id)) {
-//            User::create([
-//                'name' => $fitbit_user->user['user']['fullName'],
-//                'fitbit_id' => $fitbit_user->id,
-//                'email' => $fitbit_user->email,
-//                'picture' => $fitbit_user->avatar,
-//            ]);
-//        }
+        $date = new \DateTime('now');
+        $date->setTimestamp($date->getTimestamp() + $fitbit_user->expiresIn);
 
-        //dd($user);
+//dd($fitbit_user, $date->format('Y-m-d h:i:s'));
+
+        session(['fitbit'=> [
+            'oauth2' => [
+                'accessToken' => $fitbit_user->token,
+                'refreshToken' => $fitbit_user->refreshToken,
+                'user-id' => $fitbit_user->id,
+                'expires' => $date->getTimestamp(),
+            ]
+        ]]);
+
+        Auth::login($user);
+
         return redirect()->action('UsersController@show', $user->id);
 
-        //die;
-        //dd($user, $_SESSION);
-        ////print_r($json);
-        //dd($user);
-        //Log::info($user);
-        // $user->token;
+
+    public function getLogout()
+    {
+        Auth::logout();
+        session()->forget('fitbit');
+
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
+
+
 }

@@ -1,27 +1,82 @@
 @extends('layouts.master')
 @section('content')
-    <form method="POST" action="{{action('ChallengesController@store')}}">
-        {!! csrf_field() !!}
-        @foreach($betTypes as $betType)
-            <input type="radio" name="bet_type" value="{{$betType->id}}">{{$betType->name}}
-        @endforeach
-        <br>
-        @foreach($challengeTypes as $challengeType)
-            <input type="radio" name="challenge_type" value="{{$challengeType->id}}">{{$challengeType->name}}
-        @endforeach
-        <br>
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description"><br>
-        <label for="start_date">Start Date</label>
-        <input type="text" name="start_date" id="start_date"><br>
-        <label for="end_date">End Date</label>
-        <input type="text" name="end_date" id="end_date"><br>
-        <label for="wager">Wager</label>
-        <input type="text" name="wager" id="wager"><br>
-        @foreach($users as $user)
-            <input type="checkbox" name="challengers[]" value="{{$user->id}}">{{$user->name}}
-        @endforeach
-        <br>
-        <button type="submit">Submit</button>
-    </form>
+<div class="container-fluid"><h1>Create Challenge</h1></div>
+    <div class="container">
+        <div class="row">
+                <form class="form-horizontal" method="POST" action="{{action('ChallengesController@store')}}">
+                    {!! csrf_field() !!}
+
+                    <div class="form-group">
+
+                        <div class="row">
+                            <label for="bet" class="col-sm-2 control-label">Bet Type:</label>
+                            <div class="col-sm-10">
+                                <div class="btn-group" data-toggle="buttons">
+                                @foreach($betTypes as $index => $betType)
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="bet"  data-toggle="tab" name="options" autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label>
+                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <label for="bet" class="col-sm-2 control-label">Challenge Type:</label>
+                            <div class="col-sm-10">
+                                <div class="btn-group" data-toggle="buttons">
+                                @foreach($challengeTypes as $index => $challengeType)
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="challenge" data-toggle="tab" name="options1" autocomplete="off" value="{{$challengeType->id}}">{{$challengeType->name}}</label>
+                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <label for="description" class="col-sm-2 control-label">Description:</label>
+                            <input class="col-md-4" type="text" name="description" id="description" required="">
+                            <div class="col-md-6"></div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <label for="start_date" class="col-sm-2 control-label">Date:</label>
+                            <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
+                            {{--<div class="col-sm-9"></div>--}}
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <label for="wager" class="col-sm-2 control-label">Wager:</label>
+                            <input class="col-md-1" type="text" name="wager" id="wager" required="">
+                            <div class="col-md-9"></div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <label for="user" class="col-sm-2 control-label">User:</label>
+                            <div class="col-md-2" style="padding-top: 7px">
+                                @foreach($users as $user)
+                                    <input type="checkbox" name="challengers[]" value="{{$user->id}}">{{$user->name}}
+                                @endforeach</div>
+                            <div class="col-md-8"></div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <button class="col-sm-2" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
+

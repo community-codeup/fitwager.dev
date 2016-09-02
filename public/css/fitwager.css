@@ -6,7 +6,9 @@
     padding-right: 8px;
 }
 
-
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: limegreen;
+}
 /*------------- Beginning of Carousel CSS --------------*/
 /* Global */
 
@@ -253,6 +255,11 @@ MEDIA QUERIES
 #glbfooter {
     background: black;
     padding: 20px 10px 40px 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
 }
 
 ul {
@@ -279,4 +286,57 @@ footer {
     background-size: cover;
     text-align: center;
     height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
+.glyphicon {
+    position: relative;
+    top: 5px;
+    right: 14px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.badge {
+    right: 14px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 4px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+
+.btn-primary.primary {
+    background-color: limegreen;
+}
+
+.btn-primary.active {
+    background-color: limegreen;
+}
+
+.btn-group > .btn:hover {
+    background-color: limegreen;
+}
+
+.btn-group > .btn:focus {
+    background-color: limegreen;
 }

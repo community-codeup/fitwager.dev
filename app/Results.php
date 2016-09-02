@@ -38,6 +38,7 @@ class Results extends Model
 		->where('challenges.created_at', '<', DB::raw('CURDATE()'));
 	}
 
+
 	public static function competitive($challengers) {
 		$max = $challengers[0];
 		for($i=0; $ < count($challengers); i++){
@@ -48,6 +49,18 @@ class Results extends Model
 		return $max * count($challengers);
 	}
 	function betType personal(){
+
+
+		/*if($result < CURDATE())
+		{
+			return Results::join('challenges', 'id', '=', 'challenge_id')
+			->where('created_by', '=', Auth::user()->id);
+		}
+		else
+		{
+			return Results::join('challenges', 'id', '=', 'challenge_id')
+			->where('created_by', '=', Auth::user()->id);
+		}*/
 
 	}
 	// function betType competitive($request, $wager){

@@ -46,3 +46,4 @@ $('#picker').daterangepicker({
 });
 
 });
+

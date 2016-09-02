@@ -23,7 +23,7 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-
+        return view('challenges.index');
     }
 
     /**

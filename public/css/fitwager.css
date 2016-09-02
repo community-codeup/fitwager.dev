@@ -324,3 +324,19 @@ body {
     background-color: #777;
     border-radius: 10px;
 }
+
+.btn-primary.primary {
+    background-color: limegreen;
+}
+
+.btn-primary.active {
+    background-color: limegreen;
+}
+
+.btn-group > .btn:hover {
+    background-color: limegreen;
+}
+
+.btn-group > .btn:focus {
+    background-color: limegreen;
+}

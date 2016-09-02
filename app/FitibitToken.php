@@ -9,7 +9,7 @@
 namespace App;
 
 
-use App\Http\Requests\Request;
+use Illuminate\Http\Request;
 use Exception;
 use Jmitchell38488\OAuth2\Client\Provider\FitBitAuthorization;
 

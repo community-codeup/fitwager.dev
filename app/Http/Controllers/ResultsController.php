@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FitibitToken;
+use App\FitInfo;
 use Illuminate\Http\Request;
 use App\Results;
 use App\Http\Requests;
@@ -18,25 +19,7 @@ class ResultsController extends Controller
      */
     public function index(Request $request)
     {
-        FitibitToken::refresh($request);
-
-        $provider = new FitBit([
-            'clientId'      => env('FITBIT_KEY'),
-            'clientSecret'  => env('FITBIT_KEY'),
-            'redirectUri'   => env('FITBIT_KEY'),
-        ]);
-        $endpoint = $provider->getBaseApiUrl() . "user/-/activities/steps." . FitBit::FORMAT_JSON;
-
-        $request = $provider->getAuthenticatedRequest(
-            FitBit::METHOD_GET,
-            $endpoint,
-            session('fitbit')['oauth2']['accessToken']
-        );
-
-        $response = $provider->getResponse($request);
-
-        Results::showResults();
-        return view('challenge_results');
+        dd(FitInfo::index($request, '-'));
     }
 
     /**
@@ -68,7 +51,7 @@ class ResultsController extends Controller
      */
     public function show($id)
     {
-        $result = Result::findOrFail($id)
+        $result = Result::findOrFail($id);
     }
 
     /**

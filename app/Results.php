@@ -34,7 +34,7 @@ class Results extends Model
 		//Challenge or Challenges
 		$result = Challenge::orderBy('created_at');
 
-		if($result < CURDATE())
+		/*if($result < CURDATE())
 		{
 			return Results::join('challenges', 'id', '=', 'challenge_id')
 			->where('created_by', '=', Auth::user()->id);
@@ -43,7 +43,7 @@ class Results extends Model
 		{
 			return Results::join('challenges', 'id', '=', 'challenge_id')
 			->where('created_by', '=', Auth::user()->id);
-		}
+		}*/
 	}
 
 }

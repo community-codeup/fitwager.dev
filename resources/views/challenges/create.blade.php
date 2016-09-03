@@ -13,7 +13,7 @@
                             <div class="col-sm-10">
                                 <div class="btn-group" data-toggle="buttons">
                                 @foreach($betTypes as $index => $betType)
-                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="bet"  data-toggle="tab" name="options" autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label>
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="bet"  data-toggle="tab" name="bet_type" autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label>
                                 @endforeach
                                 </div>
                             </div>
@@ -26,7 +26,7 @@
                             <div class="col-sm-10">
                                 <div class="btn-group" data-toggle="buttons">
                                 @foreach($challengeTypes as $index => $challengeType)
-                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="challenge" data-toggle="tab" name="options1" autocomplete="off" value="{{$challengeType->id}}">{{$challengeType->name}}</label>
+                                      <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input {{ $index == 0 ? 'checked' : '' }} type="radio" id="challenge" data-toggle="tab" name="challenge_type" autocomplete="off" value="{{$challengeType->id}}">{{$challengeType->name}}</label>
                                 @endforeach
                                 </div>
                             </div>

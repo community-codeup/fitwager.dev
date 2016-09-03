@@ -12,6 +12,6 @@ class ChallengesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Challenge::class, 15)->create();
+//        factory(App\Challenge::class, 15)->create();
     }
 }

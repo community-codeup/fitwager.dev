@@ -28,7 +28,7 @@
                             <h1>We are Fit<span style="color: limegreen">Wager</span></h1>
                             <h3>Challenge Others In Your Area Today</h3>
                         </hgroup>
-                        <button class="btn btn-hero btn-lg" href="/auth/fitbit" role="button">Begin Now</button>
+                        <a href="auth/fitbit" class="btn btn-hero btn-lg" href="/auth/fitbit" role="button">Begin Now</a>
                     </div>
                 </div>
                 <div class="item slides">
@@ -50,7 +50,7 @@
                         <hgroup>
                             <h1>Log in to Your FitBit Account Here</h1>
                         </hgroup>
-                        <button class="btn btn-hero btn-lg" role="button">Log In</button>
+                        <a href="auth/fitbit" class="btn btn-hero btn-lg" role="button">Log In</a>
                     </div>
                 </div>
             </div>

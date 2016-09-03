@@ -91,10 +91,8 @@ class AuthController extends Controller
         $user->name = $fitbit_user->user['user']['fullName'];
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
-        if($user->coins == null ){
+        if ($user->coins == null) {
             $user->coins = 20;
-        } else{
-            $user->coins = $user->coins;
         }
         $user->save();
 
@@ -103,7 +101,7 @@ class AuthController extends Controller
 
 //dd($fitbit_user, $date->format('Y-m-d h:i:s'));
 
-        session(['fitbit'=> [
+        session(['fitbit' => [
             'oauth2' => [
                 'accessToken' => $fitbit_user->token,
                 'refreshToken' => $fitbit_user->refreshToken,
@@ -116,6 +114,7 @@ class AuthController extends Controller
 
         return redirect()->action('UsersController@show', $user->id);
 
+    }
 
     public function getLogout()
     {

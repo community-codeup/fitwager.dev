@@ -19,7 +19,10 @@ class ResultsController extends Controller
      */
     public function index(Request $request)
     {
-        dd(FitInfo::index($request, '-'));
+//        dd(FitInfo::getSteps($request, '-'));
+//        dd(FitInfo::getCalories($request, '-'));
+//        dd(FitInfo::main($request, '-'));
+        dd(FitInfo::getDistance($request, '-'));
     }
 
     /**

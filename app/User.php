@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -37,26 +38,15 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public static function alreadyCreated($id) {
-        if (User::where('fitbit_id', $id)->first()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     public function challenges()
     {
-        return $this->hasMany(Challenges::class, 'challenges_id');
+        return $this->hasMany(Challenge::class, 'challenges_id');
     }
     
     public function results()
     {
         return $this->hasMany(Results::class, 'results_id');
-    }
-    
-    public function coins()
-    {
-        return $this->hasMany(Coins::class, 'user_id');
     }
 }

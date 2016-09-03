@@ -61,7 +61,7 @@ class ChallengesController extends Controller
         $challenge->challenge_type = $request['challenge_type'];
         $challenge->start_date = $request['start_date'];
         $challenge->end_date = $request['end_date'];
-        $challenge->created_by = 1;
+        $challenge->created_by = Auth::id();
         $challenge->wager = $request['wager'];
         $challenge->save();
 

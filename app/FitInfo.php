@@ -18,14 +18,14 @@ use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 class FitInfo
 {
 
-    public static function index(Request $request, $fitbit_id)
+    public static function main(Request $request, $fitbit_id)
     {
         FitibitToken::refresh($request);
 
         $provider = new FitBit([
-            'clientId'      => env('FITBIT_KEY'),
-            'clientSecret'  => env('FITBIT_KEY'),
-            'redirectUri'   => env('FITBIT_KEY'),
+            'clientId' => env('FITBIT_KEY'),
+            'clientSecret' => env('FITBIT_KEY'),
+            'redirectUri' => env('FITBIT_KEY'),
         ]);
         $today = new \DateTime();
         $endpoint = $provider->getBaseApiUrl() . "user/" . $fitbit_id . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
@@ -41,5 +41,39 @@ class FitInfo
         return $response;
     }
 
+    public static function getSteps(Request $request, $fitbit_id)
+    {
+        $response = static::main($request, $fitbit_id);
+        $steps = $response['summary']['steps'];
+        return $steps;
+    }
 
+    public static function getCalories(Request $request, $fitbit_id)
+    {
+        $response = static::main($request, $fitbit_id);
+        $calories = $response['summary']['caloriesOut'];
+        return $calories;
+    }
+
+    public static function getDistance(Request $request, $fitbit_id)
+    {
+        $response = static::main($request, $fitbit_id);
+        $distance = $response['summary']['distances'][0]['distance'];
+        return $distance;
+    }
+
+    public static function resultsArray(Request $request, array $challengers)
+    {
+        foreach($challengers as $challenger) {
+            $response = static::main($request, $challenger->fitbit_id);
+            $resultsArray[] = [
+                "$challenger->fitbit_id" => [
+                    'steps' => $response['summary']['steps'],
+                    'calories' => $response['summary']['caloriesOut'],
+                    'distance' => $response['summary']['distances'][0]['distance']
+                ]
+            ];
+        }
+        return $resultsArray;
+    }
 }

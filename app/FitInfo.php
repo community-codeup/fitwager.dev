@@ -41,7 +41,7 @@ class FitInfo
         return $response;
     }
 
-    public static function friends(Request $request, $fitbit_id) {
+    public static function getFriends(Request $request, $fitbit_id) {
         FitibitToken::refresh($request);
 
         $provider = new FitBit([
@@ -61,9 +61,6 @@ class FitInfo
         return $response;
     }
 
-    public static function getFriends(Request $request, $fitbit_id) {
-        
-    }
 
     public static function getSteps(Request $request, $fitbit_id)
     {

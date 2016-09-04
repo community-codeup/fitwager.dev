@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ChallengesController extends Controller
@@ -23,7 +24,11 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-        return view('challenges.index');
+        $challenges = static::getChallenges();
+        $data = [
+            'challenges' => $challenges,
+        ];
+        return view('challenges.index', $data);
     }
 
     /**
@@ -97,6 +102,17 @@ class ChallengesController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public static function getChallenges(){
+        $challenges = DB::table('challenges')
+            ->join('users', 'challenges.created_by', '=', 'users.id')
+            ->join('bet_types', 'challenges.bet_type', '=', 'bet_types.id')
+            ->join('challenge_types', 'challenges.challenge_type', '=', 'challenge_types.id')
+            ->select('bet_types.name AS bet_name', 'challenge_types.name AS challenge_name', 'challenges.id', 'challenges.wager', 'users.name AS user_name')
+            ->get();
+
+        return $challenges;
     }
 
     /**

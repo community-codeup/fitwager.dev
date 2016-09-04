@@ -33,8 +33,9 @@ Route::get('/register', function () {
     return view('auth/register');
 });
 
-Route::get('user/account', 'UsersController@show');
-
+Route::get('user/account', function() {
+    return redirect()->action('UsersController@show', Auth::id());
+});
 
 Route::get('/auth/fitbit', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/fitbit/callback', 'Auth\AuthController@handleProviderCallback');

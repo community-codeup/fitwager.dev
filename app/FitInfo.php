@@ -18,7 +18,7 @@ use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 class FitInfo
 {
 
-    public static function main(Request $request, $fitbit_id)
+    public static function activities(Request $request, $fitbit_id)
     {
         FitibitToken::refresh($request);
 
@@ -41,23 +41,47 @@ class FitInfo
         return $response;
     }
 
+    public static function friends(Request $request, $fitbit_id) {
+        FitibitToken::refresh($request);
+
+        $provider = new FitBit([
+            'clientId' => env('FITBIT_KEY'),
+            'clientSecret' => env('FITBIT_KEY'),
+            'redirectUri' => env('FITBIT_KEY'),
+        ]);
+        $endpoint = $provider->getBaseApiUrl() . "user/" . $fitbit_id . "/friends" . '.' . FitBit::FORMAT_JSON;
+
+        $request = $provider->getAuthenticatedRequest(
+            FitBit::METHOD_GET,
+            $endpoint,
+            session('fitbit')['oauth2']['accessToken']
+        );
+
+        $response = $provider->getResponse($request);
+        return $response;
+    }
+
+    public static function getFriends(Request $request, $fitbit_id) {
+        
+    }
+
     public static function getSteps(Request $request, $fitbit_id)
     {
-        $response = static::main($request, $fitbit_id);
+        $response = static::activities($request, $fitbit_id);
         $steps = $response['summary']['steps'];
         return $steps;
     }
 
     public static function getCalories(Request $request, $fitbit_id)
     {
-        $response = static::main($request, $fitbit_id);
+        $response = static::activities($request, $fitbit_id);
         $calories = $response['summary']['caloriesOut'];
         return $calories;
     }
 
     public static function getDistance(Request $request, $fitbit_id)
     {
-        $response = static::main($request, $fitbit_id);
+        $response = static::activities($request, $fitbit_id);
         $distance = $response['summary']['distances'][0]['distance'];
         return $distance;
     }
@@ -65,7 +89,7 @@ class FitInfo
     public static function resultsArray(Request $request, array $challengers)
     {
         foreach($challengers as $challenger) {
-            $response = static::main($request, $challenger->fitbit_id);
+            $response = static::activities($request, $challenger->fitbit_id);
             $resultsArray[] = [
                 "$challenger->fitbit_id" => [
                     'steps' => $response['summary']['steps'],

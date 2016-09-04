@@ -53,6 +53,10 @@ class UsersController extends Controller
         return 'Yay!';
     }
 
+    public function welcome() {
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -91,7 +95,7 @@ class UsersController extends Controller
         if(Auth::check()){
             return view('user.account')->with('user', $user);
         } else{
-            return redirect()->action('Auth\AuthController@redirectToProvider');
+            return redirect()->action('welcome');
         }
     }
 

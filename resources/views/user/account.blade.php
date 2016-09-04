@@ -5,16 +5,15 @@
             <div class="container-fluid" style="margin-top: 5%; padding-bottom: 2%;">
                     <div class="row">
                         <div class="col-sm-3 text-center">
-                                <img class="text-center img-responsive center-block" style="padding:1px; border:1px solid #021a40; width:200px;height:200px"; img src="http://placehold.it/200x200">
+                                <img class="text-center img-responsive center-block" style="padding:1px; border:1px solid #021a40; width:200px;height:200px"; src="{{ $user->picture }}">
 
                                 <br>
-                                <a href="#">Edit Profile</a>
                                 <h3>Coin Amount = {{ $user->coins }}</h3>
                         </div>
-                        <div class="col-sm-2" style="border: 2px solid white"><h1>Users Name</h1>
+                        <div class="col-sm-2" style="border: 2px solid white"><h1>{{ $user->name }}</h1>
                             <ul style="list-style-type: none; padding: 0; margin: 0">
-                                <li>Email</li>
-                                <li>Phone Number</li>
+                                <li>User email : {{$user->email}}</li>
+                                <li>Fitbit Id : {{ $user->fitbit_id }}</li>
                             </ul>
                         </div>
                         <div class="col-sm-3"></div>

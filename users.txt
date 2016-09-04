@@ -1,0 +1,58 @@
+users
+1 Craig
+2 TJ
+3 Luis
+
+challenge type
+1 steps
+
+
+challenege
+1 steps 1 today
+
+challengers
+1 1
+1 2
+1 3
+
+
+// Command
+
+
+$finishedChallenges = Challenges::finished(); // Where end_date < today
+
+foreach($finishedChallenges as $challenge) { //steps
+	$challengers = $challenge->challengers;
+
+	$activities = FitInfo::activities($challengers); 
+	// foreach() { //$challenger->fitbit_id }
+
+	/*
+	[
+      '123_1' => ['calories' =>1000, 'steps'=>12, 'distance'=>1000],
+      '223_1' => ['calories' =>1000, 'steps'=>12, 'distance'=>1000]
+      '323_1' => ['calories' =>1000, 'steps'=>12, 'distance'=>1000]
+	]
+	*/
+
+	Results::determineWinner($wager, $challengers, $activities, $type); //steps, calories, distance
+	 $winner = null;
+	 $max = -1;
+	 foreach($activities as $fitbitID => $activity) { 
+	   if ($activity[$type] > $max) {
+	   	  $max = $activity[$type];
+	   	  $winner = $fitBitID;
+	   } 
+	 }
+
+	 $winner = User::findByFitbitId($winner); // where fitbit_id = $id
+	 $winner->coins += $challengers->count() * $wager
+	 $winner->save()
+
+	 $result = new Result;
+
+	 $result->save;
+
+
+	
+}

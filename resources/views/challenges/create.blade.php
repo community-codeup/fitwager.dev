@@ -62,7 +62,11 @@
                             <label for="user" class="col-sm-2 control-label">User:</label>
                             <div class="col-md-2" style="padding-top: 7px">
                                 @foreach($users as $user)
-                                    <input type="checkbox" name="challengers[]" value="{{$user->id}}">{{$user->name}}
+                                <label>
+                                  <input type="checkbox" name="challengers[]" value="{{$user->id}}"/>
+                                  <img class="img img-thumbnail" src="{{ $user->picture }}" height="75" width="75">
+                                </label>
+                                {{$user->name}}
                                 @endforeach</div>
                             <div class="col-md-8"></div>
                         </div>

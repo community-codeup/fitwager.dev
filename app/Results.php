@@ -31,37 +31,44 @@ class Results extends Model
 		return $this->challenge->challengers();
 	}
 
-	public static function findHistoric()
-	{
-		$result = results::join('challenges', 'challenges.id', '=', 'results.challenges_id')
-		->where('challenges.created_at', '<', DB::raw('CURDATE()'));
-	}
+	public static function endChallenge($id) {
+	    $results = fitInfo::resultsArray();
+
+    }
 
 
 	public static function competitive($challengers) {
 		$max = $challengers[0];
-		for($i=0; $ < count($challengers); i++){
+		for($i=0; $ < count($challengers); $i++){
 			if($max < $challengers[$i]){
-				$max = $array[$i]
+				$max = $array[$i];
 			}
 		}
 		return $max * count($challengers);
 	}
-	function betType personal(){
+    public static function competitive($challengers) {
+        $max = $challengers[0];
+        for($i=0; $ < count($challengers); i++){
+            if($max < $challengers[$i]){
+                $max = $array[$i]
+            }
+        }
+        return $max * count($challengers);
+    }
+    public static function betTypePersonal($weneeduserfromchallenge, $challenge_id, $wagerAmount, $activityType){
+        $person = challengers();
+        if($person[$activityType][$result] >= $challenge[$challengeType][$challengetTypeAmount]){
+            $userCoins += $wagerAmount;
+        } else {
+            $userCoins -= $wagerAmount;
+        }
+    }
+    public static function betTypeUnited($challengers, $wagerAmount, $challenge_id, $challenge_goal_amount){
+        foreach($challengers as $challenger => $activity)
+            do{
 
-
-		/*if($result < CURDATE())
-		{
-			return Results::join('challenges', 'id', '=', 'challenge_id')
-			->where('created_by', '=', Auth::user()->id);
-		}
-		else
-		{
-			return Results::join('challenges', 'id', '=', 'challenge_id')
-			->where('created_by', '=', Auth::user()->id);
-		}*/
-
-	}
+            }while($challengers->count()[$activityType] <  )
+    }
 	// function betType competitive($request, $wager){
 	// 	//foreach($challengers as $challenger => $result){
 	// 		for($i = 0; $i < $challengers.length; i++){

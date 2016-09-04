@@ -168,6 +168,14 @@ Image credits: unsplash.com
     float: left;
 }
 
+#leaderboardColumns {
+    position: relative;
+    min-height: 6px;
+    padding-right: 81px;
+    padding-left: 4%;
+}
+
+
 /************************************************************************************
 MEDIA QUERIES
 *************************************************************************************/

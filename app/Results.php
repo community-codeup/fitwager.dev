@@ -47,7 +47,29 @@ class Results extends Model
 		}
 		return $max * count($challengers);
 	}
-	function betType personal(){
+	public static function competitive($challengers) {
+        $max = $challengers[0];
+        for($i=0; $ < count($challengers); i++){
+            if($max < $challengers[$i]){
+                $max = $array[$i]
+            }
+        }
+        return $max * count($challengers);
+    }
+    public static function betTypePersonal($weneeduserfromchallenge, $challenge_id, $wagerAmount, $activityType){
+        $person = challengers();
+        if($person[$activityType][$result] >= $challenge[$challengeType][$challengetTypeAmount]){
+            $userCoins += $wagerAmount;
+        } else {
+            $userCoins -= $wagerAmount;
+        }
+    }
+    public static function betTypeUnited($challengers, $wagerAmount, $challenge_id, $challenge_goal_amount){
+        foreach($challengers as $challenger => $activity)
+        do{
+
+        }while($challengers->count()[$activityType] < );
+    }
 
 
 		/*if($result < CURDATE())

@@ -12,6 +12,10 @@ class HomeController extends Controller
 {
     public function showWelcome()
     {
-        return view('welcome');
+        $data = [
+        'authCheck' => Auth::check()
+    ];
+
+    return view('welcome', $data);
     }
 }

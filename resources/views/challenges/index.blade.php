@@ -6,16 +6,16 @@
 
     <div class="container">
         <div class="row">
-                <div class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Active</button>
+                <div id="activeTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Active</button>
                 </div>
 
 
 
-                <div class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Historic</button>
+                <div id="historicTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Historic</button>
                 </div>
 
 
-                <div class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Pending</button>
+                <div id="pendingTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Pending</button>
                 </div>
 
         </div>
@@ -31,7 +31,7 @@
             <div class="col-md-12">
                 <div class="table-responsive">
 
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
 
                         <thead>
 
@@ -44,20 +44,9 @@
                         <th>Delete</th>
                         <th>Complete Challenge</th>
                         </thead>
-                        <tbody>
+                        <tbody id="buildTableHTML">
 
-                        @foreach ($challenges as $challenge)
-                        <tr>
-                            <td>{{$challenge->id}}</td>
-                            <td>{{$challenge->user_name}}</td>
-                            <td>{{$challenge->bet_name}}</td>
-                            <td>{{$challenge->challenge_name}}</td>
-                            <td>{{$challenge->wager}}</td>
-                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                            <td><a href="">Complete</a></td>
-                        </tr>
-                        @endforeach
+
                         </tbody>
 
                     </table>

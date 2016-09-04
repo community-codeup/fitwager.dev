@@ -71,11 +71,16 @@ class ChallengesController extends Controller
         $challenge->save();
 
         $challengers = $request['challengers'];
-        foreach($challengers as $challenger_info) {
+        foreach($challengers as $challenger_id) {
             $challenger = new Challenger;
-            $challenger->user_id = $challenger_info;
+            $challenger->user_id = $challenger_id;
             $challenger->challenge_id = $challenge->id;
-            $challenger->status = 'pending';
+            if($challenger_id == Auth::id()) {
+                $challenger->status = 'accepted';
+            }
+            else {
+                $challenger->status = 'pending';
+            }
             $challenger->save();
         }
 
@@ -113,6 +118,12 @@ class ChallengesController extends Controller
             ->get();
 
         return $challenges;
+    }
+
+    public static function findHistoric()
+    {
+        $result = results::join('challenges', 'challenges.id', '=', 'results.challenges_id')
+            ->where('challenges.created_at', '<', DB::raw('CURDATE()'));
     }
 
     /**

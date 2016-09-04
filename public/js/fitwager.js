@@ -1,8 +1,5 @@
-// Apply the date range picker with default settings to the button
+"use strict"
 $(document).ready(function () {
-
-
-$('#picker').daterangepicker();
 
 // Apply the date range picker with custom settings to the button
 $('#picker').daterangepicker({
@@ -17,16 +14,8 @@ $('#picker').daterangepicker({
     timePicker: false,
     timePickerIncrement: 1,
     timePicker12Hour: true,
-    ranges: {
-        'Today': [moment(), moment()],
-        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-    opens: 'left',
-    drops: 'down',
+    opens: 'right',
+    drops: 'right',
     buttonClasses: ['btn', 'btn-sm'],
     applyClass: 'btn-primary',
     cancelClass: 'btn-default',
@@ -47,3 +36,22 @@ $('#picker').daterangepicker({
 
 });
 
+
+// ------------------   END OF DATE RANGE PICKER JS  ----------------------//
+
+$(document).ready(function(){
+    $("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+
+    $("[data-toggle=tooltip]").tooltip();
+});

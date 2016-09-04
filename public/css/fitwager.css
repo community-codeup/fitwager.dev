@@ -297,7 +297,7 @@ body {
     margin: 0 0 100px; /* bottom = footer height */
 }
 
-.glyphicon {
+#envelope {
     position: relative;
     top: 5px;
     right: 14px;

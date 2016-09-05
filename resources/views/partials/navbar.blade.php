@@ -21,8 +21,8 @@
                                 class="navbar-brand" id="navButtons">|</span></li>
                     <li><a class="navbar-brand" id="navButtons" href="/challenges/create">Create Challenge</a><span
                                 class="navbar-brand" id="navButtons">|</span></li>
-                    <li><a class="navbar-brand" id="navButtons" href="#">Coins</a><span class="navbar-brand"
-                                                                                        id="navButtons">|</span></li>
+                    <li><a class="navbar-brand" id="navButtons" href="#">Coins</a><span class="navbar-brand" id="navButtons">|</span></li>
+                    <li><a class="navbar-brand" id="navButtons" href="/challenges">My Challenges</a><span class="navbar-brand" id="navButtons">|</span></li>
                     <li>
                         <a class="navbar-brand btn btn-lg btn-link" id="navButtons">
                             <span id="envelope" class="glyphicon glyphicon-envelope"></span>

@@ -22,10 +22,10 @@ Image credits: unsplash.com
 /********************************/
 .fade-carousel {
     position: relative;
-    height: 100vh;
+    height: 80vh;
 }
 .fade-carousel .carousel-inner .item {
-    height: 100vh;
+    height: 80vh;
 }
 .fade-carousel .carousel-indicators > li {
     margin: 0 2px;
@@ -113,7 +113,7 @@ Image credits: unsplash.com
 .fade-carousel .slides .slide-1,
 .fade-carousel .slides .slide-2,
 .fade-carousel .slides .slide-3 {
-    height: 100vh;
+    height: 80vh;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -141,109 +141,6 @@ Image credits: unsplash.com
 /*------------- End of Carousel CSS --------------*/
 
 
-/*--------------------- START 3 COLUMN LEADERBOARD ----------------------------*/
-
-#pagewrap {
-    padding: 5px;
-    width: 960px;
-    margin: 20px auto;
-}
-
-#content {
-    width: 294px;
-    float: left;
-    padding: 5px 15px 100%;
-}
-
-#middle {
-    width: 294px; /* Account for margins + border values */
-    float: left;
-    padding: 5px 15px 25%;
-    /*margin: 0px 5px 5px 5px;*/
-}
-
-#sidebar {
-    width: 294px;
-    padding: 5px 15px 55%;
-    float: left;
-}
-
-/************************************************************************************
-MEDIA QUERIES
-*************************************************************************************/
-/* for 980px or less */
-@media screen and (max-width: 980px) {
-
-    #pagewrap {
-        width: 94%;
-    }
-    #content {
-        width: 41%;
-        padding: 1% 4%;
-    }
-    #middle {
-        width: 41%;
-        padding: 1% 4%;
-        margin: 0px 0px 5px 5px;
-        float: right;
-    }
-
-    #sidebar {
-        clear: both;
-        padding: 1% 4%;
-        width: auto;
-        float: none;
-    }
-
-}
-
-/* for 700px or less */
-@media screen and (max-width: 600px) {
-
-    #content {
-        width: auto;
-        float: none;
-    }
-
-    #middle {
-        width: auto;
-        float: none;
-        margin-left: 0px;
-    }
-
-    #sidebar {
-        width: auto;
-        float: none;
-    }
-
-}
-
-/* for 480px or less */
-@media screen and (max-width: 480px) {
-
-    h1 {
-        font-size: 2em;
-    }
-    #sidebar {
-        display: none;
-    }
-
-}
-
-
-#content {
-    background: #f8f8f8;
-}
-#sidebar {
-    background: #f0efef;
-}
-#content, #middle, #sidebar {
-    margin-bottom: 5px;
-}
-
-#pagewrap, #content, #middle, #sidebar {
-    border: solid 1px #ccc;
-}
 
 .full-width-image-2 {
     background: url(/img/citywalking.jpg) no-repeat center center;
@@ -340,3 +237,23 @@ body {
 .btn-group > .btn:focus {
     background-color: limegreen;
 }
+
+/*-----------Leaderboard columns--------------*/
+
+#page-wrap { width: 75%; margin: 11px auto; }
+#page-wrap > div { margin: 0 0 50px 0; min-width: 500px; width: 100%; }
+
+.group:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.group { display: inline-block; }
+
+.five-columns .col {
+    width: 16%; float: left; padding: 2%;
+}
+

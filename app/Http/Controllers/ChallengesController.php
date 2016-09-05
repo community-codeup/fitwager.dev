@@ -24,9 +24,10 @@ class ChallengesController extends Controller
      */
     public function index()
     {
-        $challenges = static::getChallenges();
         $data = [
-            'challenges' => $challenges,
+            'activeChallenges' => static::getActiveChallenges(),
+            'historicChallenges' => static::getHistoricChallenges(),
+            'pendingChallenges' => static::getPendingChallenges()
         ];
         return view('challenges.index', $data);
     }
@@ -114,10 +115,59 @@ class ChallengesController extends Controller
             ->join('users', 'challenges.created_by', '=', 'users.id')
             ->join('bet_types', 'challenges.bet_type', '=', 'bet_types.id')
             ->join('challenge_types', 'challenges.challenge_type', '=', 'challenge_types.id')
-            ->select('bet_types.name AS bet_name', 'challenge_types.name AS challenge_name', 'challenges.id', 'challenges.wager', 'users.name AS user_name')
-            ->get();
+            ->join('challengers', 'challenges.id' ,'=', 'challengers.challenge_id');
+
+
 
         return $challenges;
+    }
+
+    public static function getActiveChallenges() {
+        $challenges = static::getChallenges();
+        $challenges = $challenges
+            ->where('user_id', '=', Auth::id())
+            ->where('status', '=', 'active')
+            ->select(
+                'bet_types.name AS bet_type',
+                'challenge_types.name AS challenge_type',
+                'challenges.id',
+                'challenges.wager',
+                'users.name AS user_name',
+                'challengers.status AS status'
+            );
+        return $challenges->get();
+    }
+
+    public static function getPendingChallenges() {
+        $challenges = static::getChallenges();
+        $challenges = $challenges
+            ->where('user_id', '=', Auth::id())
+            ->where('status', '=', 'pending')
+            ->select(
+                'bet_types.name AS bet_type',
+                'challenge_types.name AS challenge_type',
+                'challenges.id',
+                'challenges.wager',
+                'users.name AS user_name',
+                'challengers.status AS status'
+            );
+        return $challenges->get();
+    }
+
+    public static function getHistoricChallenges() {
+        $challenges = static::getChallenges();
+        $challenges = $challenges
+            ->where('user_id', '=', Auth::id())
+            ->where('status', '=', 'historic')
+            ->select(
+                'bet_types.name AS bet_type',
+                'challenge_types.name AS challenge_type',
+                'challenges.id',
+                'challenges.wager',
+                'users.name AS user_name',
+                'challengers.status AS status'
+            );
+        return $challenges->get();
     }
 
     public static function findHistoric()

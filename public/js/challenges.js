@@ -1,3 +1,18 @@
-$.get("/js/get-challenges.php").done(function(challenges){
-    console.log(challenges);
+
+$('#activeTab').click(function() {
+    $('#pendingTable').hide();
+    $('#activeTable').show();
+    $('#historicTable').hide();
+});
+
+$('#historicTab').click(function() {
+    $('#pendingTable').hide();
+    $('#activeTable').hide();
+    $('#historicTable').show();
+});
+
+$('#pendingTab').click(function() {
+    $('#pendingTable').show();
+    $('#activeTable').hide();
+    $('#historicTable').hide();
 });

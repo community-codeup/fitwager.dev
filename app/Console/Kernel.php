@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Result;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Inspire::class,
         \App\Commands\CalculateResults::class,
+        \App\Result::class
     ];
 
     /**
@@ -25,10 +27,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
-
-         $schedule->command('hey')
-                 ->hourly();
+        $schedule->call(function() {
+            $josephUser = new Result;
+            $josephUser->challenge_id = 1;
+            $josephUser->winner = 1;
+            $josephUser->coins_awarded = 1;
+            $josephUser->save();
+        })->everyMinute();
     }
 }

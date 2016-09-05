@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Results extends Model
+class Result extends Model
 {
 
     protected $table = 'results';

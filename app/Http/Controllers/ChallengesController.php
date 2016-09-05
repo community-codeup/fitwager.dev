@@ -69,6 +69,7 @@ class ChallengesController extends Controller
         $challenge->end_date = $request['end_date'];
         $challenge->created_by = Auth::id();
         $challenge->wager = $request['wager'];
+        $challenge->status = 'incomplete';
         $challenge->save();
 
         $challengers = $request['challengers'];
@@ -150,6 +151,23 @@ class ChallengesController extends Controller
                 'challenges.wager',
                 'users.name AS user_name',
                 'challengers.status AS status'
+            );
+        return $challenges->get();
+    }
+
+    public static function getFinishedChallenges() {
+        $challenges = static::getChallenges();
+        $challenges = $challenges
+            ->where('status', '=', 'pending')
+            ->select(
+                'bet_types.name AS bet_type',
+                'challenge_types.name AS challenge_type',
+                'challenges.id AS challenge_id',
+                'challenges.wager',
+                'users.name AS user_name',
+                'challengers.status AS status',
+                'challengers.user_id AS challenger',
+                'users.fitbit_id'
             );
         return $challenges->get();
     }

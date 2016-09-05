@@ -21,7 +21,7 @@ class ResultsController extends Controller
     {
 //        dd(FitInfo::getSteps($request, '-'));
 //        dd(FitInfo::getCalories($request, '-'));
-        dd(ChallengesController::getChallenges());
+        dd(fitInfo::resultsArray($request, ChallengesController::getFinishedChallenges()));
         dd(FitInfo::getFriends($request, '4WRC6T'));
 //        dd(FitInfo::getDistance($request, '-'));
     }

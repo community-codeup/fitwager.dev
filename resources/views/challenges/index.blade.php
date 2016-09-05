@@ -6,16 +6,16 @@
 
     <div class="container">
         <div class="row">
-                <div id="activeTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Active</button>
+                <div class="col-md-4 text-center"><button id="activeTab" type="button" class="btn btn-default btn-lg">Active</button>
                 </div>
 
 
 
-                <div id="historicTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Historic</button>
+                <div class="col-md-4 text-center"><button id="historicTab" type="button" class="btn btn-default btn-lg">Historic</button>
                 </div>
 
 
-                <div id="pendingTab" class="col-md-4 text-center"><button type="button" class="btn btn-default btn-lg">Pending</button>
+                <div class="col-md-4 text-center"><button id="pendingTab" type="button" class="btn btn-default btn-lg">Pending</button>
                 </div>
 
         </div>
@@ -109,7 +109,7 @@
                         <th>Wager</th>
                         <th>Edit</th>
                         <th>Delete</th>
-                        <th>Complete Challenge</th>
+                        <th>Accept Challenge</th>
                         </thead>
                         <tbody id="buildTableHTML">
                         @foreach ($pendingChallenges as $challenge)
@@ -121,7 +121,7 @@
                                 <td>{{$challenge->wager}}</td>
                                 <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                                 <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                <td><a href="">Complete</a></td>
+                                <td><a href="{{action("UserController@acceptChallenge($challenge->id)")}}">Accept</a></td>
                             </tr>
                         @endforeach
                         </tbody>

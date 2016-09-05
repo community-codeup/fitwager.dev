@@ -29,7 +29,8 @@
 <script src="/js/bootstrap/bootstrap.js"></script>
 <script src="/js/fitwager.js"></script>
 
-@yield('content')
+
 @include('partials.footer')
+@yield('content')
 </body>
 </html>

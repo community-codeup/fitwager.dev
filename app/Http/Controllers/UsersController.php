@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Challenger;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,13 @@ class UsersController extends Controller
         $response = $provider->getResponse($request);
         dd($response);
         return 'Yay!';
+    }
+
+    public function acceptChallenge($id) {
+        $updateChallenger = new Challenger;
+        $updateChallenger->id = $id;
+        $updateChallenger->status = 'accepted';
+        $updateChallenger->save();
     }
 
     public function welcome() {

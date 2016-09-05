@@ -21,6 +21,7 @@ class CreateChallengesTable extends Migration
             $table->string('start_date')->nullable();
             $table->string('end_date')->nullable();
             $table->integer('wager');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('created_by')->references('id')->on('users');

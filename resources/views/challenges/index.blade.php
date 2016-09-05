@@ -23,18 +23,13 @@
 
     <br>
 
-{{--  BEGINNING OF TABLE  --}}
-    <div class="container">
+    {{--  ACTIVE TABLE  --}}
+    <div class="container" id="activeTable">
         <div class="row">
-
-
             <div class="col-md-12">
                 <div class="table-responsive">
-
-                    <table id="mytable" class="table table-bordered table-striped table-hover">
-
+                    <table id="mytable" class="table table-bordred table-striped table-hover">
                         <thead>
-
                         <th>Challenge ID</th>
                         <th>Created By</th>
                         <th>Bet Type</th>
@@ -45,14 +40,93 @@
                         <th>Complete Challenge</th>
                         </thead>
                         <tbody id="buildTableHTML">
-
-
+                        @foreach ($activeChallenges as $challenge)
+                            <tr>
+                                <td>{{$challenge->id}}</td>
+                                <td>{{$challenge->user_name}}</td>
+                                <td>{{$challenge->bet_type}}</td>
+                                <td>{{$challenge->challenge_type}}</td>
+                                <td>{{$challenge->wager}}</td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                <td><a href="">Complete</a></td>
+                            </tr>
+                        @endforeach
                         </tbody>
-
                     </table>
-
                 </div>
+            </div>
+        </div>
+    </div>
 
+    {{--  HISTORIC TABLE  --}}
+    <div class="container" id="historicTable" hidden>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                        <thead>
+                        <th>Challenge ID</th>
+                        <th>Created By</th>
+                        <th>Bet Type</th>
+                        <th>Challenge Type</th>
+                        <th>Wager</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>Complete Challenge</th>
+                        </thead>
+                        <tbody id="buildTableHTML">
+                        @foreach ($historicChallenges as $challenge)
+                            <tr>
+                                <td>{{$challenge->id}}</td>
+                                <td>{{$challenge->user_name}}</td>
+                                <td>{{$challenge->bet_type}}</td>
+                                <td>{{$challenge->challenge_type}}</td>
+                                <td>{{$challenge->wager}}</td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                <td><a href="">Complete</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--  PENDING TABLE  --}}
+    <div class="container" id="pendingTable" hidden>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                        <thead>
+                        <th>Challenge ID</th>
+                        <th>Created By</th>
+                        <th>Bet Type</th>
+                        <th>Challenge Type</th>
+                        <th>Wager</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>Complete Challenge</th>
+                        </thead>
+                        <tbody id="buildTableHTML">
+                        @foreach ($pendingChallenges as $challenge)
+                            <tr>
+                                <td>{{$challenge->id}}</td>
+                                <td>{{$challenge->user_name}}</td>
+                                <td>{{$challenge->bet_type}}</td>
+                                <td>{{$challenge->challenge_type}}</td>
+                                <td>{{$challenge->wager}}</td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                <td><a href="">Complete</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

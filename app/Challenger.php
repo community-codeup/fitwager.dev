@@ -11,5 +11,15 @@ class Challenger extends Model
     public static $rules = [
     ];
 
+    public static function challengeAccepted($challenge_id){
+    	foreach($challengers as $challenger){
+    		if($challenger->status == 'pending'){
+    			//delay the challenge from starting
+    		} else{
+    			//allow the challenge to go off
+    		}
+    	}
+    }
+
 }
 

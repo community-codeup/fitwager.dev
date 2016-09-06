@@ -10,7 +10,7 @@ class Result extends Model
 
     protected $table = 'results';
 
-    public static function challenges()
+    public function challenges()
     {
         return $this->belongsTo(User::class, 'id');
     }
@@ -25,9 +25,9 @@ class Result extends Model
         return $this->belongsTo(Challenge::class, 'challenge_id');
     }
 
-    public function challengers()
+    public function challengers($id)
     {
-        $challenge = new Challenge::find($id);
+        $challenge = Challenge::find($id);
 		return $this->challenge->challengers();
 	}
 
@@ -40,18 +40,18 @@ class Result extends Model
 
     public static function competitive($challengers) {
         $max = $challengers[0];
-        for($i=0; $ < count($challengers); i++){
+        for($i=0; $i < count($challengers); $i++){
             if($max < $challengers[$i]){
-                $max = $array[$i]
+                $max = $challengers[$i];
 			}
         }
         return $max * count($challengers);
     }
-    public static function competitive($challengers) {
+    public static function competitive2($challengers) {
         $max = $challengers[0];
-        for($i=0; $ < count($challengers); i++){
+        for($i=0; $i < count($challengers); $i++){
             if($max < $challengers[$i]){
-                $max = $array[$i]
+                $max = $challengers[$i];
             }
         }
         return $max * count($challengers);
@@ -68,7 +68,7 @@ class Result extends Model
         foreach($challengers as $challenger => $activity)
             do{
 
-            }while($challengers->count()[$activityType] < );
+            }while($challengers->count()[$activityType] < $wagerAmount);
     }
 
 
@@ -124,4 +124,3 @@ class Result extends Model
 // 	}
 // }
 
-}

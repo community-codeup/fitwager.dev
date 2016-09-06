@@ -36,7 +36,18 @@ $('#picker').daterangepicker({
 
 });
 
+$('#get_average_button').click(function (event){
+    event.preventDefault();
+    var date_range = $('#picker span').html().split(' - ');
+    var startDate = date_range[0];
+    var endDate = date_range[1];
+    var formattedStartDate = moment(new Date(startDate)).format('YYYY-MM-DD');
+    var formattedEndDate = moment(new Date(endDate)).format('YYYY-MM-DD');
 
+    $('#hidden-start-date').val(formattedStartDate);
+    $('#hidden-end-date').val(formattedEndDate);
+    $('#user_parameters').submit();
+});
 // ------------------   END OF DATE RANGE PICKER JS  ----------------------//
 
 $(document).ready(function(){
@@ -57,4 +68,7 @@ $(document).ready(function(){
 
 
 });
+
+// takes the 'input' from date picker and formats it into dates that can be used for our sql queries
+
 

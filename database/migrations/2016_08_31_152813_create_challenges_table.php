@@ -18,10 +18,9 @@ class CreateChallengesTable extends Migration
             $table->integer('created_by')->unsigned();
             $table->integer('bet_type')->unsigned();
             $table->integer('challenge_type')->unsigned();
-            $table->string('start_date')->nullable();
-            $table->string('end_date')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('wager');
-            $table->string('status');
             $table->timestamps();
 
             $table->foreign('created_by')->references('id')->on('users');

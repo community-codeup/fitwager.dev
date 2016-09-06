@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Challenge;
 use App\FitibitToken;
 use App\FitInfo;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class ResultsController extends Controller
     {
 //        dd(FitInfo::getSteps($request, '-'));
 //        dd(FitInfo::getCalories($request, '-'));
+        dd(Challenge::getPendingChallenges());
         dd(fitInfo::resultsArray($request, ChallengesController::getFinishedChallenges()));
         dd(FitInfo::getFriends($request, '4WRC6T'));
 //        dd(FitInfo::getDistance($request, '-'));

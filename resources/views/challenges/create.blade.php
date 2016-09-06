@@ -3,7 +3,7 @@
 <div class="container-fluid"><h1>Create Challenge</h1></div>
     <div class="container">
         <div class="row">
-                <form class="form-horizontal" method="POST" action="{{action('ChallengesController@store')}}">
+                <form class="form-horizontal" method="POST" action="{{action('ChallengesController@store')}}" id="user_parameters">
                     {!! csrf_field() !!}
 
                     <div class="form-group">
@@ -45,7 +45,8 @@
                         <div class="row">
                             <label for="start_date" class="col-sm-2 control-label">Date:</label>
                             <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
-                            {{--<div class="col-sm-9"></div>--}}
+                            <input type="hidden" id="hidden-start-date" name="start_date">
+                            <input type="hidden" id="hidden-end-date" name="end_date">
                         </div>
 
                         <br>
@@ -75,7 +76,7 @@
 
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <button class="col-sm-2" type="submit">Submit</button>
+                            <button class="col-sm-2" id="get_average_button" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>

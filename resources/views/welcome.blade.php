@@ -73,9 +73,36 @@
                 <div id="page-wrap">
                     <div class="col-md-12 five-columns group" style="padding-top: -1%">
                         <div class="row" style="border: 1px solid grey;">
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: lightgray"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p></div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: darkgrey"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p></div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: lightgrey"><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p></div>
+                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #FF4A48">Challenge 1</h3>
+                                    <ol style="font-size: medium">
+                                        <li style="color: #FF4A48"><span style="color: black">name1</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name2</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                    </ol>
+                            </div>
+                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #FF4A48">Challenge 2</h3>
+                                    <ol style="font-size: medium">
+                                        <li style="color: #FF4A48"><span style="color: black">name1</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name2</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                    </ol>
+                            </div>
+                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #FF4A48">Challenge 3</h3>
+                                    <ol style="font-size: medium">
+                                        <li style="color: #FF4A48"><span style="color: black">name1</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name2</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                    </ol>
+                            </div>
                         </div>
                     </div>
                 </div>

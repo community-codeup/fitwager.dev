@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Inspire::class,
         \App\Commands\CalculateResults::class,
-        \App\Result::class
+        //\App\Result::class
     ];
 
     /**
@@ -28,6 +28,23 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function() {
+
+            // 1. Look for completed challenges, where end_date is before mow
+            // Challenge::getFinishedChallenges();
+
+            // Loop through all the completed challenges
+            // For every challenge get the challengers who accepted the challenge
+
+                // where status = accepted
+                // $allChallengers = $challenge->challengers;
+                // $actualChallengers = $challenge->challengers()->where(...);
+                // if ($allChallengers->count() == $actualChallengers->count())
+
+                    // $activities =FibitInfo::activities($challengers);
+
+                    // Result::determineWinner($challengers, $activities, $challenge->betType->name);
+
+
             $josephUser = new Result;
             $josephUser->challenge_id = 1;
             $josephUser->winner = 1;

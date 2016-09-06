@@ -25,6 +25,7 @@ Route::get('/', function () {
     return view('welcome', $data);
 });
 
+
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');
 Route::get('/auth/logout', 'Auth\AuthController@getLogout');
@@ -46,6 +47,7 @@ Route::get('/account', "UsersController@store");
 
 
 Route::resource('challenges', 'ChallengesController');
+Route::get('acceptchallenge/{challengeId}', 'ChallengesController@acceptChallenge');
 
 //Route::get('challenges', function() {
 //    $betTypes = BetType::all();

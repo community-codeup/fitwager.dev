@@ -1,13 +1,55 @@
+/** {*/
+    /*font-family: "Gill Sans";*/
+/*}*/
+
 .navbar {
     margin-bottom:0;
+    text-align: center;
 }
 
 .navbar-brand {
     padding-right: 8px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: limegreen;
+}
+
+
+#navButtons.navbar-brand {
+    padding-right: 12px;
+    padding-left: 22px;
+    display: inline-block;
+}
+
+#envelope {
+    position: relative;
+    top: 6px;
+    right: 4px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+.badge {
+    right: 4px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 4px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
 }
 /*------------- Beginning of Carousel CSS --------------*/
 /* Global */
@@ -194,33 +236,7 @@ body {
     margin: 0 0 100px; /* bottom = footer height */
 }
 
-#envelope {
-    position: relative;
-    top: 5px;
-    right: 14px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-}
 
-.badge {
-    right: 14px;
-    display: inline-block;
-    min-width: 10px;
-    padding: 4px 7px;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777;
-    border-radius: 10px;
-}
 
 .btn-primary.primary {
     background-color: limegreen;
@@ -257,3 +273,10 @@ body {
     width: 16%; float: left; padding: 2%;
 }
 
+.numbers {
+    color: gold;
+}
+
+#names {
+    color: black;
+}

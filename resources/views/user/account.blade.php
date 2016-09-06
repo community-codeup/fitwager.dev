@@ -1,7 +1,9 @@
 @extends ('layouts.master')
 @section('content')
     <br>
-    <hr>
+
+    <hr style="border-top: 2px solid #e0e0e0">
+
             <div class="container-fluid" style="margin-top: 5%; padding-bottom: 2%;">
                     <div class="row">
                         <div class="col-sm-3 text-center">
@@ -25,7 +27,8 @@
                         </div>
                     </div>
             </div>
-            <hr>
+
+            <hr style="border-top: 2px solid #e0e0e0">
 
             <div class="container-fluid">
                 <h1 class="text-center">Activity</h1>

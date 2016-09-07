@@ -217,14 +217,6 @@
             ],
             "time": "2015-11-06 14:35:42"
         },
-        {
-            "name": "edvinaskrucas/notification",
-            "version": "5.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/edvinaskrucas/notification.git",
-                "reference": "04cac9a31f5497633ffd05581210fa1a4d6fe6e9"
-            },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/edvinaskrucas/notification/zipball/04cac9a31f5497633ffd05581210fa1a4d6fe6e9",

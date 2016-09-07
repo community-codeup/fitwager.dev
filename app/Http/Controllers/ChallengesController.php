@@ -43,7 +43,16 @@ class ChallengesController extends Controller
 
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
-        $users = User::all();
+        $friends = FitInfo::getFriends($request, '-');
+        $users = [];
+        foreach($friends as $friend) {
+            $user = User::where('fitbit_id', $friend[0]['user']['encodedId'])->first();
+            if($user) {
+                $users[] = $user;
+            }
+        };
+
+//        $users = User::all();
         $data = [
             'betTypes' => $betTypes,
             'challengeTypes' => $challengeTypes,

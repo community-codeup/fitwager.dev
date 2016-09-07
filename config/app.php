@@ -146,7 +146,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         SocialiteProviders\Manager\ServiceProvider::class,
-        Krucas\Notification\NotificationServiceProvider::class,
 
     ],
 
@@ -182,7 +181,6 @@ return [
         'Lang'      => Illuminate\Support\Facades\Lang::class,
         'Log'       => Illuminate\Support\Facades\Log::class,
         'Mail'      => Illuminate\Support\Facades\Mail::class,
-        'Notification' => Krucas\Notification\Facades\Notification::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,

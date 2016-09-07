@@ -27,7 +27,6 @@ class ResultsController extends Controller
         //$challenge = Challenge::find(2);
 //        dd($challenge->challengers);
 //        dd(FitInfo::getStat($request, '-', 'steps'));
-
         $challenges = Challenge::getFinishedChallenges();
         foreach ($challenges as $challenge) {
 //            dd($challenge->challengers);
@@ -40,8 +39,7 @@ class ResultsController extends Controller
                 foreach ($actualChallengers as $challenger) {
                     $challenger->amount = FitInfo::getStat(
                         $request,
-                        Auth::user()->fitbit_id == $challenger->user->fitbit_id ? '-' : $challenger->user->fitbit_id,
-                        Auth::user()->fitbit_token,
+                        $challenger->user,
                         $challengeType
                     );
                 }
@@ -54,7 +52,6 @@ class ResultsController extends Controller
             }
         }
 
-        dd('');
 
 
         dd(fitInfo::resultsArray($request, ChallengesController::getFinishedChallenges()));

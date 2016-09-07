@@ -15,6 +15,33 @@ use Jmitchell38488\OAuth2\Client\Provider\FitBitAuthorization;
 
 class FitibitToken
 {
+    public static function refreshToken($user)
+    {
+
+        //if (!$user->hasExpiredToken()) {
+        //    return;
+        //}
+
+        $provider = new FitBitAuthorization([
+            'clientId' => env('FITBIT_KEY'),
+            'clientSecret' => env('FITBIT_SECRET'),
+            'redirectUri' => env('FITBIT_REDIRECT_URI'),
+        ]);
+
+        $token = base64_encode(sprintf('%s:%s', env('FITBIT_KEY'), env('FITBIT_SECRET')));
+        $accessToken = $provider->getAccessToken('refresh_token', [
+            'grant_type' => FitBitAuthorization::GRANTTYPE_REFRESH,
+            'access_token' => $user->fitbit_token,
+            'refresh_token' => $user->fitbit_refresh_token,
+            'token' => $token,
+        ]);
+
+        $user->fitbit_token = $accessToken->getToken();
+        $user->fitbit_token_expiration = $accessToken->getExpires();
+        $user->fitbit_refresh_token = $accessToken->getRefreshToken();
+        $user->save();
+    }
+
     public static function refresh(Request $request)
     {
         $provider = new FitBitAuthorization([
@@ -32,7 +59,7 @@ class FitibitToken
             ]);
 
             // Set the session state to validate in the callback
-            session(['FITBIT_REDIRECT_URI' => $provider->getState()]);
+            session(['oauth2state' => $provider->getState()]);
             redirect()->to($authorizationUrl)->send();
 
         // 2nd step: User has authorised, now lets get the refresh & access tokens

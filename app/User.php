@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -38,6 +39,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+
+    public function hasExpiredToken()
+    {
+        return new DateTime() > new DateTime($this->fitbit_token_expiration);
+    }
 
 
     public function challenges()

@@ -14,13 +14,17 @@ use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
+use Auth;
 
 class FitInfo
 {
 
-    public static function activities(Request $request, $fitbit_id, $fitbit_token)
+    public static function activities(Request $request, $user)
     {
-        FitibitToken::refresh($request);
+        FitibitToken::refresh($request, $user);
+        //if (Auth::user()->id !== $user->id) {
+            FitibitToken::refreshToken($user);
+        //}
 
         $provider = new FitBit([
             'clientId' => env('FITBIT_KEY'),
@@ -28,12 +32,12 @@ class FitInfo
             'redirectUri' => env('FITBIT_KEY'),
         ]);
         $today = new \DateTime();
-        $endpoint = $provider->getBaseApiUrl() . "user/" . $fitbit_id . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
+        $endpoint = $provider->getBaseApiUrl() . "user/" . $user->fitbit_id . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
 
         $request = $provider->getAuthenticatedRequest(
             FitBit::METHOD_GET,
             $endpoint,
-            $fitbit_token
+            $user->fitbit_token
         );
 
         $response = $provider->getResponse($request);
@@ -61,8 +65,8 @@ class FitInfo
         return $response;
     }
 
-    public static function getStat(Request $request, $fitbit_id, $fitbit_token, $stat) {
-        $response = static::activities($request, $fitbit_id, $fitbit_token);
+    public static function getStat(Request $request, $user, $stat) {
+        $response = static::activities($request, $user);
         var_dump($response);
         $stat = $response['summary'][$stat];
         return $stat;

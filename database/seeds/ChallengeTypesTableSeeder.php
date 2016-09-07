@@ -13,9 +13,9 @@ class ChallengeTypesTableSeeder extends Seeder
     public function run()
     {
         $challengeTypes = [
-            'Steps' => 'Number of steps during selected time range.',
-            'Calories' => 'Number of calories burned during selected time range.',
-            'Distance' => 'Distance traveled during selected time range.',
+            'steps' => 'Number of steps during selected time range.',
+            'caloriesOut' => 'Number of calories burned during selected time range.',
+            'distance' => 'Distance traveled during selected time range.',
         ];
         foreach($challengeTypes as $name => $description) {
             $row = new App\ChallengeType();

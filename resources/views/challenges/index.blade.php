@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>
@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>

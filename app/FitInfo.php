@@ -18,7 +18,7 @@ use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 class FitInfo
 {
 
-    public static function activities(Request $request, $fitbit_id)
+    public static function activities(Request $request, $fitbit_id, $fitbit_token)
     {
         FitibitToken::refresh($request);
 
@@ -33,7 +33,7 @@ class FitInfo
         $request = $provider->getAuthenticatedRequest(
             FitBit::METHOD_GET,
             $endpoint,
-            session('fitbit')['oauth2']['accessToken']
+            $fitbit_token
         );
 
         $response = $provider->getResponse($request);
@@ -61,6 +61,12 @@ class FitInfo
         return $response;
     }
 
+    public static function getStat(Request $request, $fitbit_id, $fitbit_token, $stat) {
+        $response = static::activities($request, $fitbit_id, $fitbit_token);
+        var_dump($response);
+        $stat = $response['summary'][$stat];
+        return $stat;
+    }
 
     public static function getSteps(Request $request, $fitbit_id)
     {

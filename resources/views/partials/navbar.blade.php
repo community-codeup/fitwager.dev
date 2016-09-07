@@ -4,7 +4,7 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target=".navbar-collapse" aria-expanded="false">
+                    data-target=".navbar-collapse" aria-expanded="false"
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -21,12 +21,14 @@
                                  alt="Fitwager Logo">
                         </a><span class="navbar-brand">|</span>
                     </li>
-                        <li><a class="navbar-brand" id="navButtons" href="/user/account">Account</a><span
+                        <li><a class="navbar-brand" id="navButtons" href="/user/account">account</a><span
                                     class="navbar-brand">|</span></li>
-                        <li><a class="navbar-brand" id="navButtons" href="/challenges/create">Create Challenge</a><span
+                        <li><a class="navbar-brand" id="navButtons" href="/challenges/create">create challenge</a><span
                                     class="navbar-brand">|</span></li>
-                        <li><a class="navbar-brand" id="navButtons" href="/challenges">My Challenges</a><span
+                        <li><a class="navbar-brand" id="navButtons" href="/challenges">my challenges</a><span
                                     class="navbar-brand">|</span></li>
+                        <li><a class="navbar-brand" id="navButtons" href="/about">about</a><span
+                                class="navbar-brand">|</span></li>
                         <li>
                              <a class="navbar-brand btn btn-lg btn-link" id="navButtons">
                                 <span id="envelope" class="glyphicon glyphicon-envelope"></span>
@@ -35,7 +37,7 @@
                 </ul>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                    <li><a class="navbar-brand" href="/auth/logout">Logout</a></li>
+                    <li><a class="navbar-brand" href="/auth/logout">logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

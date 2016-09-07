@@ -1,6 +1,6 @@
-/** {*/
-    /*font-family: "Gill Sans";*/
-/*}*/
+* {
+    font-family: 'Open Sans', sans-serif;
+}
 
 .navbar {
     margin-bottom:0;

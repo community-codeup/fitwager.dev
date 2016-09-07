@@ -254,6 +254,14 @@ body {
     background-color: limegreen;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #888888;
+    border-color: #2e6da4;
+}
+
+
+
 /*-----------Leaderboard columns--------------*/
 
 #page-wrap { width: 75%; margin: 11px auto; }

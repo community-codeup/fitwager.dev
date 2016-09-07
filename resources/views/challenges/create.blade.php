@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('content')
-<div class="container-fluid"><h1>Create Challenge</h1></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"><h1 style="color:grey">create<span style="color:limegreen">challenge</span></h1></div>
+        </div>
+    </div>
+
+<br>
+
     <div class="container">
         <div class="row">
                 <form class="form-horizontal" method="POST" action="{{action('ChallengesController@store')}}" id="user_parameters">
@@ -76,7 +83,7 @@
 
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <button class="col-sm-2" id="get_average_button" type="submit">Submit</button>
+                            <button class="col-sm-2" id="create_challenge_button" type="submit">Submit</button>
                         </div>
                     </div>
                 </form>

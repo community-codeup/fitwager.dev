@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Challenge;
 use App\Result;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -37,12 +38,15 @@ class Kernel extends ConsoleKernel
 
                 // where status = accepted
                 // $allChallengers = $challenge->challengers;
-                // $actualChallengers = $challenge->challengers()->where(...);
+                // $actualChallengers = $challenge->acceptedChallengers();
                 // if ($allChallengers->count() == $actualChallengers->count())
 
-                    // $activities =FibitInfo::activities($challengers);
+                    // $activities =FibitInfo::activities($actualChallengers);
 
-                    // Result::determineWinner($challengers, $activities, $challenge->betType->name);
+                    // Result::determineWinner($actualChallengers, $activities, $challenge->betType->name);
+
+            $challengersArray = Challenge::getChallengersArray();
+
 
 
             $josephUser = new Result;

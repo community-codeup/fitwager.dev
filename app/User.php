@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +40,11 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
 
+    public function hasExpiredToken()
+    {
+        return new DateTime() > new DateTime($this->fitbit_token_expiration);
+    }
+
 
     public function challenges()
     {
@@ -49,6 +55,7 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(Results::class, 'results_id');
     }
+
 
     public function notification()
     {
@@ -61,5 +68,9 @@ class User extends Model implements AuthenticatableContract,
             ->join('bet_types', 'challenges.bet_type', '=', 'bet_types.id')
             ->join('challenge_types', 'challenges.challenge_type', '=', 'challenge_types.id')
             ->join('user_results', 'users.fitbit_id', '=', '');
+        }    
+    public function challenger() {
+        return $this->hasOne(Challenger::class);
+
     }
 }

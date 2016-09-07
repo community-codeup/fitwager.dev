@@ -36,7 +36,7 @@ $('#picker').daterangepicker({
 
 });
 
-$('#get_average_button').click(function (event){
+$('#create_challenge_button').click(function (event){
     event.preventDefault();
     var date_range = $('#picker span').html().split(' - ');
     var startDate = date_range[0];

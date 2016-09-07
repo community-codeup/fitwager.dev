@@ -12,11 +12,22 @@ class Challenge extends Model
 
     public static $rules = [];
 
+    public function betType() {
+        return $this->belongsTo(BetType::class, 'bet_type');
+    }
 
+    public function challengeType() {
+        return $this->belongsTo(ChallengeType::class, 'challenge_type');
+    }
 
     public function challengers()
     {
     	return $this->hasMany(Challenger::class);
+    }
+
+    public function acceptedChallengers()
+    {
+        return $this->challengers()->where('status', 'accepted')->get();
     }
 
     public function coins()
@@ -39,7 +50,7 @@ class Challenge extends Model
         $challenges = static::getChallenges();
         $challenges = $challenges
             ->where('user_id', '=', Auth::id())
-            ->where('challengers.status', '=', 'active')
+            ->where('challengers.status', '=', 'accepted')
             ->select(
                 'bet_types.name AS bet_type',
                 'challenge_types.name AS challenge_type',
@@ -70,19 +81,7 @@ class Challenge extends Model
     }
 
     public static function getFinishedChallenges() {
-        $challenges = static::getChallenges();
-        $challenges = $challenges
-            ->where('challengers.status', '=', 'pending')
-            ->select(
-                'bet_types.name AS bet_type',
-                'challenge_types.name AS challenge_type',
-                'challenges.id AS challenge_id',
-                'challenges.wager',
-                'users.name AS user_name',
-                'challengers.status AS status',
-                'challengers.user_id AS challenger',
-                'users.fitbit_id'
-            );
+        $challenges = Challenge::where('end_date', '<', DB::raw('CURDATE()'));
         return $challenges->get();
     }
 
@@ -100,6 +99,15 @@ class Challenge extends Model
                 'challengers.status AS status'
             );
         return $challenges->get();
+    }
+
+    public static function getChallengersArray() {
+        $challenges = Challenge::getFinishedChallenges();
+        $competitors = [];
+        foreach($challenges as $index => $challenge) {
+            $competitors[] = Challenge::find($challenge->id)->challengers;
+        }
+        return $competitors;
     }
 
     public static function findHistoric()

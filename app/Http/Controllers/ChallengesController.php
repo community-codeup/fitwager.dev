@@ -6,6 +6,7 @@ use App\BetType;
 use App\Challenge;
 use App\Challenger;
 use App\ChallengeType;
+use App\FitInfo;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,7 @@ class ChallengesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
 
         $betTypes = BetType::all();
@@ -46,7 +47,7 @@ class ChallengesController extends Controller
         $data = [
             'betTypes' => $betTypes,
             'challengeTypes' => $challengeTypes,
-            'users' => $users,
+            'users' => $users
         ];
         return view('challenges/create', $data);
     }

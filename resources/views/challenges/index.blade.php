@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container-fluid"><h1>My Challenges</h1></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"><h1 style="color:grey">my<span style="color:limegreen">challenges</span></h1></div>
+        </div>
+    </div>
 
     <br>
 
@@ -28,7 +33,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>
@@ -64,7 +69,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>
@@ -100,7 +105,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped table-hover">
+                    <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>Challenge ID</th>
                         <th>Created By</th>

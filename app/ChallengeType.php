@@ -11,4 +11,8 @@ class ChallengeType extends Model
     public function getTypeName($id) {
         return ChallengeType::where('id', $id)->first()->value('name');
     }
+
+    public function challenge() {
+        return $this->hasOne(Challenge::class);
+    }
 }

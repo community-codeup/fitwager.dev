@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 
 class ResultsController extends Controller
@@ -22,7 +23,37 @@ class ResultsController extends Controller
     {
 //        dd(FitInfo::getSteps($request, '-'));
 //        dd(FitInfo::getCalories($request, '-'));
-        dd(Challenge::getPendingChallenges());
+
+        //$challenge = Challenge::find(2);
+//        dd($challenge->challengers);
+//        dd(FitInfo::getStat($request, '-', 'steps'));
+        $challenges = Challenge::getFinishedChallenges();
+        foreach ($challenges as $challenge) {
+//            dd($challenge->challengers);
+            $actualChallengers = $challenge->acceptedChallengers();
+
+            if ($challenge->challengers->count() == $actualChallengers->count()) {
+                $betType = $challenge->betType->name;
+                $challengeType = $challenge->challengeType->name;
+
+                foreach ($actualChallengers as $challenger) {
+                    $challenger->amount = FitInfo::getStat(
+                        $request,
+                        $challenger->user,
+                        $challengeType
+                    );
+                }
+                dd($actualChallengers);
+                if ($challengeType == 'steps') {
+                }
+                if ($betType == 'personal') {
+
+                }
+            }
+        }
+
+
+
         dd(fitInfo::resultsArray($request, ChallengesController::getFinishedChallenges()));
         dd(FitInfo::getFriends($request, '4WRC6T'));
 //        dd(FitInfo::getDistance($request, '-'));
@@ -35,13 +66,13 @@ class ResultsController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,7 +83,7 @@ class ResultsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,7 +94,7 @@ class ResultsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,8 +105,8 @@ class ResultsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -86,7 +117,7 @@ class ResultsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

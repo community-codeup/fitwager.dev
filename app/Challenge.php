@@ -50,7 +50,7 @@ class Challenge extends Model
         $challenges = static::getChallenges();
         $challenges = $challenges
             ->where('user_id', '=', Auth::id())
-            ->where('challengers.status', '=', 'active')
+            ->where('challengers.status', '=', 'accepted')
             ->select(
                 'bet_types.name AS bet_type',
                 'challenge_types.name AS challenge_type',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Log;
 use Validator;
@@ -85,20 +86,25 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $fitbit_user = Socialite::driver('fitbit')->stateless(true)->user();
+        //dd($fitbit_user);
         $user = User::firstOrCreate([
             'fitbit_id' => $fitbit_user->id,
         ]);
         $user->name = $fitbit_user->user['user']['fullName'];
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
+
         $user->fitbit_token = $fitbit_user->token;
+        $user->fitbit_refresh_token = $fitbit_user->refreshToken;
+        $date = new DateTime('now');
+        $date->setTimestamp($date->getTimestamp() + $fitbit_user->expiresIn);
+        $user->fitbit_token_expiration = $date->format('Y-m-d H:i:s');
+
         if ($user->coins == null) {
             $user->coins = 20;
         }
         $user->save();
 
-        $date = new \DateTime('now');
-        $date->setTimestamp($date->getTimestamp() + $fitbit_user->expiresIn);
 
 //dd($fitbit_user, $date->format('Y-m-d h:i:s'));
 

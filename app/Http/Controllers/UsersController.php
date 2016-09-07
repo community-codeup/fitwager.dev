@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Challenger;
 use App\User;
+use App\Challenge;
 use Illuminate\Http\Request;
-
+use App\FitInfo;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Requests;
@@ -50,7 +51,7 @@ class UsersController extends Controller
         );
 
         $response = $provider->getResponse($request);
-        dd($response);
+        //dd($response);
         return 'Yay!';
     }
 
@@ -96,15 +97,27 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         //dd(Auth::user());
         $user = User::findOrFail($id);
         if(Auth::check()){
-            return view('user.account')->with('user', $user);
+            //dd($pendingChallenges);
+            //$steps = FitInfo::getSteps($request, '-');
+            //dd($steps);
+            //$calories = FitInfo::getCalories();
+            //$distance = FitInfo::getDistance();
+            $data = [
+                //'calories'=>$steps,
+                //'calories'=>$calories,
+                //'distance'=>$distance,
+                'user'=>$user
+            ];
+            return view('user.account')->with($data);
         } else{
             return redirect()->action('welcome');
         }
+
     }
 
     /**

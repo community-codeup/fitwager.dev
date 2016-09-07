@@ -62,7 +62,9 @@ class Challenge extends Model
                 'challengers.id',
                 'challenges.wager',
                 'users.name AS user_name',
-                'challengers.status AS status'
+                'challengers.status AS status',
+                'challenges.start_date AS start_date',
+                'challenges.end_date AS end_date'
             );
         return $challenges->get();
     }

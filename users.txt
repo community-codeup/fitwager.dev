@@ -20,6 +20,11 @@ challengers
 
 
 $finishedChallenges = Challenges::finished(); // Where end_date < today
+ public static function findHistoric()
+    {
+        $result = results::join('challenges', 'challenges.id', '=', 'results.challenges_id')
+            ->where('challenges.created_at', '<', DB::raw('CURDATE()'));
+    }
 
 foreach($finishedChallenges as $challenge) { //steps
 	$challengers = $challenge->challengers;

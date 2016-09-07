@@ -56,7 +56,21 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Results::class, 'results_id');
     }
 
+
+    public function notification()
+    {
+        return $this->hasMany(Noficiation::class, 'notifications_id');
+    }
+
+    public static function getChallenges(){
+        $challenges = DB::table('challenges')
+            ->join('users', 'challenges.created_by', '=', 'users.id')
+            ->join('bet_types', 'challenges.bet_type', '=', 'bet_types.id')
+            ->join('challenge_types', 'challenges.challenge_type', '=', 'challenge_types.id')
+            ->join('user_results', 'users.fitbit_id', '=', '');
+        }    
     public function challenger() {
         return $this->hasOne(Challenger::class);
+
     }
 }

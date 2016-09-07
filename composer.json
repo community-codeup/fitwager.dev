@@ -21,7 +21,8 @@
         "socialiteproviders/manager": "dev-versionfix",
         "socialiteproviders/fitbit": "dev-fixversion",
         "laravel/socialite": "^2.0",
-        "jmitchell38488/oauth2-fitbit": "^0.1.3"
+        "jmitchell38488/oauth2-fitbit": "^0.1.3",
+        "edvinaskrucas/notification": "5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -91,6 +91,7 @@ class AuthController extends Controller
         $user->name = $fitbit_user->user['user']['fullName'];
         $user->email = $fitbit_user->email;
         $user->picture = $fitbit_user->avatar;
+        $user->fitbit_token = $fitbit_user->token;
         if ($user->coins == null) {
             $user->coins = 20;
         }

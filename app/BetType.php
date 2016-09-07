@@ -11,4 +11,8 @@ class BetType extends Model
         'name',
         'description',
     ];
+
+    public function challenge() {
+        return $this->hasOne(Challenge::class);
+    }
 }

@@ -30,9 +30,18 @@ class Challenge extends Model
         return $this->challengers()->where('status', 'accepted')->get();
     }
 
-    public function coins()
-    {
-    	return $this;
+    public static function subtractWager($challenge) {
+        $challengers = $challenge->challengers;
+        foreach($challengers as $challenger) {
+            if ($challenger->status !== 'accepted') {
+                return false;
+            }
+        }
+        foreach($challengers as $challenger) {
+            $updateUser = User::find($challenger->user_id);
+            $updateUser->coins -= $challenge->wager;
+            $updateUser->save();
+        }
     }
 
 

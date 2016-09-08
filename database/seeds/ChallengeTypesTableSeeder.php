@@ -17,11 +17,13 @@ class ChallengeTypesTableSeeder extends Seeder
             'caloriesOut' => 'Number of calories burned during selected time range.',
             'distance' => 'Distance traveled during selected time range.',
         ];
+
         foreach($challengeTypes as $name => $description) {
             $row = new App\ChallengeType();
             $row->name = $name;
             $row->description = $description;
             $row->save();
         }
+
     }
 }

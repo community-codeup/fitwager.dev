@@ -31,9 +31,11 @@
                                 class="navbar-brand">|</span></li>
                         <li>
                              <a class="navbar-brand btn btn-lg btn-link" id="navButtons" href="/challenges">
+
                                 <span id="envelope" class="glyphicon glyphicon-envelope"></span>
                                 <span class="badge badge-notify">{{ Auth::user()->challengeCount() }}</span>
                             </a>
+                        </li>
                 </ul>
             </form>
             <ul class="nav navbar-nav navbar-right">

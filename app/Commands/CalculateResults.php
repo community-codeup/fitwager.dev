@@ -29,16 +29,6 @@ class CalculateResults extends Command implements SelfHandling
      */
     public function handle()
     {
-//        $finishedChallenges = Result::findHistoric()
-//        foreach($finishedChallenges as $finishedChallenge){
-//            $challengers = $challenge->challengers;
-//        }
-//        $josephUser = new Result;
-//        $josephUser->challenge_id = 1;
-//        $josephUser->winner = 1;
-//        $josephUser->coins_awarded = 1;
-//        $josephUser->save();
-//
-//        echo 'Joseph is cool';
+
     }
 }

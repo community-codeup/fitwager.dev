@@ -43,6 +43,7 @@ class ChallengesController extends Controller
 
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
+
         $friends = FitInfo::getFriends($request, '-')['friends'];
         $users = [];
         foreach ($friends as $index => $friend) {

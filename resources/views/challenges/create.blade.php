@@ -81,19 +81,24 @@
 
                     <br>
 
-                    <div class="row">
-                        <label for="user" class="col-sm-2 control-label">User:</label>
-                        <div class="col-md-2" style="padding-top: 7px">
-                            @foreach($users as $user)
-                                <label>
-                                    <input type="checkbox" name="challengers[]" value="{{$user->id}}"/>
-                                    <img class="img img-thumbnail" src="{{ $user->picture }}" height="75" width="75">
-                                </label>
-                                {{$user->name}}
-                            @endforeach</div>
-                        <input hidden type="checkbox" checked name="challengers[]" value="{{Auth::user()->id}}"/>
-                        <div class="col-md-8"></div>
-                    </div>
+<<<<<<< HEAD
+                        <div class="row">
+                            <label for="user" class="col-sm-2 control-label">User:</label>
+                            <div class="col-md-10" style="padding-top: 7px">
+
+                                @foreach($users as $user)
+                                    <label style="padding-right: 34px;">
+                                      <input type="checkbox" name="challengers[]" id="usersOnChallenge" value="{{$user->id}}"/>
+                                       <figure>
+                                        <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{ $user->picture }}" height="75" width="75">
+                                        <figcaption>{{$user->name}}</figcaption>
+                                       </figure>
+                                    </label>
+                                @endforeach
+                                    <input hidden type="checkbox" checked name="challengers[]" value="{{Auth::user()->id}}"/>
+                            </div>
+
+                        </div>
 
                     <br>
 

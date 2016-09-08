@@ -13,8 +13,9 @@ use Illuminate\Http\Request;
 use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Jmitchell38488\OAuth2\Client\Provider\FitBit;
-use Auth;
+
 
 class FitInfo
 {
@@ -22,9 +23,7 @@ class FitInfo
     public static function activities(Request $request, $user)
     {
         FitibitToken::refresh($request, $user);
-        //if (Auth::user()->id !== $user->id) {
-            FitibitToken::refreshToken($user);
-        //}
+        FitibitToken::refreshToken($user);
 
         $provider = new FitBit([
             'clientId' => env('FITBIT_KEY'),
@@ -66,9 +65,14 @@ class FitInfo
     }
 
     public static function getStat(Request $request, $user, $stat) {
+
         $response = static::activities($request, $user);
-        var_dump($response);
-        $stat = $response['summary'][$stat];
+
+        if($stat == 'distance') {
+            $stat = $response['summary']['distances'][0]['distance'];
+        } else {
+            $stat = $response['summary'][$stat];
+        }
         return $stat;
     }
 

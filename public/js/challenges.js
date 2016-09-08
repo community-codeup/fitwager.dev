@@ -16,3 +16,23 @@ $('#pendingTab').click(function() {
     $('#activeTable').hide();
     $('#historicTable').hide();
 });
+
+$('#competitiveRadio').click(function() {
+    $('#targetScore').hide();
+});
+
+$('#personalRadio').click(function() {
+    $('#targetScore').show();
+});
+
+$('#unitedRadio').click(function() {
+    $('#targetScore').show();
+});
+
+$('#motivateRadio').click(function() {
+    $('#targetScore').show();
+});
+
+$('#sharedRadio').click(function() {
+    $('#targetScore').show();
+});

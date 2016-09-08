@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Challenge;
+use App\Challenger;
 use App\FitibitToken;
 use App\FitInfo;
+use App\User;
 use Illuminate\Http\Request;
-use App\Results;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,9 +28,10 @@ class ResultsController extends Controller
         //$challenge = Challenge::find(2);
 //        dd($challenge->challengers);
 //        dd(FitInfo::getStat($request, '-', 'steps'));
+
         $challenges = Challenge::getFinishedChallenges();
+
         foreach ($challenges as $challenge) {
-//            dd($challenge->challengers);
             $actualChallengers = $challenge->acceptedChallengers();
 
             if ($challenge->challengers->count() == $actualChallengers->count()) {
@@ -37,26 +39,80 @@ class ResultsController extends Controller
                 $challengeType = $challenge->challengeType->name;
 
                 foreach ($actualChallengers as $challenger) {
-                    $challenger->amount = FitInfo::getStat(
+                    $challenger->score = FitInfo::getStat(
                         $request,
                         $challenger->user,
                         $challengeType
                     );
+                    $challenger->save();
                 }
-                dd($actualChallengers);
-                if ($challengeType == 'steps') {
+
+                if ($betType == 'competitive') {
+                    $winner = Challenger::competitive($actualChallengers);
+                    foreach($actualChallengers as $index => $challenger) {
+                        $updateChallenger = Challenger::find($challenger->id);
+                        $updateUser = User::find($challenger->user_id);
+                        if ($challenger->id == $winner->id) {
+                            $updateChallenger->status = 'won';
+                            $updateUser->coins += (count($actualChallengers) * $updateChallenger->challenge->wager);
+                        } else {
+                            $updateChallenger->status = 'lost';
+                        }
+                        $updateChallenger->save();
+                        $updateUser->save();
+                    }
                 }
+
                 if ($betType == 'personal') {
+                    $updateChallenger = $actualChallengers[0];
+                    $updateUser = User::find($updateChallenger->user_id);
+                    if ($updateChallenger->score < $challenge->target) {
+                        $updateChallenger->status = 'lost';
+                    } else {
+                        $updateChallenger->status = 'won';
+                        $updateUser->coins += $challenge->wager;
+                    }
+                    $updateChallenger->save();
+                    $updateUser->save();
+                }
+
+                if($betType == 'united') {
+
+                    foreach($actualChallengers as $challenger) {
+                        if ($challenger->score < $challenge->target) {
+                            $pass = false;
+                            break;
+                        } else {
+                            $pass = true;
+                        }
+                    }
+                        if($pass) {
+                            foreach ($actualChallengers as $challenger) {
+                                $updateUser = User::find($challenger->user_id);
+                                $challenger->status = 'won';
+                                $updateUser->coins += $challenge->wager;
+                                $updateUser->save();
+                                $challenger->save();
+                            }
+                        } else {
+                            foreach ($actualChallengers as $challenger) {
+                                $challenger->status = 'lost';
+                                $challenger->save();
+                        }
+                    }
+                }
+
+                if($betType == 'shared') {
+                    foreach($actualChallengers as $challenger){
+
+                    }
+                }
+
+                if($betType == 'motivate') {
 
                 }
             }
         }
-
-
-
-        dd(fitInfo::resultsArray($request, ChallengesController::getFinishedChallenges()));
-        dd(FitInfo::getFriends($request, '4WRC6T'));
-//        dd(FitInfo::getDistance($request, '-'));
     }
 
     /**

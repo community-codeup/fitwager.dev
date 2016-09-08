@@ -43,17 +43,16 @@ class ChallengesController extends Controller
 
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
-        $friends = FitInfo::getFriends($request, '-');
-//        dd($friends);
+
+        $friends = FitInfo::getFriends($request, '-')['friends'];
         $users = [];
-        foreach($friends as $friend) {
-            $user = User::where('fitbit_id', $friend[0]['user']['encodedId'])->first();
-            if($user) {
+        foreach ($friends as $index => $friend) {
+            $user = User::where('fitbit_id', $friend['user']['encodedId'])->first();
+            if ($user) {
                 $users[] = $user;
             }
-        };
+        }
 
-//        $users = User::all();
         $data = [
             'betTypes' => $betTypes,
             'challengeTypes' => $challengeTypes,
@@ -65,7 +64,7 @@ class ChallengesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -80,36 +79,41 @@ class ChallengesController extends Controller
         $challenge->end_date = $request['end_date'];
         $challenge->created_by = Auth::id();
         $challenge->wager = $request['wager'];
+        $challenge->target = $request['targetScore'];
         $challenge->save();
 
         $challengers = $request['challengers'];
-        foreach($challengers as $challenger_id) {
+        foreach ($challengers as $challenger_id) {
             $challenger = new Challenger;
             $challenger->user_id = $challenger_id;
             $challenger->challenge_id = $challenge->id;
-            if($challenger_id == Auth::id()) {
+            if ($challenger_id == Auth::id()) {
                 $challenger->status = 'accepted';
-            }
-            else {
+            } else {
                 $challenger->status = 'pending';
             }
             $challenger->save();
         }
 
+        Challenge::subtractWager($challenge);
+
         return redirect()->action('ChallengesController@index');
     }
 
-    public function acceptChallenge($id) {
+    public function acceptChallenge($id)
+    {
         $updateChallenger = Challenger::find($id);
         $updateChallenger->status = 'accepted';
         $updateChallenger->save();
+
+        Challenge::subtractWager($updateChallenger->challenge);
         return redirect()->action('ChallengesController@index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -120,7 +124,7 @@ class ChallengesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -132,8 +136,8 @@ class ChallengesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -144,7 +148,7 @@ class ChallengesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

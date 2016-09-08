@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3"><h1 style="color:grey">about</h1></div>
+            <div class="col-md-3"><h1 style="color:#b7bbb7">about</h1></div>
         </div>
 
     </div>
@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <h2 style="color: grey">why <span style="color: grey">fit</span><span style="color: limegreen">wager</span>?</h2>
+                <h2 style="color: #b7bbb7">why <span style="color: #b7bbb7">fit</span><span style="color: #00d053">wager</span>?</h2>
             </div>
         </div>
 
@@ -32,13 +32,13 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8"><h2 style="color:grey">what <span style="color: limegreen">are</span> coins?</h2>
+            <div class="col-md-8"><h2 style="color:#b7bbb7">what are <span style="color: #00d053">coins</span>?</h2>
                 <p>This is where the fun begins. The coins serve as the monetary value for users to wager in fitness challenges against their friends. Every user upon signing up for fitwager is alloted 20 coins to begin playing.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3"><h2 style="color:grey">the <span style="color: limegreen">team</span></h2></div>
+            <div class="col-md-3"><h2 style="color:#b7bbb7">the <span style="color: #00d053">team</span></h2></div>
         </div>
 
         <div class="row">

@@ -2,40 +2,32 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-3"><h1 style="color:grey">create<span style="color:limegreen">challenge</span></h1></div>
+            <div class="col-md-3"><h1 style="color:#b7bbb7">create<span style="color:#00d053">challenge</span></h1></div>
         </div>
     </div>
 
     <br>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <form class="form-horizontal" method="POST" action="{{action('ChallengesController@store')}}"
                   id="user_parameters">
                 {!! csrf_field() !!}
 
-                <div class="form-group">
+                <div class="form-group" style="margin-right: 0px; margin-left: 0px;">
 
                     <div class="row">
                         <label for="bet" class="col-sm-2 control-label">Bet Type:</label>
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
                                 @foreach($betTypes as $index => $betType)
-                                    <label id="{{$betType->name . 'Radio'}}" class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input
+                                    <span style="padding-right: 0" data-toggle="tooltip" title="{{$betType->description}}"><label id="{{$betType->name . 'Radio'}}" class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input style="visibility: hidden; margin-left: -10px"
                                                 {{ $index == 0 ? 'checked' : '' }} type="radio"
                                                 data-toggle="tab" name="bet_type"
-                                                autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label>
+                                                autocomplete="off" value="{{$betType->id}}">{{$betType->name}}</label></span>
                                 @endforeach
                             </div>
                         </div>
-                    </div>
-
-                    <br>
-
-                    <div id="targetScore" class="row">
-                        <label for="description" class="col-sm-2 control-label">Target Score:</label>
-                        <input class="col-md-4" type="text" name="targetScore" id="" required="">
-                        <div class="col-md-6"></div>
                     </div>
 
                     <br>
@@ -45,10 +37,10 @@
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
                                 @foreach($challengeTypes as $index => $challengeType)
-                                    <label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input
+                                    <span><label class="btn btn-primary {{ $index == 0 ? 'active' : '' }}"><input style="visibility: hidden; margin-left: -10px"
                                                 {{ $index == 0 ? 'checked' : '' }} type="radio" id="challenge"
                                                 data-toggle="tab" name="challenge_type" autocomplete="off"
-                                                value="{{$challengeType->id}}">{{$challengeType->name}}</label>
+                                                value="{{$challengeType->id}}">{{$challengeType->name}}</label></span>
                                 @endforeach
                             </div>
                         </div>
@@ -56,10 +48,16 @@
 
                     <br>
 
+                    <div id="targetScore" class="row">
+                        <label for="description" class="col-sm-2 control-label">Target Score:</label>
+                        <input class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
+                    </div>
+
+                    <br>
+
                     <div class="row">
                         <label for="description" class="col-sm-2 control-label">Description:</label>
-                        <input class="col-md-4" type="text" name="description" id="description" required="">
-                        <div class="col-md-6"></div>
+                        <input class="form-control" style="width: 35%;" type="text" name="description" id="description" required="">
                     </div>
 
                     <br>
@@ -75,13 +73,11 @@
 
                     <div class="row">
                         <label for="wager" class="col-sm-2 control-label">Wager:</label>
-                        <input class="col-md-1" type="text" name="wager" id="wager" required="">
-                        <div class="col-md-9"></div>
+                        <input class="form-control" style="width: 11%;" type="text" name="wager" id="wager" required="">
                     </div>
 
                     <br>
 
-<<<<<<< HEAD
                         <div class="row">
                             <label for="user" class="col-sm-2 control-label">User:</label>
                             <div class="col-md-10" style="padding-top: 7px">
@@ -109,7 +105,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endsection
 

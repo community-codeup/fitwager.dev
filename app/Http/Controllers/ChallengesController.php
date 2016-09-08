@@ -9,11 +9,7 @@ use App\ChallengeType;
 use App\FitInfo;
 use App\User;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ChallengesController extends Controller
@@ -44,7 +40,7 @@ class ChallengesController extends Controller
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
 
-        $friends = FitInfo::getFriends($request, '-')['friends'];
+        $friends = FitInfo::getFriends(Auth::user())['friends'];
         $users = [];
         foreach ($friends as $index => $friend) {
             $user = User::where('fitbit_id', $friend['user']['encodedId'])->first();

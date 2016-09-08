@@ -17,7 +17,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->safeEmail,
         'fitbit_id' => str_random(5),
         'coins' => $faker->randomDigit,
-        'remember_token' => str_random(10),
     ];
 });
 

@@ -40,7 +40,6 @@ class ResultsController extends Controller
 
                 foreach ($actualChallengers as $challenger) {
                     $challenger->score = FitInfo::getStat(
-                        $request,
                         $challenger->user,
                         $challengeType
                     );

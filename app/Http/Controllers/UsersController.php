@@ -99,19 +99,12 @@ class UsersController extends Controller
      */
     public function show(Request $request, $id)
     {
-        //dd(Auth::user());
-        $user = User::findOrFail($id);
         if(Auth::check()){
-            //dd($pendingChallenges);
-            //$steps = FitInfo::getSteps($request, '-');
-            //dd($steps);
-            //$calories = FitInfo::getCalories();
-            //$distance = FitInfo::getDistance();
             $data = [
                 //'calories'=>$steps,
                 //'calories'=>$calories,
                 //'distance'=>$distance,
-                'user'=>$user
+                'user'=>Auth::user(),
             ];
             return view('user.account')->with($data);
         } else{

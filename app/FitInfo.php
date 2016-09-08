@@ -8,72 +8,92 @@
 
 namespace App;
 
-use App\FitibitToken;
+use DateTime;
+use djchen\OAuth2\Client\Provider\Fitbit;
 use Illuminate\Http\Request;
-use App\Results;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Jmitchell38488\OAuth2\Client\Provider\FitBit;
+use App\User;
 
 
 class FitInfo
 {
+    private static $provider;
 
-    public static function activities(Request $request, $user)
+    public static function activities($user)
     {
-        FitibitToken::refresh($request, $user);
-        FitibitToken::refreshToken($user);
-
-        $provider = new FitBit([
-            'clientId' => env('FITBIT_KEY'),
-            'clientSecret' => env('FITBIT_KEY'),
-            'redirectUri' => env('FITBIT_KEY'),
-        ]);
-        $today = new \DateTime();
-        $endpoint = $provider->getBaseApiUrl() . "user/" . $user->fitbit_id . "/activities/date/" . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
+        $provider =  self::provider();
 
         $request = $provider->getAuthenticatedRequest(
-            FitBit::METHOD_GET,
-            $endpoint,
-            $user->fitbit_token
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/' . $user->fitbit_id . '/activities/date/'. (new DateTime())->format('Y-m-d') . '.json',
+            self::getAccessTokenFor($user)
         );
-
         $response = $provider->getResponse($request);
 
         return $response;
     }
 
-    public static function getFriends(Request $request, $fitbit_id) {
-        FitibitToken::refresh($request);
+    private static function provider()
+    {
+        if (!self::$provider) {
+            self::$provider = new Fitbit([
+                'clientId' => env('FITBIT_KEY'),
+                'clientSecret' => env('FITBIT_SECRET'),
+                'redirectUri' => env('FITBIT_REDIRECT_URI'),
+            ]);
+        }
 
-        $provider = new FitBit([
-            'clientId' => env('FITBIT_KEY'),
-            'clientSecret' => env('FITBIT_KEY'),
-            'redirectUri' => env('FITBIT_KEY'),
-        ]);
-        $endpoint = $provider->getBaseApiUrl() . "user/" . $fitbit_id . "/friends" . '.' . FitBit::FORMAT_JSON;
+        return self::$provider;
+    }
+
+    private static function getAccessTokenFor(User $user)
+    {
+        $token = $user->token;
+        $accessToken = $token->oauthToken();
+        if ($accessToken->hasExpired()) {
+            $newAccessToken = self::provider()->getAccessToken('refresh_token', [
+                'refresh_token' => $accessToken->getRefreshToken()
+            ]);
+            $token->renew($newAccessToken->getValues());
+            $accessToken = $newAccessToken;
+        }
+
+        return $accessToken;
+    }
+
+    public static function getFriends(User $user) {
+
+        $provider = self::provider();
+
 
         $request = $provider->getAuthenticatedRequest(
-            FitBit::METHOD_GET,
-            $endpoint,
-            session('fitbit')['oauth2']['accessToken']
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/' . $user->fitbit_id . '/friends.json',
+            self::getAccessTokenFor($user)
         );
-
         $response = $provider->getResponse($request);
+
+
+//        $endpoint = $provider->getBaseApiUrl() . "user/" . $fitbit_id . "/friends" . '.' . FitBit::FORMAT_JSON;
+//
+//        $request = $provider->getAuthenticatedRequest(
+//            FitBit::METHOD_GET,
+//            $endpoint,
+//            session('fitbit')['oauth2']['accessToken']
+//        );
+//
+//        $response = $provider->getResponse($request);
         return $response;
     }
 
-    public static function getStat(Request $request, $user, $stat) {
+    public static function getStat($user, $stat) {
 
-        $response = static::activities($request, $user);
+        $response = static::activities($user);
 
         if($stat == 'distance') {
-            $stat = $response['summary']['distances'][0]['distance'];
-        } else {
-            $stat = $response['summary'][$stat];
+            return $response['summary']['distances'][0]['distance'];
         }
-        return $stat;
+
+        return $response['summary'][$stat];
     }
 
     public static function getSteps(Request $request, $fitbit_id)

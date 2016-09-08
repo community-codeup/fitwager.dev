@@ -2,8 +2,6 @@
 
 namespace App;
 
-use DateTime;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -17,6 +15,8 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+
+    public $timestamps = false;
 
     /**
      * The database table used by the model.
@@ -32,29 +32,15 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $fillable = ['name', 'email', 'password', 'fitbit_id', 'picture', 'coins'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
 
-
-    public function hasExpiredToken()
+    public function token()
     {
-        return new DateTime() > new DateTime($this->fitbit_token_expiration);
+        return $this->hasOne(Token::class, 'resource_owner_id', 'fitbit_id');
     }
-
 
     public function challenges()
     {
         return $this->hasMany(Challenge::class, 'challenges_id');
-    }
-
-
-    public function notification()
-    {
-        return $this->hasMany(Noficiation::class, 'notifications_id');
     }
 
     public static function getChallenges(){

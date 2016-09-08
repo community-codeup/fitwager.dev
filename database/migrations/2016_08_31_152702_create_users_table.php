@@ -17,13 +17,9 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('fitbit_id')->unique();
-            $table->string('fitbit_token');
-            $table->string('fitbit_refresh_token');
-            $table->dateTime('fitbit_token_expiration');
             $table->string('picture')->nullable();
             $table->integer('coins')->nullable();
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

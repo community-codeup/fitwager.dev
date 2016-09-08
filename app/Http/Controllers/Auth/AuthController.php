@@ -68,65 +68,9 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Redirect the user to the GitHub authentication page.
-     *
-     * @return Response
-     */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('fitbit')->stateless(false)->redirect();
-    }
-
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback()
-    {
-        $fitbit_user = Socialite::driver('fitbit')->stateless(true)->user();
-        //dd($fitbit_user);
-        $user = User::firstOrCreate([
-            'fitbit_id' => $fitbit_user->id,
-        ]);
-        $user->name = $fitbit_user->user['user']['fullName'];
-        $user->email = $fitbit_user->email;
-        $user->picture = $fitbit_user->avatar;
-
-        $user->fitbit_token = $fitbit_user->token;
-        $user->fitbit_refresh_token = $fitbit_user->refreshToken;
-        $date = new DateTime('now');
-        $date->setTimestamp($date->getTimestamp() + $fitbit_user->expiresIn);
-        $user->fitbit_token_expiration = $date->format('Y-m-d H:i:s');
-
-        if ($user->coins == null) {
-            $user->coins = 20;
-        }
-        $user->save();
-
-
-//dd($fitbit_user, $date->format('Y-m-d h:i:s'));
-
-        session(['fitbit' => [
-            'oauth2' => [
-                'accessToken' => $fitbit_user->token,
-                'refreshToken' => $fitbit_user->refreshToken,
-                'user-id' => $fitbit_user->id,
-                'expires' => $date->getTimestamp(),
-            ]
-        ]]);
-
-        Auth::login($user);
-
-        return redirect()->action('UsersController@show', $user->id);
-
-    }
-
     public function getLogout()
     {
         Auth::logout();
-        session()->forget('fitbit');
 
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }

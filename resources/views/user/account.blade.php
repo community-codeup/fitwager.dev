@@ -6,40 +6,23 @@
 
 <div class="container-fluid" style="margin-top: 5%; padding-bottom: 2%;">
     <div class="row">
-        <div class="col-sm-3 text-center">
-            <img class="text-center img-responsive center-block" style="padding:1px; border:1px solid #021a40; width:200px;height:200px"; src="{{ $user->picture }}">
+            <div class="col-sm-3 text-center">
+                <h3 style="text-transform: lowercase; color: dimgray">{{ $user->name }}</h3>
+                <img class="text-center img-responsive center-block" style="padding:1px; border:1px solid #021a40; width:200px;height:200px"; src="{{ $user->picture }}">
+                    <ul style="list-style-type: none; padding: 0; margin: 0">
+                        <li><h4 style="color: dimgrey">fitbit id: {{ $user->fitbit_id }}</h4></li>
+                    </ul>
+                <h3><img src="/img/coins3.png" style="width: 100px; height: 100px"> = {{ $user->coins }}</h3>
+            </div>
 
-            <br>
-            <h3>Coin Amount = {{ $user->coins }}</h3>
-        </div>
-        <div class="col-sm-2" style="border: 2px solid white"><h1>{{ $user->name }}</h1>
-            <ul style="list-style-type: none; padding: 0; margin: 0">
-                <li>User email : {{$user->email}}</li>
-                <li>Fitbit Id : {{ $user->fitbit_id }}</li>
-            </ul>
-        </div>
-            <h2 class="text-center">Daily Activity Log</h1>
-                <div class="col-md-2" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                    <h3 style="color: #FF4A48">Total Steps</h3>
-                    <ol style="font-size: medium">
-                        <li style="color: #FF4A48"><span style="color: black">name1</li>
-                    </ol>
-                </div>
-                  <div class="col-md-2" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                    <h3 style="color: #FF4A48">Distance Covered</h3>
-                    <ol style="font-size: medium">
-                        <li style="color: #FF4A48"><span style="color: black">name1</li>
-                    </ol>
-                </div>
-                  <div class="col-md-2" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                    <h3 style="color: #FF4A48">Calories Burned</h3>
-                    <ol style="font-size: medium">
-                        <li style="color: #FF4A48"><span style="color: black">name1</li>
-                    </ol>
-                </div>
+            <div class="col-sm-9" id="barChart" style="min-width: 200px; height: 400px; margin: 0 auto"></div>
+
     </div>
 </div>
 
 <hr style="border-top: 2px solid #e0e0e0">
+
+    <br>
+
 @endsection
 

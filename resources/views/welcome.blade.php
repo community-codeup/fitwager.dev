@@ -25,8 +25,8 @@
                     </div>
                     <div class="hero">
                         <hgroup>
-                            <h1>We are Fit<span style="color: limegreen">Wager</span></h1>
-                            <h3>Challenge Others In Your Area Today</h3>
+                            <h1>we are <h1><img src="/img/logo8.png"></h1></h1>
+                            <h3>challenge others in your area today</h3>
                         </hgroup>
                         <a href="auth/fitbit" class="btn btn-hero btn-lg" href="/auth/fitbit" role="button">Begin Now</a>
                     </div>
@@ -37,9 +37,9 @@
                     </div>
                     <div class="hero">
                         <hgroup>
-                            <h1>Start Earning Wager Coins Today</h1>
+                            <h1>start earning wager coins today</h1>
                         </hgroup>
-                        <button class="btn btn-hero btn-lg" role="button">Click for More Info</button>
+                        <a href="/about" class="btn btn-hero btn-lg" role="button">Click for More Info</a>
                     </div>
                 </div>
                 <div class="item slides">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="hero">
                         <hgroup>
-                            <h1>Log in to Your FitBit Account Here</h1>
+                            <h1>log in to your fitbit account here</h1>
                         </hgroup>
                         <a href="auth/fitbit" class="btn btn-hero btn-lg" role="button">Log In</a>
                     </div>
@@ -78,29 +78,29 @@
                                     <ol style="font-size: medium">
                                         <li style="color: #FF4A48"><span style="color: black">name1</span></li>
                                         <li style="color: #FF4A48"><span style="color: black">name2</span></li>
-                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</span></li>
                                     </ol>
                             </div>
                             <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
                                 <h3 style="color: #FF4A48">Challenge 2</h3>
                                     <ol style="font-size: medium">
-                                        <li style="color: #FF4A48"><span style="color: black">name1</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name2</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name1</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name2</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</span></li>
                                     </ol>
                             </div>
                             <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
                                 <h3 style="color: #FF4A48">Challenge 3</h3>
                                     <ol style="font-size: medium">
-                                        <li style="color: #FF4A48"><span style="color: black">name1</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name2</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name3</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name4</li>
-                                        <li style="color: #FF4A48"><span style="color: black">name5</li>
+                                        <li style="color: #FF4A48"><span style="color: black">name1</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name2</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name3</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name4</span></li>
+                                        <li style="color: #FF4A48"><span style="color: black">name5</span></li>
                                     </ol>
                             </div>
                         </div>

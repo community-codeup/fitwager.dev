@@ -11,16 +11,16 @@
 
     <div class="container">
         <div class="row">
-                <div class="col-md-4 text-center"><button id="activeTab" type="button" class="btn btn-default btn-lg">Active</button>
+                <div class="col-md-4 text-center"><button id="activeTab" type="button" class="btn btn-default btn-lg">active</button>
                 </div>
 
 
 
-                <div class="col-md-4 text-center"><button id="historicTab" type="button" class="btn btn-default btn-lg">Historic</button>
+                <div class="col-md-4 text-center"><button id="historicTab" type="button" class="btn btn-default btn-lg">historic</button>
                 </div>
 
 
-                <div class="col-md-4 text-center"><button id="pendingTab" type="button" class="btn btn-default btn-lg">Pending</button>
+                <div class="col-md-4 text-center"><button id="pendingTab" type="button" class="btn btn-default btn-lg">pending</button>
                 </div>
 
         </div>
@@ -35,14 +35,13 @@
                 <div class="table-responsive">
                     <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
-                        <th>Challenge ID</th>
-                        <th>Created By</th>
-                        <th>Bet Type</th>
-                        <th>Challenge Type</th>
-                        <th>Wager</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                        <th>Complete Challenge</th>
+                        <th>created by</th>
+                        <th>bet type</th>
+                        <th>challenge type</th>
+                        <th>wager</th>
+                        <th>edit</th>
+                        <th>delete</th>
+                        <th>complete challenge</th>
                         </thead>
                         <tbody id="buildTableHTML">
                         @foreach ($activeChallenges as $challenge)

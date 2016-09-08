@@ -7,17 +7,17 @@
                     <tr>
                         <td>
                             <ul>
-                                <li><h5><a href="#" id="footer-heads">HOME</a></h5></li>
+                                <li><h5><a href="/" id="footer-heads">home</a></h5></li>
                             </ul>
                         </td>
                         <td>
                             <ul>
-                                <li><h5><a href="#" id="footer-heads">ACCOUNT</a></h5></li>
+                                <li><h5><a href="/user/account" id="footer-heads">account</a></h5></li>
                             </ul>
                         </td>
                         <td>
                             <ul>
-                                <li><h5><a href="#" id="footer-heads">COINS</a></h5></li>
+                                <li><h5><a href="/challenges" id="footer-heads">my challenges</a></h5></li>
                             </ul>
                         </td>
                     </tr>

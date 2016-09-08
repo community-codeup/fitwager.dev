@@ -79,7 +79,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '<span style="font-size: 32px; color: limegreen">activity</span>'
+            text: '<span style="font-size: 32px; color: #00d053">activity</span>'
         },
         xAxis: {
             categories: [
@@ -133,3 +133,8 @@ $(function () {
     });
 });
 
+//----------- CHALLENGE TYPE TOOL TIPS ------------//
+
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});

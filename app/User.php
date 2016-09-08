@@ -50,11 +50,6 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(Challenge::class, 'challenges_id');
     }
-    
-    public function results()
-    {
-        return $this->hasMany(Results::class, 'results_id');
-    }
 
 
     public function notification()

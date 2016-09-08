@@ -53,6 +53,7 @@ Route::get('/account', "UsersController@store");
 Route::resource('challenges', 'ChallengesController');
 Route::get('acceptchallenge/{challengeId}', 'ChallengesController@acceptChallenge');
 
+
 //Route::get('challenges', function() {
 //    $betTypes = BetType::all();
 //    $challengeTypes = ChallengeType::all();

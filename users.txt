@@ -58,6 +58,27 @@ foreach($finishedChallenges as $challenge) { //steps
 
 	 $result->save;
 
+	 if($betType == 'shared') {
+                    $passed = [];
+                    $failed = [];
+                    foreach($actualChallengers as $challenger){
+                        if($challenger->score < $challenge->target){
+                            //$updateUser = User::find($challenger->user_id);
+                            array_push($failed, $challenger);
+                            $failedChallengers = (count($challenger));
+                            $potToShare = $failedChallengers * $challenge->wager;
+                            $challenger->status = 'failed';
+                            $challenger->save();
+                        } else {
+                            array_push($passed, $challenger);
+                            $passedChallenger = (count($challenger));
+                            $challenger->status = 'achieved';
+                            $challenger->coins += (ceil($passedChallenger/$failedChallengers)) * $challenge->amount;
+                        }
+
+                    }
+                } 
+
 
 	
 }

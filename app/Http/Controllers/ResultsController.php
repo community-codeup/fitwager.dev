@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Jmitchell38488\OAuth2\Client\Provider\FitBit;
 
 class ResultsController extends Controller
 {
@@ -101,14 +100,41 @@ class ResultsController extends Controller
                     }
                 }
 
-                if($betType == 'shared') {
+                 if($betType == 'shared') {
+                    $wonChallengers = [];
+                    $totalChallengers = count($actualChallengers);
                     foreach($actualChallengers as $challenger){
-
+                        if($challenger->score < $challenge->target){
+                            $challenger->status = 'lost';
+                            $challenger->save();
+                        } else {
+                            array_push($wonChallengers, $challenger);
+                            $challenger->status = 'won';
+                            $challenger->save();
+                        }
                     }
-                }
+                    $wonCount = (count($wonChallengers));
+                    foreach($wonChallengers as $challenger) {
+                        $updateUser = User::find($challenger->user_id);
+                        $updateUser->coins += (floor(($challenge->wager * $totalChallengers) / $wonCount));
+                        $updateUser->save();
+                    }  
+                } 
 
+//anyone who successfully completes the challenge will get their money back.
                 if($betType == 'motivate') {
-
+                    foreach($actualChallengers as $challenger) {
+                        if($challenger->score > $challenge->target) {
+                            $challenger->status = 'won';
+                            $challenger->save();
+                            $updateUser = User::find($challenger->user_id);
+                            $updateUser->coins += $challenge->wager;
+                            $updateUser->save();
+                        } else {
+                            $challenger->status = 'lost';
+                            $challenger->save();
+                        }
+                    }
                 }
             }
         }

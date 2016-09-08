@@ -52,6 +52,9 @@ class User extends Model implements AuthenticatableContract,
         }    
     public function challenger() {
         return $this->hasOne(Challenger::class);
-
+    }
+    public function challengeCount()
+    {
+        return count(Challenge::getPendingChallenges());
     }
 }

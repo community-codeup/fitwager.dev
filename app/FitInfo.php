@@ -32,6 +32,23 @@ class FitInfo
         return $response;
     }
 
+    public static function detailedCalories($user)
+    {
+        // /1/user/-/activities/calories/date/2014-09-01/1d/15min/time/12:30/12:45.json
+        //dd(Fitbit::BASE_FITBIT_API_URL . '/1/user/' . $user->fitbit_id . '/activities/calories/date/'. (new DateTime())->format('Y-m-d') . '/1d/60min/00:00/24:00.json');
+        $provider =  self::provider();
+
+        $request = $provider->getAuthenticatedRequest(
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/-/activities/steps/date/today/1m.json',
+            self::getAccessTokenFor($user)
+        );
+        $response = $provider->getResponse($request);
+
+        return $response;
+
+    }
+
     private static function provider()
     {
         if (!self::$provider) {

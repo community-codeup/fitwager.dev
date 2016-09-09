@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-3"><h1 style="color:#b7bbb7">create<span style="color:#00d053">challenge</span></h1></div>
+            <div class="col-md-3"><h1 style="color:#888888">create<span style="color:#00d053">challenge</span></h1></div>
         </div>
     </div>
 

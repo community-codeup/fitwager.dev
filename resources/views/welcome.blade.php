@@ -25,7 +25,7 @@
                     </div>
                     <div class="hero">
                         <hgroup>
-                            <h1>we are <h1><img src="/img/logo9.png"></h1></h1>
+                            <h1 style="color: white">we are <h1><img src="/img/logo14.png"></h1></h1>
                             <h3>challenge your fitbit friends today</h3>
                         </hgroup>
                         <a href="auth/fitbit" class="btn btn-hero btn-lg" href="/auth/fitbit" role="button">Begin Now</a>
@@ -73,7 +73,7 @@
                 <div id="page-wrap">
                     <div class="col-md-12 five-columns group" style="padding-top: -1%">
                         <div class="row" style="border: 1px solid grey;">
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
                                 <h3 style="color: #00d053">Challenge 1</h3>
                                     <ol style="font-size: medium">
                                         <li style="color: #00d053"><span style="color: black">name1</span></li>
@@ -83,7 +83,7 @@
                                         <li style="color: #00d053"><span style="color: black">name5</span></li>
                                     </ol>
                             </div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
                                 <h3 style="color: #00d053">Challenge 2</h3>
                                     <ol style="font-size: medium">
                                         <li style="color: #00d053"><span style="color: black">name1</span></li>
@@ -93,7 +93,7 @@
                                         <li style="color: #00d053"><span style="color: black">name5</span></li>
                                     </ol>
                             </div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
                                 <h3 style="color: #00d053">Challenge 3</h3>
                                     <ol style="font-size: medium">
                                         <li style="color: #00d053"><span style="color: black">name1</span></li>

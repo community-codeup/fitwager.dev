@@ -51,7 +51,7 @@ class UsersController extends Controller
         );
 
         $response = $provider->getResponse($request);
-        //dd($response);
+        dd($response);
         return 'Yay!';
     }
 
@@ -100,6 +100,8 @@ class UsersController extends Controller
     public function show(Request $request, $id)
     {
         if(Auth::check()){
+            $response = FitInfo::detailedCalories(Auth::user());
+//            dd($response);
             $data = [
                 //'calories'=>$steps,
                 //'calories'=>$calories,

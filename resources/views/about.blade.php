@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3"><h1 style="color:#b7bbb7">about</h1></div>
+            <div class="col-md-3"><h1 style="color:#888888">about</h1></div>
         </div>
 
     </div>
@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <h2 style="color: #b7bbb7">why <span style="color: #b7bbb7">fit</span><span style="color: #00d053">wager</span>?</h2>
+                <h2 style="color: #888888">why <span style="color: #888888">fit</span><span style="color: #00d053">wager</span>?</h2>
             </div>
         </div>
 
@@ -32,30 +32,30 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8"><h2 style="color:#b7bbb7">what are <span style="color: #00d053">coins</span>?</h2>
+            <div class="col-md-8"><h2 style="color:#888888">what are <span style="color: #00d053">coins</span>?</h2>
                 <p>This is where the fun begins. The coins serve as the monetary value for users to wager in fitness challenges against their friends. Every user upon signing up for fitwager is alloted 20 coins to begin playing.</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-3"><h2 style="color:#b7bbb7">the <span style="color: #00d053">team</span></h2></div>
+            <div class="col-md-3"><h2 style="color:#888888">the <span style="color: #00d053">team</span></h2></div>
         </div>
 
         <div class="row">
             <div class="col-md-4">
                 <img class="text-center img-responsive center-block" src="/img/tj.jpeg"
-                     style="padding:1px; border:1px solid #021a40; width:195px; height:253px">
-                <div class="col-md-4 text-center"><h3>tj</h3></div>
+                     style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
+                <div class="col-md-4 text-center"><h3 style="color: #888888">tj</h3></div>
             </div>
             <div class="col-md-4">
                 <img class="text-center img-responsive center-block" src="/img/codeup_photo.jpeg"
-                     style="padding:1px; border:1px solid #021a40; width:195px; height:253px">
-                <div class="col-md-4 text-center"><h3>chris</h3></div>
+                     style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
+                <div class="col-md-4 text-center"><h3 style="color: #888888">chris</h3></div>
             </div>
             <div class="col-md-4">
                 <img class="text-center img-responsive center-block" src="/img/craig.jpg"
-                     style="padding:1px; border:1px solid #021a40; width:195px; height:253px">
-                <div class="col-md-4 text-center"><h3>craig</h3></div>
+                     style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
+                <div class="col-md-4 text-center"><h3 style="color: #888888">craig</h3></div>
             </div>
         </div>
 

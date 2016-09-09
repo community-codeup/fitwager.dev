@@ -32,27 +32,25 @@ class UsersController extends Controller
      */
     public function index()
     {
-        session_start();
-
-        $provider = new FitBit([
-            'clientId'      => env('FITBIT_KEY'),
-            'clientSecret'  => env('FITBIT_SECRET'),
-            'redirectUri'   => env('FITBIT_REDIRECT_URI'),
-        ]);
-        $today = new DateTime();
-        $endpoint = $provider->getBaseApiUrl() . "user/". $_SESSION['fitbit']['oauth2']['user-id'] . "/activities/date/"
-            . $today->format('Y-m-d') . '.' . FitBit::FORMAT_JSON;
-        var_dump($endpoint);
-
-        $request = $provider->getAuthenticatedRequest(
-            FitBit::METHOD_GET,
-            $endpoint,
-            $_SESSION['fitbit']['oauth2']['accessToken']
-        );
-
-        $response = $provider->getResponse($request);
-        dd($response);
-        return 'Yay!';
+        $calories = FitInfo::weeklyCalories(Auth::user());
+        $series = [];
+        $dataCalories = [];
+        foreach ($calories['activities-calories'] as $calorie) {
+//            dd($calorie);
+            $series[] = $calorie['dateTime'];
+            $dataCalories[] = $calorie['value'];
+        }
+        $steps = FitInfo::weeklySteps(Auth::user());
+        $dataSteps = [];
+        foreach ($steps['activities-steps'] as $step) {
+            $dataSteps[] = $step['value'];
+        }
+        $distance = FitInfo::weeklyDistance(Auth::user());
+        $dataDistance = [];
+        foreach ($distance['activities-distance'] as $distance) {
+            $dataDistance[] = $distance['value'];
+        }
+        return['categories' => $series, 'calories' => $dataCalories, 'steps' => $dataSteps, 'distance' => $dataDistance];
     }
 
     public function acceptChallenge($id) {
@@ -100,12 +98,29 @@ class UsersController extends Controller
     public function show(Request $request, $id)
     {
         if(Auth::check()){
-            $response = FitInfo::detailedCalories(Auth::user());
-//            dd($response);
+            $calories = FitInfo::weeklyCalories(Auth::user());
+            $series = [];
+            $dataCalories = [];
+            foreach ($calories['activities-calories'] as $calorie) {
+//            dd($calorie);
+                $series[] = $calorie['dateTime'];
+                $dataCalories[] = (int) $calorie['value'];
+            }
+            $steps = FitInfo::weeklySteps(Auth::user());
+            $dataSteps = [];
+            foreach ($steps['activities-steps'] as $step) {
+                $dataSteps[] = (int) $step['value'];
+            }
+            $distance = FitInfo::weeklyDistance(Auth::user());
+            $dataDistance = [];
+            foreach ($distance['activities-distance'] as $distance) {
+                $dataDistance[] = (float) $distance['value'];
+            }
+            $graphInfo = ['categories' => $series, 'calories' => $dataCalories, 'steps' => $dataSteps, 'distance' => $dataDistance];
             $data = [
                 //'calories'=>$steps,
                 //'calories'=>$calories,
-                //'distance'=>$distance,
+                'graphInfo' => $graphInfo,
                 'user'=>Auth::user(),
             ];
             return view('user.account')->with($data);

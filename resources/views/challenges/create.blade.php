@@ -56,6 +56,13 @@
                     <br>
 
                     <div class="row">
+                        <label for="wager" class="col-sm-2 control-label">Wager:</label>
+                        <input class="form-control" style="width: 11%;" type="text" name="wager" id="wager" required="">
+                    </div>
+
+                    <br>
+
+                    <div class="row">
                         <label for="description" class="col-sm-2 control-label">Description:</label>
                         <input class="form-control" style="width: 35%;" type="text" name="description" id="description" required="">
                     </div>
@@ -67,13 +74,6 @@
                         <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
                         <input type="hidden" id="hidden-start-date" name="start_date">
                         <input type="hidden" id="hidden-end-date" name="end_date">
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <label for="wager" class="col-sm-2 control-label">Wager:</label>
-                        <input class="form-control" style="width: 11%;" type="text" name="wager" id="wager" required="">
                     </div>
 
                     <br>

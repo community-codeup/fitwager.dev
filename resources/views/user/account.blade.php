@@ -14,7 +14,9 @@
                     </ul>
                 <h3><img src="/img/coins3.png" style="width: 100px; height: 100px"> = {{ $user->coins }}</h3>
             </div>
-
+            <script>
+                var graphInfo = {!! json_encode($graphInfo) !!};
+            </script>
             <div class="col-sm-9" id="barChart" style="min-width: 200px; height: 400px; margin: 0 auto"></div>
 
     </div>

@@ -74,6 +74,7 @@ $(document).ready(function(){
 
 // ------------------   BAR CHART JS ----------------------//
 $(function () {
+    console.log( graphInfo.steps, graphInfo.calories, graphInfo.distance);
     $('#barChart').highcharts({
         chart: {
             type: 'column'
@@ -82,21 +83,7 @@ $(function () {
             text: '<span style="font-size: 32px; color: #00d053">activity</span>'
         },
         xAxis: {
-            categories: [
-                '12AM',
-                '2',
-                '4',
-                '6',
-                '8',
-                '10',
-                '12PM',
-                '2',
-                '4',
-                '6',
-                '8',
-                '10',
-                '12AM'
-            ]
+            categories: graphInfo.categories
         },
         yAxis: {
             min: 0,
@@ -107,7 +94,7 @@ $(function () {
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} ft</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -120,15 +107,15 @@ $(function () {
         },
         series: [{
             name: 'Steps',
-            data: [0, 0, 0, 0, 412, 1103, 108, 1032, 654, 1092]
+            data: graphInfo.steps
 
         }, {
             name: 'Calories',
-            data: [50,30, 90, 17, 17, 19, 100, 34]
+            data: graphInfo.calories
 
         }, {
-            name: 'Distance',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+            name: 'Distance(km)',
+            data: graphInfo.distance
         }]
     });
 });

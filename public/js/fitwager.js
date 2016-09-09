@@ -110,12 +110,13 @@ $(function () {
             data: graphInfo.steps
 
         }, {
+            name: 'Distance(m)',
+            data: graphInfo.distance
+        },
+            {
             name: 'Calories',
             data: graphInfo.calories
 
-        }, {
-            name: 'Distance(km)',
-            data: graphInfo.distance
         }]
     });
 });

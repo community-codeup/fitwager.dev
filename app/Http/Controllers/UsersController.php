@@ -114,7 +114,7 @@ class UsersController extends Controller
             $distance = FitInfo::weeklyDistance(Auth::user());
             $dataDistance = [];
             foreach ($distance['activities-distance'] as $distance) {
-                $dataDistance[] = (float) $distance['value'];
+                $dataDistance[] = (float) $distance['value'] * 1000;
             }
             $graphInfo = ['categories' => $series, 'calories' => $dataCalories, 'steps' => $dataSteps, 'distance' => $dataDistance];
             $data = [

@@ -44,6 +44,7 @@
         <div class="row">
             <div class="col-md-4">
                 <img class="text-center img-responsive center-block" src="/img/tj.jpeg"
+
                      style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
                 <div class="col-md-4 text-center"><h3 style="color: #888888">tj</h3></div>
             </div>
@@ -56,6 +57,22 @@
                 <img class="text-center img-responsive center-block" src="/img/craig.jpg"
                      style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
                 <div class="col-md-4 text-center"><h3 style="color: #888888">craig</h3></div>
+
+                <div class="col-md-4 text-center"><h3>tj becker</h3></div>
+                <h4>TJ has always loved to bring his best to the things he is passionate about and loves a challenge.
+                    After discovering a new passion in coding, he began his pursuit of web development by attending Codeup.
+                    Now TJ is looking forward to the next step into a development career.  </h4>
+            </div>
+            <div class="col-md-4">
+                <img class="text-center img-responsive center-block" src="/img/codeup_photo.jpeg"
+                     style="padding:1px; border:1px solid #021a40; width:195px; height:253px">
+                <div class="col-md-4 text-center"><h3>chris davila</h3></div>
+            </div>
+            <div class="col-md-4">
+                <img class="text-center img-responsive center-block" src="/img/craig.jpg"
+                     style="padding:1px; border:1px solid #021a40; width:195px; height:253px">
+                <div class="col-md-4 text-center"><h3>craig rupp</h3></div>
+
             </div>
         </div>
 

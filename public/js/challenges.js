@@ -18,7 +18,9 @@ $('#pendingTab').click(function() {
 });
 
 $('#competitiveRadio').click(function() {
+    $('#targetScoreForm').val("");
     $('#targetScore').hide();
+
 });
 
 $('#personalRadio').click(function() {

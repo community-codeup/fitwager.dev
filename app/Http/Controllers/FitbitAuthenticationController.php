@@ -44,7 +44,7 @@ class FitbitAuthenticationController extends Controller
                 $owner = User::firstOrCreate([
                     'name' => $resourceOwner['fullName'],
                     'fitbit_id' => $resourceOwner['encodedId'],
-                    'picture' => $resourceOwner['avatar'],
+                    'picture' => $resourceOwner['avatar150'],
                 ]);
                 if ($owner->coins == null) {
                     $owner->coins = 20;

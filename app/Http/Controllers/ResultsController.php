@@ -29,7 +29,6 @@ class ResultsController extends Controller
 //        dd(FitInfo::getStat($request, '-', 'steps'));
 
         $challenges = Challenge::getFinishedChallenges();
-
         foreach ($challenges as $challenge) {
             $actualChallengers = $challenge->acceptedChallengers();
 
@@ -51,10 +50,13 @@ class ResultsController extends Controller
                         $updateChallenger = Challenger::find($challenger->id);
                         $updateUser = User::find($challenger->user_id);
                         if ($challenger->id == $winner->id) {
+                            $winnings = (count($actualChallengers) * $updateChallenger->challenge->wager);
+                            $updateUser->coins += $winnings;
+                            $updateChallenger->winnings = $winnings - $challenge->wager;
                             $updateChallenger->status = 'won';
-                            $updateUser->coins += (count($actualChallengers) * $updateChallenger->challenge->wager);
                         } else {
                             $updateChallenger->status = 'lost';
+                            $updateChallenger->winnings = 0 - $challenge->wager;
                         }
                         $updateChallenger->save();
                         $updateUser->save();
@@ -66,9 +68,12 @@ class ResultsController extends Controller
                     $updateUser = User::find($updateChallenger->user_id);
                     if ($updateChallenger->score < $challenge->target) {
                         $updateChallenger->status = 'lost';
+                        $updateChallenger->winnings = 0 - $challenge->wager;
                     } else {
                         $updateChallenger->status = 'won';
-                        $updateUser->coins += $challenge->wager;
+                        $winnings = $challenge->wager;
+                        $updateUser->coins += $winnings;
+                        $updateUser->winnings = $winnings - $challenge->wager;
                     }
                     $updateChallenger->save();
                     $updateUser->save();
@@ -88,13 +93,16 @@ class ResultsController extends Controller
                             foreach ($actualChallengers as $challenger) {
                                 $updateUser = User::find($challenger->user_id);
                                 $challenger->status = 'won';
-                                $updateUser->coins += $challenge->wager;
+                                $winnings = $challenge->wager;
+                                $updateUser->coins += $winnings;
+                                $updateUser->winnings = $winnings - $challenge->wager;
                                 $updateUser->save();
                                 $challenger->save();
                             }
                         } else {
                             foreach ($actualChallengers as $challenger) {
                                 $challenger->status = 'lost';
+                                $challenger->winnings = 0 - $challenge->wager;
                                 $challenger->save();
                         }
                     }
@@ -106,6 +114,7 @@ class ResultsController extends Controller
                     foreach($actualChallengers as $challenger){
                         if($challenger->score < $challenge->target){
                             $challenger->status = 'lost';
+                            $challenger->winnings = 0 - $challenge->wager;
                             $challenger->save();
                         } else {
                             array_push($wonChallengers, $challenger);
@@ -116,7 +125,9 @@ class ResultsController extends Controller
                     $wonCount = (count($wonChallengers));
                     foreach($wonChallengers as $challenger) {
                         $updateUser = User::find($challenger->user_id);
-                        $updateUser->coins += (floor(($challenge->wager * $totalChallengers) / $wonCount));
+                        $winnings = (floor(($challenge->wager * $totalChallengers) / $wonCount));
+                        $updateUser->coins += $winnings;
+                        $updateUser->winnings = $winnings - $challenge->wager;
                         $updateUser->save();
                     }  
                 } 
@@ -128,10 +139,13 @@ class ResultsController extends Controller
                             $challenger->status = 'won';
                             $challenger->save();
                             $updateUser = User::find($challenger->user_id);
-                            $updateUser->coins += $challenge->wager;
+                            $winnings = $challenge->wager;
+                            $updateUser->coins += $winnings;
+                            $updateUser->winnings = $winnings - $challenge->wager;
                             $updateUser->save();
                         } else {
                             $challenger->status = 'lost';
+                            $challenger->winnings = 0 - $challenge->wager;
                             $challenger->save();
                         }
                     }

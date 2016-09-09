@@ -32,6 +32,51 @@ class FitInfo
         return $response;
     }
 
+    public static function weeklySteps($user)
+    {
+        $provider =  self::provider();
+
+        $request = $provider->getAuthenticatedRequest(
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/'.$user->fitbit_id.'/activities/steps/date/today/1w.json',
+            self::getAccessTokenFor($user)
+        );
+        $response = $provider->getResponse($request);
+
+        return $response;
+
+    }
+
+    public static function weeklyCalories($user)
+    {
+        $provider =  self::provider();
+
+        $request = $provider->getAuthenticatedRequest(
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/'.$user->fitbit_id.'/activities/calories/date/today/1w.json',
+            self::getAccessTokenFor($user)
+        );
+        $response = $provider->getResponse($request);
+
+        return $response;
+
+    }
+
+    public static function weeklyDistance($user)
+    {
+        $provider =  self::provider();
+
+        $request = $provider->getAuthenticatedRequest(
+            'GET',
+            Fitbit::BASE_FITBIT_API_URL . '/1/user/'.$user->fitbit_id.'/activities/distance/date/today/1w.json',
+            self::getAccessTokenFor($user)
+        );
+        $response = $provider->getResponse($request);
+
+        return $response;
+
+    }
+
     private static function provider()
     {
         if (!self::$provider) {

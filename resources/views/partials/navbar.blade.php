@@ -16,7 +16,7 @@
             <form class="navbar-form">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a class="navbar-brand" id="navButtons" href="/">
-                            <img src="/img/logo11.png"
+                            <img src="/img/logo12.png"
                                  style="margin-top: -9px;"
                                  alt="Fitwager Logo">
                         </a><span class="navbar-brand">|</span>

@@ -74,6 +74,10 @@ class Challenger extends Model
 
             }while($challengers->count()[$activityType] < $wagerAmount);
     }
+    public static function challengeWinners()
+    {
+        return $challengeWinners = Challenger::groupBy('challengers.status')->take(8)->get();
+    }
 
 }
 

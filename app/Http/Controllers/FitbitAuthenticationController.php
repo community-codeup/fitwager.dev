@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Token;
 use App\User;
+use App\Challenge;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

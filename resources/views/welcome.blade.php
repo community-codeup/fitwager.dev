@@ -73,36 +73,32 @@
                 <div id="page-wrap">
                     <div class="col-md-12 five-columns group" style="padding-top: -1%">
                         <div class="row" style="border: 1px solid grey;">
-                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
-                                <h3 style="color: #00d053">Challenge 1</h3>
-                                    <ol style="font-size: medium">
-                                        <li style="color: #00d053"><span style="color: black">name1</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name2</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name3</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name4</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name5</span></li>
-                                    </ol>
+
+                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #00d053">Coins Leaders</h3>
+                                        <ol style="font-size: medium">
+                                            @foreach($userCoins as $userCoin)
+                                            <li style="color: #00d053"><span style="color: black">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
+                                            @endforeach
+                                        </ol>       
                             </div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
-                                <h3 style="color: #00d053">Challenge 2</h3>
-                                    <ol style="font-size: medium">
-                                        <li style="color: #00d053"><span style="color: black">name1</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name2</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name3</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name4</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name5</span></li>
-                                    </ol>
+                          <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #00d053">Challenges Won</h3>
+                                        <ol style="font-size: medium">
+                                            @foreach($challengesWon as $challenger)
+                                             <li style="color: #00d053"><span style="color: black">{{$challenger->status}}</span></li>
+                                            @endforeach
+                                        </ol>       
                             </div>
-                            <div class="col-md-4" style="border: 1px solid grey; height: 200px; background-color: #424040">
-                                <h3 style="color: #00d053">Challenge 3</h3>
-                                    <ol style="font-size: medium">
-                                        <li style="color: #00d053"><span style="color: black">name1</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name2</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name3</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name4</span></li>
-                                        <li style="color: #00d053"><span style="color: black">name5</span></li>
-                                    </ol>
+                           <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+                                <h3 style="color: #00d053">Coins Leaders</h3>
+                                        <ol style="font-size: medium">
+                                            @foreach($userCoins as $userCoin)
+                                            <li style="color: #00d053"><span style="color: black">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
+                                            @endforeach
+                                        </ol>
                             </div>
+
                         </div>
                     </div>
                 </div>

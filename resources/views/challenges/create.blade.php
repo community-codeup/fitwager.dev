@@ -50,7 +50,7 @@
 
                     <div id="targetScore" class="row">
                         <label for="description" class="col-sm-2 control-label">Target Score:</label>
-                        <input class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
+                        <input id="targetScoreForm" class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
                     </div>
 
                     <br>

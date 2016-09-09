@@ -11,15 +11,18 @@
 |
 */
 
-
 use App\BetType;
 use App\ChallengeType;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use App\Challenge;
+use App\Challenger;
 
 Route::get('/', function () {
     $data = [
-        'authCheck' => Auth::check()
+        'authCheck' => Auth::check(),
+        'userCoins' => User::userCount(),
+        'challengesWon' => Challenger::challengeWinners(),
     ];
 
     return view('welcome', $data);
@@ -53,6 +56,9 @@ Route::get('/account', "UsersController@store");
 Route::resource('challenges', 'ChallengesController');
 Route::get('acceptchallenge/{challengeId}', 'ChallengesController@acceptChallenge');
 
+// Route::get('/test22',function(){
+//  	return Auth::user()->challengeCount();
+// });
 
 //Route::get('challenges', function() {
 //    $betTypes = BetType::all();

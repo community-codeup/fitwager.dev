@@ -159,22 +159,16 @@ static function getHistoricChallenges()
 }
 
 
-public
-static function getChallengersArray()
-{
-    $challenges = Challenge::getFinishedChallenges();
-    $competitors = [];
-    foreach ($challenges as $index => $challenge) {
-        $competitors[] = Challenge::find($challenge->id)->challengers;
-    }
-    return $competitors;
-}
+//public
+//static function getChallengersArray()
+//{
+//    $challenges = Challenge::getFinishedChallenges();
+//    $competitors = [];
+//    foreach ($challenges as $index => $challenge) {
+//        $competitors[] = Challenge::find($challenge->id)->challengers;
+//    }
+//    return $competitors;
+//}
 
-public
-static function findHistoric()
-{
-    $result = results::join('challenges', 'challenges.id', '=', 'results.challenges_id')
-        ->where('challenges.created_at', '<', DB::raw('CURDATE()'));
-}
 }
 

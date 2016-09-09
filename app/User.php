@@ -58,4 +58,24 @@ class User extends Model implements AuthenticatableContract,
     {
        return count(Challenge::getPendingChallenges());
     }
+
+    public static function userCount()
+    {
+        return $userCoins = User::orderBy('users.coins', 'desc')->take(8)->get();
+    }
+
+    public static function coinsLeader()
+    {
+
+        // $userCoins = static::userCount();
+        // $userCoins = $userCoins
+        //         ->select(
+        //             'name as User Name',
+        //             'coins AS User Coins'
+        //             );
+        // return $userCoins->get();
+        // return $userCoins = User::limit(5)->orderBy('coins', 'desc')->pluck('coins');
+    }
+
+
 }

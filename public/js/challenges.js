@@ -38,3 +38,10 @@ $('#motivateRadio').click(function() {
 $('#sharedRadio').click(function() {
     $('#targetScore').show();
 });
+
+$('.deleteButton').click(function() {
+
+    $('#deleteChallengeField').val($(this).data('challengeid'));
+    $value = $(this).data('challengeid');
+    console.log($value);
+});

@@ -23,6 +23,7 @@ Route::get('/', function () {
         'authCheck' => Auth::check(),
         'userCoins' => User::userCount(),
         'challengesWon' => Challenger::challengeWinners(),
+        'coinsLeaders' => Challenger::coinsWonLeaders(),
     ];
 
     return view('welcome', $data);

@@ -74,9 +74,26 @@ class Challenger extends Model
 
             }while($challengers->count()[$activityType] < $wagerAmount);
     }
+
     public static function challengeWinners()
     {
-        return $challengeWinners = Challenger::groupBy('challengers.status')->take(8)->get();
+        $challengeWinners = DB::table('challengers')
+                ->select(DB::raw('count(status) as win_count'), 'users.name')
+                ->join('users', 'challengers.user_id', '=', 'users.id')
+                ->where('challengers.status', '=', 'won')
+                ->orderBy('win_count', 'desc')
+                ->groupBy('challengers.user_id')->take(8)->get();
+        return $challengeWinners;
+    }
+
+    public static function coinsWonLeaders()
+    {
+        $coinsWon = DB::table('challengers')
+                ->select(DB::raw('sum(winnings) as coins_won'), 'users.name')
+                ->join('users', 'challengers.user_id', '=', 'users.id')
+                ->orderBy('coins_won', 'desc')
+                ->groupBy('challengers.user_id')->take(8)->get();
+        return $coinsWon;
     }
 
 }

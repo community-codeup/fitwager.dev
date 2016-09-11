@@ -3,7 +3,9 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3"><h1 style="color:#888888">my<span style="color:#00d053">challenges</span></h1></div>
+            <div>
+                <h1 style="color:#888888">my<span style="color:#00d053">challenges</span></h1>
+            </div>
         </div>
     </div>
 

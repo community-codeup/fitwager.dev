@@ -135,9 +135,8 @@ static function getHistoricChallenges()
         ->join('challenges', 'challenges.id', '=', 'challengers.challenge_id')
         ->join('bet_types', 'challenges.bet_type', '=', 'bet_types.id')
         ->join('challenge_types', 'challenges.challenge_type', '=', 'challenge_types.id')
-        ->where('challengers.status', '=', 'won')
-        ->orWhere('challengers.status', '=', 'lost')
         ->where('challengers.user_id', '=', Auth::id())
+        ->where(DB::raw("(challengers.status = 'won' OR challengers.status = 'lost')"), true)
         ->select(
             'challengers.status AS status',
             'bet_types.name AS bet_type',
@@ -148,8 +147,8 @@ static function getHistoricChallenges()
             'challengers.challenge_id AS challenge_id',
             'challengers.winnings AS winnings',
             'challenges.end_date AS end_date'
-        )
-        ->get();
+        )->get();
+
     foreach($challengers as $challenger) {
         $challenge = Challenge::find($challenger->challenge_id);
         $challenger->created_by = $challenge->user->name;

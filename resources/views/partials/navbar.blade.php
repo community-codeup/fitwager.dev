@@ -30,7 +30,7 @@
                         <li><a class="navbar-brand" id="navButtons" href="/about">about</a><span
                                 class="navbar-brand">|</span></li>
                         <li>
-                             <a class="navbar-brand btn btn-lg btn-link" id="navButtons" href="/challenges">
+                             <a class="navbar-brand btn btn-lg btn-link" id="navButtons" href="/challenges?status=pending">
 
                                 <span id="envelope" class="glyphicon glyphicon-envelope"></span>
                                 <span class="badge badge-notify">{{ Auth::user()->challengeCount() }}</span>

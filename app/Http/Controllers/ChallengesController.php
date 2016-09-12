@@ -19,12 +19,13 @@ class ChallengesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $data = [
             'activeChallenges' => Challenge::getActiveChallenges(),
             'historicChallenges' => Challenge::getHistoricChallenges(),
-            'pendingChallenges' => Challenge::getPendingChallenges()
+            'pendingChallenges' => Challenge::getPendingChallenges(),
+            'showPending' => $request->has('status'),
         ];
         return view('challenges.index', $data);
     }
@@ -39,6 +40,7 @@ class ChallengesController extends Controller
 
         $betTypes = BetType::all();
         $challengeTypes = ChallengeType::all();
+        $challengeTypes[1]->name = 'calories';
 
         $friends = FitInfo::getFriends(Auth::user())['friends'];
         $users = [];
@@ -125,7 +127,27 @@ class ChallengesController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $betTypes = BetType::all();
+        $challengeTypes = ChallengeType::all();
+        $challengeTypes[1]->name = 'calories';
+        $challenge = Challenge::find($id);
+        $friends = FitInfo::getFriends(Auth::user())['friends'];
+        $users = [];
+        foreach ($friends as $index => $friend) {
+            $user = User::where('fitbit_id', $friend['user']['encodedId'])->first();
+            if ($user) {
+                $users[] = $user;
+            }
+        }
+
+        $data = [
+            'betTypes' => $betTypes,
+            'challengeTypes' => $challengeTypes,
+            'users' => $users,
+            'challenge' => $challenge
+        ];
+        return view('challenges.edit', $data);
     }
 
 
@@ -138,7 +160,34 @@ class ChallengesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $challenge = Challenge::find($id);
+        $originalChallengers = $challenge->challengers;
+        foreach($originalChallengers as $challenger) {
+            $originalChallenger = Challenger::find($challenger->id);
+            $originalChallenger->delete();
+        }
+        $challenge->bet_type = $request['bet_type'];
+        $challenge->challenge_type = $request['challenge_type'];
+        $challenge->start_date = $request['start_date'];
+        $challenge->end_date = $request['end_date'];
+        $challenge->wager = $request['wager'];
+        $challenge->target = $request['targetScore'];
+
+        $newChallengers = $request['challengers'];
+        foreach ($newChallengers as $challenger_id) {
+            $challenger = new Challenger;
+            $challenger->user_id = $challenger_id;
+            $challenger->challenge_id = $challenge->id;
+            if ($challenger_id == Auth::id()) {
+                $challenger->status = 'accepted';
+            } else {
+                $challenger->status = 'pending';
+            }
+            $challenger->save();
+        }
+
+        $challenge->save();
+        return redirect()->action('ChallengesController@index');
     }
 
     /**
@@ -165,6 +214,32 @@ class ChallengesController extends Controller
         $challenge->delete();
 
         return redirect()->action('ChallengesController@index');
+    }
+
+    public function result($id)
+    {
+        $challenge = Challenge::find($id);
+        $winners = Challenger::where('status', 'won')->where('challenge_id', $id)->get();
+        $losers = Challenger::where('status', 'lost')->where('challenge_id', $id)->get();
+
+        $categories = [];
+        $dataAmount = [];
+        $challengers = $challenge->challengers;
+        foreach($challengers as $challenger) {
+            array_push($categories, $challenger->user->name);
+            array_push($dataAmount, (float) $challenger->score);
+        }
+
+        $graphInfo = ['categories' => $categories, 'amount' => $dataAmount];
+
+        $data = [
+            'challenge' => $challenge,
+            'winners' => $winners,
+            'losers' => $losers,
+            'graphInfo' => $graphInfo
+        ];
+
+        return view('challenges.result', $data);
     }
 
 }

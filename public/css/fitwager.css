@@ -301,3 +301,9 @@ body {
         width: 74%;
     }
 }
+
+.create-layout {
+    background: url(/img/mountain.jpg) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+}

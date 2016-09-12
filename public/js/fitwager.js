@@ -154,7 +154,7 @@ $(function () {
             }
         },
         series: [{
-            name: 'score',
+            name: '<span style="font-size: 16px;">Score</span>',
             data: graphInfo.amount
         }]
     });

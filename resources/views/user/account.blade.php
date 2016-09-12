@@ -10,10 +10,7 @@
                 <h3 style="text-transform: lowercase; color: dimgray">{{ $user->name }}</h3>
                 <img class="text-center img-responsive center-block" style="padding:1px; border:1px solid #021a40; width:200px;height:200px"; src="{{ $user->picture }}">
             <br>
-                <div style="border: 2px solid gold;
-    display: inline-block;
-    padding-right: 3%;
-    padding-left: 3%;">
+                <div style="border: 2px solid gold; display: inline-block; padding-right: 3%; padding-left: 3%;">
                     <h3><img src="/img/coins3.png" style="width: 50px; height: 50px"> {{ $user->coins }}</h3>
                 </div>
             </div>

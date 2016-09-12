@@ -64,7 +64,7 @@
         {{--example--}}
         <div class="container-fluid">
             <div class="row">
-                <div class="container-fluid text-center"><h1>LEADERBOARD</h1></div>
+                <div class="container-fluid text-center"><h1>leaderboard</h1></div>
             </div>
         </div>
 
@@ -75,29 +75,30 @@
                         <div class="row" style="border: 1px solid grey;">
 
                             <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                                <h3 style="color: #00d053">Total Coins</h3>
-                    j                    <ol style="font-size: medium">
+<<<<<<< HEAD
+                                <h3 style="color: #00d053">total coins</h3>
+                                        <ol style="font-size: medium">
                                             @foreach($userCoins as $userCoin)
                                             <li style="color: #00d053"><span style="color: white">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
                                             @endforeach
                                         </ol>       
                             </div>
                           <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                                <h3 style="color: #00d053">Challenges Won</h3>
+                                <h3 style="color: #00d053">challenges won</h3>
                                         <ol style="font-size: medium">
                                             @foreach($challengesWon as $challenger)
 
-                                             <li style="color: #00d053"><span style="color: black">{{ $challenger->name }} {{$challenger->win_count}}</span></li>
+                                             <li style="color: #00d053"><span style="color: white">{{ $challenger->name }} {{$challenger->win_count}}</span></li>
 
                                             @endforeach
                                         </ol>       
                             </div>
                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                                <h3 style="color: #00d053">Winnings</h3>
+                                <h3 style="color: #00d053">winnings</h3>
                                         <ol style="font-size: medium">
 
                                             @foreach($coinsLeaders as $leaders)
-                                            <li style="color: #00d053"><span style="color: black">{{$leaders->name}} {{$leaders->coins_won}}</span></li>
+                                            <li style="color: #00d053"><span style="color: white">{{$leaders->name}} {{$leaders->coins_won}}</span></li>
                                             @endforeach
                                         </ol>
                             </div>

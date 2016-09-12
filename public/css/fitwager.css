@@ -294,3 +294,16 @@ body {
     cursor: pointer;
     cursor: hand;
 }
+
+
+@media (min-width: 1200px) {
+    .container {
+        width: 74%;
+    }
+}
+
+.create-layout {
+    background: url(/img/mountain.jpg) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+}

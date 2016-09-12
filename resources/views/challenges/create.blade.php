@@ -103,7 +103,7 @@
 
                     <div class="row">
                         <div class="col-sm-2"></div>
-                        <button class="col-sm-2" id="create_challenge_button" type="submit">Submit</button>
+                        <button class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit">Submit</button>
                     </div>
                 </div>
             </form>

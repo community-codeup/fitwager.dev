@@ -307,3 +307,11 @@ body {
     background-size: cover;
     text-align: center;
 }
+
+.control-label.results {
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding-right: 5%;
+    padding-left: 5%;
+}

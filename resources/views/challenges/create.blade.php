@@ -1,8 +1,12 @@
 @extends('layouts.master')
 @section('content')
+
     <div class="container">
         <div class="row">
-            <div class="col-md-3"><h1 style="color:#888888">create<span style="color:#00d053">challenge</span></h1></div>
+            <div class="col-md-2">
+                <h2 style="color:#888888">create<span style="color:#00d053">challenge</span></h2>
+            </div>
+            <div class="col-md-10"></div>
         </div>
     </div>
 

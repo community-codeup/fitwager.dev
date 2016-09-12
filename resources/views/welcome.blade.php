@@ -75,7 +75,7 @@
                         <div class="row" style="border: 1px solid grey;">
 
                             <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                                <h3 style="color: #00d053">Coins Leaders</h3>
+                                <h3 style="color: #00d053">Total Coins</h3>
                                         <ol style="font-size: medium">
                                             @foreach($userCoins as $userCoin)
                                             <li style="color: #00d053"><span style="color: white">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
@@ -86,15 +86,18 @@
                                 <h3 style="color: #00d053">Challenges Won</h3>
                                         <ol style="font-size: medium">
                                             @foreach($challengesWon as $challenger)
-                                             <li style="color: #00d053"><span style="color: white">{{$challenger->status}}</span></li>
+
+                                             <li style="color: #00d053"><span style="color: black">{{ $challenger->name }} {{$challenger->win_count}}</span></li>
+
                                             @endforeach
                                         </ol>       
                             </div>
                            <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
-                                <h3 style="color: #00d053">Coins Leaders</h3>
+                                <h3 style="color: #00d053">Winnings</h3>
                                         <ol style="font-size: medium">
-                                            @foreach($userCoins as $userCoin)
-                                            <li style="color: #00d053"><span style="color: white">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
+
+                                            @foreach($coinsLeaders as $leaders)
+                                            <li style="color: #00d053"><span style="color: black">{{$leaders->name}} {{$leaders->coins_won}}</span></li>
                                             @endforeach
                                         </ol>
                             </div>

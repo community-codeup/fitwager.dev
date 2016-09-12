@@ -80,7 +80,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: '<span style="font-size: 32px; color: #00d053">activity</span>'
+            text: '<span style="font-size: 32px; color: #888888">my</span><span style="font-size: 32px; color: #00d053">activity</span>'
         },
         xAxis: {
             categories: graphInfo.categories
@@ -106,15 +106,15 @@ $(function () {
             }
         },
         series: [{
-            name: 'Steps',
+            name: '<span style="font-size: 16px;">Steps</span>',
             data: graphInfo.steps
 
         }, {
-            name: 'Distance(m)',
+            name: '<span style="font-size: 16px;">Distance(m)</span>',
             data: graphInfo.distance
         },
             {
-            name: 'Calories',
+            name: '<span style="font-size: 16px;">Calories</span>',
             data: graphInfo.calories
 
         }]

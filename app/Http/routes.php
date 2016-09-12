@@ -55,6 +55,7 @@ Route::get('/account', "UsersController@store");
 
 Route::resource('challenges', 'ChallengesController');
 Route::get('acceptchallenge/{challengeId}', 'ChallengesController@acceptChallenge');
+Route::get('challenges/result/{challengeId}', 'ChallengesController@result');
 
 // Route::get('/test22',function(){
 //  	return Auth::user()->challengeCount();

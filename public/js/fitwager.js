@@ -6,7 +6,7 @@ $('#picker').daterangepicker({
     format: 'MM/DD/YYYY',
     startDate: moment().subtract(29, 'days'),
     endDate: moment(),
-    minDate: '09/09/2016',
+    minDate: '09/01/2016',
     maxDate: '12/31/2020',
     dateLimit: { days: 60 },
     showDropdowns: true,
@@ -117,6 +117,45 @@ $(function () {
             name: 'Calories',
             data: graphInfo.calories
 
+        }]
+    });
+});
+
+$(function () {
+    console.log( graphInfo, graphInfo.categories, graphInfo.amount );
+    $('#resultChart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: '<span style="font-size: 32px; color: #00d053">stats</span>'
+        },
+        xAxis: {
+            categories: graphInfo.categories
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '<span style="font-size:20px">data</span>'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.1,
+                borderWidth: 1
+            }
+        },
+        series: [{
+            name: 'score',
+            data: graphInfo.amount
         }]
     });
 });

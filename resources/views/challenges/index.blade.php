@@ -29,7 +29,7 @@
     <br>
 
     {{--  ACTIVE TABLE  --}}
-    <div class="container" id="activeTable">
+    <div class="container" id="activeTable" {{ !$showPending ? '' : 'hidden' }}>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
@@ -53,8 +53,8 @@
                                 <td>{{$challenge->challenge_type}}</td>
                                 @if((Auth::id() == $challenge->created_by_id) && ($challenge->waitingOrLocked != 'locked in'))
                                     <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" >
-                                                <span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                            <a href="{{action('ChallengesController@edit', $challenge->challenge_id)}}" class="btn btn-primary btn-xs" data-title="Edit" >
+                                                <span class="glyphicon glyphicon-pencil"></span></a></p></td>
                                     <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <button class="btn btn-danger btn-xs deleteButton" data-title="Delete" data-toggle="modal" data-challengeId="{{$challenge->challenge_id}}" data-target="#delete" >
                                                 <span class="glyphicon glyphicon-trash"></span></button></p></td>
@@ -108,7 +108,7 @@
     </div>
 
     {{--  PENDING TABLE  --}}
-    <div class="container" id="pendingTable" hidden>
+    <div class="container" id="pendingTable" {{ $showPending ? '' : 'hidden' }}>
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">

@@ -18,9 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('challenges')->delete();
         DB::table('challenge_types')->delete();
         DB::table('bet_types')->delete();
-        DB::table('users')->delete();
 
-        $this->call(UsersTableSeeder::class);
         $this->call(BetTypesTableSeeder::class);
         $this->call(ChallengeTypesTableSeeder::class);
         $this->call(ChallengesTableSeeder::class);

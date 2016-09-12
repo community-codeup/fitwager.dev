@@ -78,7 +78,7 @@
                                 <h3 style="color: #00d053">Total Coins</h3>
                                         <ol style="font-size: medium">
                                             @foreach($userCoins as $userCoin)
-                                            <li style="color: #00d053"><span style="color: black">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
+                                            <li style="color: #00d053"><span style="color: white">{{$userCoin->name}} {{$userCoin->coins}}</span></li>
                                             @endforeach
                                         </ol>       
                             </div>

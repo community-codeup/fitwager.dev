@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <h2 style="color: #888888">why <span style="color: #888888">fit</span><span style="color: #00d053">wager</span>?</h2>
+                <h2 style="color: #888888">why fit <span style="color: #00d053">wager</span>?</h2>
             </div>
         </div>
 
@@ -34,6 +34,18 @@
         <div class="row">
             <div class="col-md-8"><h2 style="color:#888888">what are <span style="color: #00d053">coins</span>?</h2>
                 <p>This is where the fun begins.  Coins serve as the currency for users to wager in fitness challenges against their friends. Upon signing up for fitwager, users are alloted 20 coins to begin playing.  Note: Ability to purchase and cash out coins is coming soon.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2 style="color: #888888">how does it <span style="color: #00d053">work</span>?</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <p>Every night, we look to see if any challenges are set to conclude for the day.  If they are, then live stats for the users involved are pulled in from FitBit and a winner is selected.  All that it takes to get started is a FitBit account.</p>
             </div>
         </div>
 

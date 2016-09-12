@@ -90,6 +90,7 @@
                         <th>winnings</th>
                         <th>bet type</th>
                         <th>challenge type</th>
+                        <th>result</th>
                         </thead>
                         <tbody id="buildTableHTML">
                         @foreach ($historicChallenges as $challenge)
@@ -100,6 +101,7 @@
                                 <td>{{$challenge->winnings}}</td>
                                 <td>{{$challenge->bet_type}}</td>
                                 <td>{{$challenge->challenge_type}}</td>
+                                <td><a href="{{action('ChallengesController@result', $challenge->challenge_id)}}">view</a></td>
                             </tr>
                         @endforeach
                         </tbody>

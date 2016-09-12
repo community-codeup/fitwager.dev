@@ -28,22 +28,27 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 text-center">okoodfdf
-            <label for="created_by" class="control-label"><h4 id="results_categories">winners: </h4></label>
-            <ul>
+        <div class="col-md-6 text-center">
+            <label for="created_by" class="control-label"><h4 id="results_categories">winner/s: </h4></label>
+
                 @foreach ($winners as $winner)
-                    <li>{{$winner->user->name}} {{$winner->winnings}}</li>
+                <figure>
+                    <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$winner->user->picture}}" height="125" width="125">
+                    <figcaption>{{$winner->user->name}}</figcaption>
+                </figure>
+                     +{{$winner->winnings}}
                 @endforeach
-            </ul>
         </div>
 
         <div class="col-md-6 text-center">
-            <label for="created_by" class="control-label"><h4>losers: </h4></label>
-            <ul>
+            <label for="created_by" class="control-label"><h4>loser/s: </h4></label>
                 @foreach ($losers as $loser)
-                    <li>{{$loser->user->name}} {{$loser->winnings}}</li>
+                <figure>
+                    <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$loser->user->picture}}" height="125" width="125">
+                    <figcaption>{{$loser->user->name}}</figcaption>
+                </figure>
+                    {{$loser->winnings}}
                 @endforeach
-            </ul>
         </div>
     </div>
 

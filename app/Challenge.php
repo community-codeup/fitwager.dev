@@ -147,7 +147,8 @@ static function getHistoricChallenges()
             'challengers.challenge_id AS challenge_id',
             'challengers.winnings AS winnings',
             'challenges.end_date AS end_date'
-        )->get();
+        )->orderBy('challenges.end_date', 'desc')
+        ->get();
 
     foreach($challengers as $challenger) {
         $challenge = Challenge::find($challenger->challenge_id);

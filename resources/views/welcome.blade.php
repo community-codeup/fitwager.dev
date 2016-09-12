@@ -75,6 +75,7 @@
                         <div class="row" style="border: 1px solid grey;">
 
                             <div class="col-md-4" style="border: 1px solid grey; height: 300px; background-color: #424040">
+<<<<<<< HEAD
                                 <h3 style="color: #00d053">total coins</h3>
                                         <ol style="font-size: medium">
                                             @foreach($userCoins as $userCoin)

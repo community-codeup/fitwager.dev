@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <p>Thank you for visiting fitwager, where you can challenge and motivate your friends and family to a friendly game of fitness.</p>
+                <p>Welcome to fitwager, where through competitive games of fitness, you can challenge and motivate yourself, friends, and family to get fit.</p>
             </div>
         </div>
 
@@ -27,13 +27,13 @@
 
         <div class="row">
             <div class="col-md-8">
-                <p>The idea for fitwager originated from our love for being active. We wanted a way to motivate each other to stop being lazy, get off the couch and build a consistent workout routine. Thus, what better way to motivate than to wager?!</p>
+                <p>The idea for fitwager originated from our love for being active. We wanted a way to motivate each other to stop being lazy, get off the couch and build a consistent workout routine. Thus, what better way to motivate than to put money on the line?!</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-8"><h2 style="color:#888888">what are <span style="color: #00d053">coins</span>?</h2>
-                <p>This is where the fun begins. The coins serve as the monetary value for users to wager in fitness challenges against their friends. Every user upon signing up for fitwager is alloted 20 coins to begin playing.</p>
+                <p>This is where the fun begins.  Coins serve as the currency for users to wager in fitness challenges against their friends. Upon signing up for fitwager, users are alloted 20 coins to begin playing.  Note: Ability to purchase and cash out coins is coming soon.</p>
             </div>
         </div>
 

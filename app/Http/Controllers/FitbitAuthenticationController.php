@@ -43,10 +43,12 @@ class FitbitAuthenticationController extends Controller
                 ]);
                 $resourceOwner = $provider->getResourceOwner($accessToken)->toArray();
                 $owner = User::firstOrCreate([
-                    'name' => $resourceOwner['fullName'],
                     'fitbit_id' => $resourceOwner['encodedId'],
-                    'picture' => $resourceOwner['avatar150'],
                 ]);
+                $owner->name = $resourceOwner['fullName'];
+                $owner->picture = $resourceOwner['avatar150'];
+                $owner->save();
+                
                 if ($owner->coins == null) {
                     $owner->coins = 20;
                     $owner->save();

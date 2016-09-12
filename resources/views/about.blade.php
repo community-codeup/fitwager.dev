@@ -67,10 +67,10 @@
                 <img class="text-center img-responsive center-block" src="/img/craig.jpg"
                      style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
                     <h3 style="color: #888888">craig rupp</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
+                    <p>Following graduating from UT in 2012 and dabbling in the professional worksphere for a handful of years, Craig discovered Codeup and couldn't
+                        pass on the opportunity to learn in the exciting field of software development. With a background and degree
+                        within communications, Craig is looking to adapt his new skills into the sports analytics, cyber security 
+                        or media development realm software has found a strong footing in.
                     </p>
             </div>
 

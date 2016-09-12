@@ -116,6 +116,7 @@ class UsersController extends Controller
             foreach ($distance['activities-distance'] as $distance) {
                 $dataDistance[] = (float) $distance['value'] * 1000;
             }
+
             $graphInfo = ['categories' => $series, 'calories' => $dataCalories, 'steps' => $dataSteps, 'distance' => $dataDistance];
             $data = [
                 //'calories'=>$steps,

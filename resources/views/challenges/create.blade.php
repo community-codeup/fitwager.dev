@@ -21,7 +21,7 @@
                 <div class="form-group" style="margin-right: 0px; margin-left: 0px;">
 
                     <div class="row">
-                        <label for="bet" class="col-sm-2 control-label">Bet Type:</label>
+                        <label for="bet" class="col-sm-2 control-label">bet type:</label>
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
                                 @foreach($betTypes as $index => $betType)
@@ -37,7 +37,7 @@
                     <br>
 
                     <div class="row">
-                        <label for="bet" class="col-sm-2 control-label">Challenge Type:</label>
+                        <label for="bet" class="col-sm-2 control-label">challenge type:</label>
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
                                 @foreach($challengeTypes as $index => $challengeType)
@@ -53,28 +53,28 @@
                     <br>
 
                     <div id="targetScore" class="row">
-                        <label for="description" class="col-sm-2 control-label">Target Score:</label>
+                        <label for="description" class="col-sm-2 control-label">target score:</label>
                         <input id="targetScoreForm" class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
                     </div>
 
                     <br>
 
                     <div class="row">
-                        <label for="wager" class="col-sm-2 control-label">Wager:</label>
+                        <label for="wager" class="col-sm-2 control-label">wager:</label>
                         <input class="form-control" style="width: 11%;" type="text" name="wager" id="wager" required="">
                     </div>
 
                     <br>
 
                     <div class="row">
-                        <label for="description" class="col-sm-2 control-label">Description:</label>
+                        <label for="description" class="col-sm-2 control-label">description:</label>
                         <input class="form-control" style="width: 35%;" type="text" name="description" id="description" required="">
                     </div>
 
                     <br>
 
                     <div class="row">
-                        <label for="start_date" class="col-sm-2 control-label">Date:</label>
+                        <label for="start_date" class="col-sm-2 control-label">date:</label>
                         <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
                         <input type="hidden" id="hidden-start-date" name="start_date">
                         <input type="hidden" id="hidden-end-date" name="end_date">
@@ -83,7 +83,7 @@
                     <br>
 
                         <div class="row">
-                            <label for="user" class="col-sm-2 control-label">User:</label>
+                            <label for="user" class="col-sm-2 control-label">user:</label>
                             <div class="col-md-10" style="padding-top: 7px">
 
                                 @foreach($users as $user)

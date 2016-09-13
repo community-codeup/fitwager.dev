@@ -31,6 +31,7 @@
                                 @endforeach
                             </div>
                         </div>
+                        {!! $errors->first('bet_type', '<span class="help-block">:message</span>') !!}
                     </div>
 
                     <br>
@@ -47,6 +48,7 @@
                                 @endforeach
                             </div>
                         </div>
+                        {!! $errors->first('challenge_type', '<span class="help-block">:message</span>') !!}
                     </div>
 
                     <br>
@@ -59,8 +61,9 @@
                     <br>
 
                     <div class="row">
-                        <label for="wager" class="col-sm-2 control-label">wager:</label>
-                        <input class="form-control" style="width: 11%;" type="text" name="wager" id="wager" required="">
+                        <label for="wager" class="col-sm-2 control-label">wager (max {{ Auth::user()->coins }}):</label>
+                        <input class="form-control" style="width: 11%;" type="number" name="wager" id="wager" required="" step="1" min="1" max="{{ Auth::user()->coins }}">
+                        {!! $errors->first('wager', '<span class="help-block">:message</span>') !!}
                     </div>
 
                     <br>
@@ -76,7 +79,9 @@
                         <label for="start_date" class="col-sm-2 control-label">date:</label>
                         <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
                         <input type="hidden" id="hidden-start-date" name="start_date">
+                        {!! $errors->first('start_date', '<span class="help-block">:message</span>') !!}
                         <input type="hidden" id="hidden-end-date" name="end_date">
+                        {!! $errors->first('end_date', '<span class="help-block">:message</span>') !!}
                     </div>
 
                     <br>
@@ -103,7 +108,7 @@
 
                     <div class="row">
                         <div class="col-sm-2"></div>
-                        <button class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit">Submit</button>
+                        <input class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit" value="Submit">
                     </div>
                 </div>
             </form>

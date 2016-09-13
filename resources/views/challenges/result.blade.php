@@ -29,25 +29,24 @@
 
     <div class="row">
         <div class="col-md-6 text-center">
-            <label for="created_by" class="control-label"><h4 id="results_categories">winner/s: </h4></label>
-
+            <label for="created_by" class="control-label"><h4 id="results_categories">winner(s): </h4></label>
                 @foreach ($winners as $winner)
                 <figure>
                     <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$winner->user->picture}}" height="125" width="125">
                     <figcaption>{{$winner->user->name}}</figcaption>
+                    <img src="/img/coins3.png" style="width: 25px; height: 25px"> +{{$winner->winnings}}
                 </figure>
-                <img src="/img/coins3.png" style="width: 25px; height: 25px"> +{{$winner->winnings}}
                 @endforeach
         </div>
 
         <div class="col-md-6 text-center">
-            <label for="created_by" class="control-label"><h4>loser/s: </h4></label>
+            <label for="created_by" class="control-label" style="display: block;"><h4>loser(s): </h4></label>
                 @foreach ($losers as $loser)
-                <figure>
+                <figure style="display: inline-block">
                     <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$loser->user->picture}}" height="125" width="125">
                     <figcaption>{{$loser->user->name}}</figcaption>
                 </figure>
-                <img src="/img/coins3.png" style="width: 25px; height: 25px"> {{$loser->winnings}}
+                <div><img src="/img/coins3.png" style="width: 25px; height: 25px"> {{$loser->winnings}}</div>
                 @endforeach
         </div>
     </div>

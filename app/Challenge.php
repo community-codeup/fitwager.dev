@@ -75,6 +75,7 @@ class Challenge extends Model
             ->where('challengers.user_id', '=', Auth::id())
             ->where('challengers.status', '=', 'accepted')
             ->select(
+                'challenges.id',
                 'challengers.status AS status',
                 'challengers.challenge_id AS challenge_id',
                 'bet_types.name AS bet_type',

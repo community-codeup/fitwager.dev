@@ -59,6 +59,7 @@
                     </div>
 
                     <br>
+
                     <div class="row">
                         <label for="wager" class="col-sm-2 control-label">wager (max {{ Auth::user()->coins }}):</label>
                         <input class="form-control" style="width: 11%;" type="number" name="wager" id="wager" required="" step="1" min="1" max="{{ Auth::user()->coins }}">

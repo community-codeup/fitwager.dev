@@ -52,44 +52,46 @@
                     </div>
 
                     <br>
+                    <div id="create_form">
+                        <div id="targetScore" class="row">
+                            <label for="description" class="col-sm-2 control-label">target score:</label>
+                            <input id="targetScoreForm" class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
+                        </div>
 
-                    <div id="targetScore" class="row" style="padding-left: 10px">
-                        <label for="description" class="col-sm-2 control-label">target score:</label>
-                        <input id="targetScoreForm" class="form-control" style="width: 11%; margin-left: 10px" type="text" name="targetScore" required="">
-                    </div>
+                        <br>
 
-                    <br>
+                        <div class="row">
+                            <label for="wager" class="col-sm-2 control-label">wager (max {{ Auth::user()->coins }}):</label>
+                            <input class="form-control" style="width: 11%;" type="number" name="wager" id="wager" required="" step="1" min="1" max="{{ Auth::user()->coins }}">
+                            {!! $errors->first('wager', '<span class="help-block">:message</span>') !!}
+                        </div>
 
-                    <div class="row">
-                        <label for="wager" class="col-sm-2 control-label">wager (max {{ Auth::user()->coins }}):</label>
-                        <input class="form-control" style="width: 11%;" type="number" name="wager" id="wager" required="" step="1" min="1" max="{{ Auth::user()->coins }}">
-                        {!! $errors->first('wager', '<span class="help-block">:message</span>') !!}
-                    <br>
+                        <br>
 
-                    <div class="row" style="padding-left: 10px">
-                        <label for="description" class="col-sm-2 control-label">description:</label>
-                        <input class="form-control" style="width: 35%; margin-left: 10px" type="text" name="description" id="description" required="">
-                    </div>
+                        <div class="row">
+                            <label for="description" class="col-sm-2 control-label">description:</label>
+                            <input class="form-control" style="width: 35%;" type="text" name="description" id="description" required="">
+                        </div>
 
-                    <br>
+                        <br>
 
-                    <div class="row" style="padding-left: 10px">
-                        <label for="start_date" class="col-sm-2 control-label">date:</label>
-                        <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
-                        <input type="hidden" id="hidden-start-date" name="start_date">
-                        {!! $errors->first('start_date', '<span class="help-block">:message</span>') !!}
-                        <input type="hidden" id="hidden-end-date" name="end_date">
-                        {!! $errors->first('end_date', '<span class="help-block">:message</span>') !!}
-                    </div>
+                        <div class="row">
+                            <label for="start_date" class="col-sm-2 control-label">date:</label>
+                            <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
+                            <input type="hidden" id="hidden-start-date" name="start_date" style="margin-left: 10px">
+                            {!! $errors->first('start_date', '<span class="help-block">:message</span>') !!}
+                            <input type="hidden" id="hidden-end-date" name="end_date">
+                            {!! $errors->first('end_date', '<span class="help-block">:message</span>') !!}
+                        </div>
 
-                    <br>
+                        <br>
 
-                        <div class="row" style="padding-left: 10px">
+                        <div class="row">
                             <label for="user" class="col-sm-2 control-label">user:</label>
                             <div class="col-md-10" style="padding-top: 7px">
 
                                 @foreach($users as $user)
-                                    <label style="padding-right: 34px;">
+                                    <label>
                                       <input type="checkbox" name="challengers[]" id="usersOnChallenge" value="{{$user->id}}"/>
                                        <figure>
                                         <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{ $user->picture }}" height="75" width="75">
@@ -99,14 +101,14 @@
                                 @endforeach
                                     <input hidden type="checkbox" checked name="challengers[]" value="{{Auth::user()->id}}"/>
                             </div>
-
                         </div>
 
-                    <br>
+                        <br>
 
-                    <div class="row" style="padding-left: 10px">
-                        <div class="col-sm-2"></div>
-                        <input class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit" value="Submit">
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <input class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit" value="Submit">
+                        </div>
                     </div>
                 </div>
             </form>

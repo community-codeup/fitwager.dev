@@ -56,10 +56,8 @@
                 <img class="text-center img-responsive center-block" src="/img/codeup_photo.jpeg"
                      style="padding:1px; border:1px solid #00d053; width:195px; height:253px">
                     <h3 style="color: #888888">chris davila</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
+                    <p>Chris is a software developer located in San Antonio, TX. Chris is passionate about building visually appealing applications
+                        that function seamlessly. He is always open to learning new technologies and staying up to date on current UI/UX trends.
                     </p>
             </div>
 

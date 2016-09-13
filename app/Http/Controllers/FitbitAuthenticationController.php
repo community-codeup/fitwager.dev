@@ -47,6 +47,7 @@ class FitbitAuthenticationController extends Controller
                 ]);
                 $owner->name = $resourceOwner['fullName'];
                 $owner->picture = $resourceOwner['avatar150'];
+                $owner->utc_offset = $resourceOwner['offsetFromUTCMillis'];
                 $owner->save();
                 
                 if ($owner->coins == null) {
@@ -60,6 +61,7 @@ class FitbitAuthenticationController extends Controller
                     'expires_in' => $accessToken->getExpires(),
                 ];
                 if (!$owner->token) {
+                    $tokenDetails['expires_in'] -= $owner->utcOffset; // Adjust UTC Offset
                     Token::create($tokenDetails);
                 } else {
                     $owner->token->renew($tokenDetails);

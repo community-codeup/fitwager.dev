@@ -73,6 +73,13 @@ class ChallengesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'bet_type' => 'required|integer',
+            'challenge_type' => 'required|integer',
+            'wager' => 'required|integer|min:1|max:' . Auth::user()->coins,
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
 
         Log::info($request->all());
         $challenge = new Challenge;
@@ -202,19 +209,15 @@ class ChallengesController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-        public function destroy(Request $request)
+        public function destroy(Request $request, $id)
     {
         $request->session()->flash('message', 'Did not destroy successfully.');
-        $challengeId = $request['deleteChallengeField'];
-        $challenge = Challenge::find($challengeId);
-        if (!$challenge) {
-            abort(404);
-        }
+        $challenge = Challenge::findOrFail($id);
+
         $challengers = $challenge->challengers;
         foreach($challengers as $challenger) {
             $challenger->delete();
         }
-
 
         $request->session()->forget('message');
         $challenge->delete();

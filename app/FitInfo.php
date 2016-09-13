@@ -11,6 +11,7 @@ namespace App;
 use DateTime;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Illuminate\Http\Request;
+use League\OAuth2\Client\Token\AccessToken;
 use Log;
 
 
@@ -92,15 +93,23 @@ class FitInfo
 
     private static function getAccessTokenFor(User $user)
     {
+        /** @var Token $token */
         $token = $user->token;
+        /** @var AccessToken $accessToken */
         $accessToken = $token->oauthToken();
-        Log::info($accessToken);
+        Log::info($accessToken->getExpires());
+        Log::info($token->owner);
         Log::info($accessToken->hasExpired());
         if ($accessToken->hasExpired()) {
             $newAccessToken = self::provider()->getAccessToken('refresh_token', [
                 'refresh_token' => $accessToken->getRefreshToken()
             ]);
-            $token->renew($newAccessToken->getValues());
+            Log::info($accessToken);
+            $token->renew([
+                'access_token' => $accessToken->getToken(),
+                'refresh_token' => $accessToken->getRefreshToken(),
+                'expires_in' => $accessToken->getExpires(),
+            ]);
             $accessToken = $newAccessToken;
         }
 

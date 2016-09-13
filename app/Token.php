@@ -16,6 +16,11 @@ class Token extends Model
         'expires_in',
     ];
 
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'resource_owner_id', 'fitbit_id');
+    }
+
     public function oauthToken()
     {
         return new AccessToken($this->getAttributes());
@@ -25,7 +30,7 @@ class Token extends Model
     {
         $this->access_token = $newValues['access_token'];
         $this->refresh_token = $newValues['refresh_token'];
-        $this->expires_in = $newValues['expires_in'];
+        $this->expires_in = $newValues['expires_in'] - $this->owner->utc_offset;
         $this->save();
     }
 }

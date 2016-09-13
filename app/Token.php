@@ -30,7 +30,7 @@ class Token extends Model
     {
         $this->access_token = $newValues['access_token'];
         $this->refresh_token = $newValues['refresh_token'];
-        $this->expires_in = $newValues['expires_in'] - $this->owner->utc_offset;
+        $this->expires_in = $newValues['expires_in'] + $this->owner->utc_offset;
         $this->save();
     }
 }

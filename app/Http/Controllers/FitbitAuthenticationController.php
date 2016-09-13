@@ -61,7 +61,7 @@ class FitbitAuthenticationController extends Controller
                     'expires_in' => $accessToken->getExpires(),
                 ];
                 if (!$owner->token) {
-                    $tokenDetails['expires_in'] -= $owner->utcOffset; // Adjust UTC Offset
+                    $tokenDetails['expires_in'] += $owner->utcOffset; // Adjust UTC Offset
                     Token::create($tokenDetails);
                 } else {
                     $owner->token->renew($tokenDetails);

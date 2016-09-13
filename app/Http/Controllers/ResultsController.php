@@ -73,7 +73,7 @@ class ResultsController extends Controller
                         $updateChallenger->status = 'won';
                         $winnings = $challenge->wager;
                         $updateUser->coins += $winnings;
-                        $updateUser->winnings = $winnings - $challenge->wager;
+                        $updateChallenger->winnings = $winnings - $challenge->wager;
                     }
                     $updateChallenger->save();
                     $updateUser->save();

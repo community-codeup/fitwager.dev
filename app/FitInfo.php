@@ -11,7 +11,7 @@ namespace App;
 use DateTime;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Illuminate\Http\Request;
-use App\User;
+use Log;
 
 
 class FitInfo
@@ -94,6 +94,8 @@ class FitInfo
     {
         $token = $user->token;
         $accessToken = $token->oauthToken();
+        Log::info($accessToken);
+        Log::info($accessToken->hasExpired());
         if ($accessToken->hasExpired()) {
             $newAccessToken = self::provider()->getAccessToken('refresh_token', [
                 'refresh_token' => $accessToken->getRefreshToken()

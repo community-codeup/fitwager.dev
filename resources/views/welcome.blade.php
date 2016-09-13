@@ -25,7 +25,7 @@
                     </div>
                     <div class="hero">
                         <hgroup>
-                            <h1 style="color: white">we are <h1><img src="/img/logo14.png"></h1></h1>
+                            <h1 style="color: white">we are <h1><img id="welcome-logo" src="/img/logo14.png"></h1></h1>
                             <h3>challenge your fitbit friends today</h3>
                         </hgroup>
                         <a href="auth/fitbit" class="btn btn-hero btn-lg" href="/auth/fitbit" role="button">Begin Now</a>

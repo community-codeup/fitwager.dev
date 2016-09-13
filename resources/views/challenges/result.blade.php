@@ -36,7 +36,7 @@
                     <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$winner->user->picture}}" height="125" width="125">
                     <figcaption>{{$winner->user->name}}</figcaption>
                 </figure>
-                     +{{$winner->winnings}}
+                <img src="/img/coins3.png" style="width: 25px; height: 25px"> +{{$winner->winnings}}
                 @endforeach
         </div>
 
@@ -47,7 +47,7 @@
                     <img class="img img-thumbnail btn-group" id="usersOnChallenge" src="{{$loser->user->picture}}" height="125" width="125">
                     <figcaption>{{$loser->user->name}}</figcaption>
                 </figure>
-                    {{$loser->winnings}}
+                <img src="/img/coins3.png" style="width: 25px; height: 25px"> {{$loser->winnings}}
                 @endforeach
         </div>
     </div>

@@ -1,3 +1,9 @@
+html,body
+{
+    width: 100%;
+    overflow-x: hidden;
+}
+
 * {
     font-family: 'Open Sans', sans-serif;
 }
@@ -184,14 +190,6 @@ Image credits: unsplash.com
 /*------------- End of Carousel CSS --------------*/
 
 
-
-.full-width-image-2 {
-    background: url(/img/citywalking.jpg) no-repeat center center;
-    background-size: cover;
-    text-align: center;
-    height: 100vh;
-}
-
 #glbfooter {
     background: black;
     padding: 20px 10px 40px 10px;
@@ -234,7 +232,7 @@ html {
 }
 
 body {
-    margin: 0 0 100px; /* bottom = footer height */
+    margin: 0 0 100px 0; /* bottom = footer height */
 }
 
 
@@ -265,7 +263,7 @@ body {
 
 /*-----------Leaderboard columns--------------*/
 
-#page-wrap { width: 75%; margin: 11px auto; }
+#page-wrap { width: 100%; margin: 11px auto; }
 #page-wrap > div { margin: 0 0 50px 0; min-width: 500px; width: 100%; }
 
 .group:after {
@@ -302,16 +300,15 @@ body {
     }
 }
 
-.create-layout {
-    background: url(/img/mountain.jpg) no-repeat center center;
-    background-size: cover;
-    text-align: center;
-}
-
 .control-label.results {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
     padding-right: 5%;
     padding-left: 5%;
+}
+
+#welcome-logo {
+    width: 100%;
+    max-width: 600px;
 }

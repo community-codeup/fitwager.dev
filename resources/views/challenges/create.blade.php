@@ -19,7 +19,7 @@
 
                 <div class="form-group" style="margin-right: 0px; margin-left: 0px;">
 
-                    <div class="row">
+                    <div class="row" style="padding-left: 10px">
                         <label for="bet" class="col-sm-2 control-label">bet type:</label>
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
@@ -36,7 +36,7 @@
 
                     <br>
 
-                    <div class="row">
+                    <div class="row" style="padding-left: 10px">
                         <label for="bet" class="col-sm-2 control-label">challenge type:</label>
                         <div class="col-sm-10">
                             <div class="btn-group" data-toggle="buttons">
@@ -53,29 +53,26 @@
 
                     <br>
 
-                    <div id="targetScore" class="row">
+                    <div id="targetScore" class="row" style="padding-left: 10px">
                         <label for="description" class="col-sm-2 control-label">target score:</label>
-                        <input id="targetScoreForm" class="form-control" style="width: 11%;" type="text" name="targetScore" required="">
+                        <input id="targetScoreForm" class="form-control" style="width: 11%; margin-left: 10px" type="text" name="targetScore" required="">
                     </div>
 
                     <br>
-
                     <div class="row">
                         <label for="wager" class="col-sm-2 control-label">wager (max {{ Auth::user()->coins }}):</label>
                         <input class="form-control" style="width: 11%;" type="number" name="wager" id="wager" required="" step="1" min="1" max="{{ Auth::user()->coins }}">
                         {!! $errors->first('wager', '<span class="help-block">:message</span>') !!}
-                    </div>
-
                     <br>
 
-                    <div class="row">
+                    <div class="row" style="padding-left: 10px">
                         <label for="description" class="col-sm-2 control-label">description:</label>
-                        <input class="form-control" style="width: 35%;" type="text" name="description" id="description" required="">
+                        <input class="form-control" style="width: 35%; margin-left: 10px" type="text" name="description" id="description" required="">
                     </div>
 
                     <br>
 
-                    <div class="row">
+                    <div class="row" style="padding-left: 10px">
                         <label for="start_date" class="col-sm-2 control-label">date:</label>
                         <div id="picker" class="btn btn-primary"><span></span><b class="caret"></b></div>
                         <input type="hidden" id="hidden-start-date" name="start_date">
@@ -86,7 +83,7 @@
 
                     <br>
 
-                        <div class="row">
+                        <div class="row" style="padding-left: 10px">
                             <label for="user" class="col-sm-2 control-label">user:</label>
                             <div class="col-md-10" style="padding-top: 7px">
 
@@ -106,7 +103,7 @@
 
                     <br>
 
-                    <div class="row">
+                    <div class="row" style="padding-left: 10px">
                         <div class="col-sm-2"></div>
                         <input class="btn btn-primary col-sm-2" id="create_challenge_button" type="submit" value="Submit">
                     </div>

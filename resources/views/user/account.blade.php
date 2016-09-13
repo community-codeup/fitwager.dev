@@ -14,6 +14,7 @@
                     <h3><img src="/img/coins3.png" style="width: 50px; height: 50px"> {{ $user->coins }}</h3>
                 </div>
             </div>
+        <br>
             <script>
                 var graphInfo = {!! json_encode($graphInfo) !!};
             </script>

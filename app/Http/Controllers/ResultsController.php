@@ -127,8 +127,9 @@ class ResultsController extends Controller
                         $updateUser = User::find($challenger->user_id);
                         $winnings = (floor(($challenge->wager * $totalChallengers) / $wonCount));
                         $updateUser->coins += $winnings;
-                        $updateUser->winnings = $winnings - $challenge->wager;
+                        $challenger->winnings = $winnings - $challenge->wager;
                         $updateUser->save();
+                        $challenger->save();
                     }  
                 } 
 

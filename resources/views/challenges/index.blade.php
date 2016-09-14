@@ -150,6 +150,7 @@
                     <table id="mytable" class="table table-bordered table-striped table-hover">
                         <thead>
                         <th>created by</th>
+                        <th>end date</th>
                         <th>bet type</th>
                         <th>challenge type</th>
                         <th>wager</th>
@@ -159,6 +160,7 @@
                         @foreach ($pendingChallenges as $challenge)
                             <tr>
                                 <td>{{$challenge->user_name}}</td>
+                                <td>{{$challenge->end_date}}</td>
                                 <td>{{$challenge->bet_type}}</td>
                                 <td>{{$challenge->challenge_type}}</td>
                                 <td>{{$challenge->wager}}</td>
